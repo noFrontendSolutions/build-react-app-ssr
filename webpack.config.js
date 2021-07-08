@@ -13,14 +13,19 @@ module.exports = {
     ],
     resolve: {
         modules: [__dirname, "src", "node_modules"],
-        extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+        extensions: [".js", ".jsx", ".tsx", ".ts"],
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: require.resolve("babel-loader"),
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                loader: require.resolve("ts-loader"),
             },
             {
                 test: /\.css$/,
@@ -29,6 +34,7 @@ module.exports = {
             },
             {
                 test: /\.png|svg|jpg|gif$/,
+                exclude: /node_modules/,
                 use: ["file-loader"],
             },
         ],
