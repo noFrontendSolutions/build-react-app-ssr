@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
+
 module.exports = {
     entry: "./src/index.js",
     plugins: [
@@ -7,32 +8,39 @@ module.exports = {
             template: "./src/index.html",
         }),
     ],
-    resolve: {
-        modules: [__dirname, "src", "node_modules"],
-        extensions: [".js", ".jsx", ".tsx", ".ts"],
-    },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                loader: require.resolve("babel-loader"),
+                loader: "babel-loader",
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
-                loader: require.resolve("ts-loader"),
+                loader: "ts-loader",
             },
             {
                 test: /\.css$/,
-                include: path.resolve(__dirname, 'src'),
+                include: path.resolve(__dirname, "src"),
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
-                test: /\.png|svg|jpg|gif$/,
-                exclude: /node_modules/,
-                use: ["file-loader"],
+                test: /\.html$/,
+                loader: "html-loader"
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[hash].[ext]',
+                    outputPath: "images"
+                }
+            }
         ],
+    },
+    resolve: {
+        modules: [__dirname, "src", "node_modules"],
+        extensions: [".js", ".jsx", ".tsx", ".ts"],
     },
 }
