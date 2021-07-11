@@ -3,7 +3,7 @@ const path = require("path")
 
 module.exports = {
     entry: { 
-        main: "./src/index.js",
+        index: "./src/index.js",
         vendor: "./src/vendor.js"
     },
     plugins: [
@@ -31,7 +31,7 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loader: 'file-loader',
                 options: {
-                    name: './images/[name].[hash].[ext]',
+                    name: './images/[name].[contenthash].[ext]',
                 }
             }
         ],
