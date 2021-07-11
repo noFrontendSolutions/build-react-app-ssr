@@ -7,7 +7,7 @@ const App = () => {
         <h1 className="text-3xl font-bold text-blue-700">
           Greetings from React and TailwindCSS!
         </h1>
-        <img src= {myImage} className="object-scale-down"></img>
+        <img src={myImage} className="object-scale-down"></img>
       </div>
     );
 }

@@ -2,7 +2,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: { 
+        main: "./src/index.js",
+        vendor: "./src/vendor.js"
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
@@ -21,11 +24,6 @@ module.exports = {
                 loader: "ts-loader",
             },
             {
-                test: /\.css$/,
-                include: path.resolve(__dirname, "src"),
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
-            },
-            {
                 test: /\.html$/,
                 loader: "html-loader"
             },
@@ -33,8 +31,7 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[hash].[ext]',
-                    outputPath: "images"
+                    name: './images/[name].[hash].[ext]',
                 }
             }
         ],
