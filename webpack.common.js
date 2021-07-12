@@ -4,7 +4,7 @@ const path = require("path")
 module.exports = {
     entry: { 
         index: "./src/index.js",
-        vendor: "./src/vendor.js"
+        vendor: "./vendors/vendor.js"
     },
     plugins: [
         new HtmlWebpackPlugin({
