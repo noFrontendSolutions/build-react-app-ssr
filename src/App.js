@@ -1,34 +1,19 @@
-//import ReactDOM from 'react-dom'
 import React, { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-// @ts-ignore
+import * as THREE from 'three'
 
 //import myImage from "./assets/tailwind.png"
 
-// @ts-ignore
-import * as THREE from 'three'
-
-
-
 const Ellipse3d = (props) => {
+  
   class Ellipse extends THREE.Curve {
-
-    /**
-     * @param {any} xRadius
-     * @param {any} yRadius
-     */
     constructor(xRadius, yRadius) {
-
-      super();
-
-      // add radius as a property
+      super()
       this.xRadius = xRadius
       this.yRadius = yRadius
-
     }
 
     getPoint(t, optionalTarget = new THREE.Vector3()) {
-
       const point = optionalTarget
       var radians = 2 * Math.PI * t
       if (props.plane === "x") return new THREE.Vector3(0, this.xRadius * Math.cos(radians),
@@ -44,6 +29,7 @@ const Ellipse3d = (props) => {
   useFrame((state, delta) => {
     mesh.current.rotation.x += 0.01
     mesh.current.rotation.y += 0.01
+    mesh.current.rotation.z += 0.01
   })
   
     return (
@@ -51,7 +37,6 @@ const Ellipse3d = (props) => {
           <tubeGeometry  args={[path, 100, 0.1, 20, false]}/>
           <meshBasicMaterial color="cyan" />
         </mesh>
-      
     )
 }
 
