@@ -4,6 +4,7 @@ const {merge} = require("webpack-merge")
 const {CleanWebpackPlugin} = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
+
 module.exports = merge(common, {
     mode: "production",
     output: {
@@ -12,7 +13,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new MiniCssExtractPlugin({ filename: "style.[contenthash].css" }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
