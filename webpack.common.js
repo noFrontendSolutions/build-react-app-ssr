@@ -6,12 +6,6 @@ module.exports = {
         index: path.resolve(__dirname, "./src/index.js"),
         vendor: path.resolve(__dirname, "./vendors/vendor.js")
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.[hash].html',
-            template: path.resolve(__dirname, "./src/index.html"),
-        }),
-    ],
     module: {
         rules: [
             {
