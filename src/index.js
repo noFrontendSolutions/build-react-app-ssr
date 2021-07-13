@@ -6,7 +6,8 @@ import './style.css';
 
 ReactDOM.render(
     <Canvas>
-        <Ellipse3d axis={[1, 3]} zRotation = {Math.PI / 4} />
-        <Ellipse3d axis={[3, 1]} zRotation = {Math.PI / 4} />
+        <Ellipse3d eccentricity={[1, 1]} plane = {"x"}/>
+        <Ellipse3d eccentricity={[1, 1]} plane={"y"} />
+        <Ellipse3d eccentricity={[1, 1]} plane={"z"} />
     </Canvas>, 
 document.querySelector("#root"))
