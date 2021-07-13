@@ -3,12 +3,12 @@ const path = require("path")
 
 module.exports = {
     entry: { 
-        index: "./src/index.js",
-        vendor: "./vendors/vendor.js"
+        index: path.resolve(__dirname, "./src/index.js"),
+        vendor: path.resolve(__dirname, "./vendors/vendor.js")
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html",
+            template: path.resolve(__dirname, "./src/index.html"),
         }),
     ],
     module: {
@@ -37,7 +37,7 @@ module.exports = {
         ],
     },
     resolve: {
-        modules: [__dirname, "src", "node_modules"],
-        extensions: [".js", ".jsx", ".tsx", ".ts"],
+        modules: ["node_modules"], //list of your module folders
+        extensions: [".js", ".jsx", ".tsx", ".ts"], //list of extension allowed for import without mentioning file extension  
     },
 }
