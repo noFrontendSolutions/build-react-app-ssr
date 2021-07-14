@@ -32,6 +32,6 @@ module.exports = {
     },
     resolve: {
         modules: ["node_modules"], //list of your module folders
-        extensions: [".js", ".jsx", ".tsx", ".ts"], //list of extension allowed for import without mentioning file extension  
+        extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension  
     },
 }

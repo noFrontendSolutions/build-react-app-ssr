@@ -15,12 +15,12 @@ const Ellipse3d = (props) => {
         getPoint(t, optionalTarget = new THREE.Vector3()) {
             const point = optionalTarget
             var radians = 2 * Math.PI * t
-            if (props.plane === "x") return new THREE.Vector3(0, this.xRadius * Math.cos(radians),
-                this.yRadius * Math.sin(radians))
-            if (props.plane === "y") return new THREE.Vector3(this.xRadius * Math.cos(radians), 0,
-                this.yRadius * Math.sin(radians))
-            if (props.plane === "z") return new THREE.Vector3(this.xRadius * Math.cos(radians),
+            if (props.plane === "x-y") return new THREE.Vector3(this.xRadius * Math.cos(radians),
                 this.yRadius * Math.sin(radians), 0)
+            if (props.plane === "x-z") return new THREE.Vector3(this.xRadius * Math.cos(radians), 0,
+                this.yRadius * Math.sin(radians))
+            if (props.plane === "y-z") return new THREE.Vector3(0, this.xRadius * Math.cos(radians),
+                this.yRadius * Math.sin(radians))
         }
     }
 
@@ -34,7 +34,7 @@ const Ellipse3d = (props) => {
     })
     
     return (
-        <mesh rotation-z={props.zRotation} ref={mesh}>
+        <mesh ref={mesh}>
             <tubeGeometry args={[path, 100, 0.1, 20, false]} />
             <meshBasicMaterial color="#61DBFB" />
         </mesh>
