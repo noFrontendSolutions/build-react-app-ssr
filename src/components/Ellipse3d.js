@@ -34,10 +34,14 @@ const Ellipse3d = (props) => {
     })
     
     return (
-        <mesh ref={mesh}>
-            <tubeGeometry args={[path, 100, 0.1, 20, false]} />
-            <meshBasicMaterial color="#61DBFB" />
-        </mesh>
+        <>
+            <ambientLight intensity={0.1} />
+           
+            <mesh ref={mesh}>
+                <tubeGeometry args={[path, 100, 0.1, 20, true]} />
+                <meshPhysicalMaterial color="#60DAF8" />
+            </mesh>
+        </>
     )
 }
 
