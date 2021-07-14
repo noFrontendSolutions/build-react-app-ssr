@@ -10,6 +10,9 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, "dist"),
     },
     devtool: "source-map",
+    optimization: {             
+        runtimeChunk: 'single'  //reloads browser on save
+    },                          //the webpack --hot flag is not working properly on my system (I'm using chrome on windows 10)
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),

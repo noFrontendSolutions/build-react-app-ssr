@@ -4,6 +4,7 @@ const {merge} = require("webpack-merge")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const {CleanWebpackPlugin} = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const ScssConfigWebpackPlugin = require('scss-config-webpack-plugin');
 
 
 module.exports = merge(common, {
@@ -16,7 +17,7 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             filename: 'index.[hash].html',
             template: path.resolve(__dirname, "./src/index.html"),
-            scriptLoading: "defer",
+            scriptLoading: "defer", 
         }),
         new MiniCssExtractPlugin({ filename: "style.[contenthash].css" }),
         new CleanWebpackPlugin(),
