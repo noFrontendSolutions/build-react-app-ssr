@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 
+
 const Ellipse3d = (props) => {
 
     class Ellipse extends THREE.Curve {
@@ -36,7 +37,6 @@ const Ellipse3d = (props) => {
     return (
         <>
             <ambientLight intensity={0.1} />
-           
             <mesh ref={mesh}>
                 <tubeGeometry args={[path, 100, 0.1, 20, true]} />
                 <meshPhysicalMaterial color="#60DAF8" />
