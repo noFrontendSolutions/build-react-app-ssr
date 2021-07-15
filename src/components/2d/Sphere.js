@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
+
+//sphereGeometry args: [radius : Float, widthSegments : Integer, heightSegments : Integer]
+//consult THREE.js documentaion for max and min values
 
 const Sphere = (props) => {
     const mesh = useRef()
@@ -15,8 +17,8 @@ const Sphere = (props) => {
             <ambientLight intensity={0.1} />
             <directionalLight />
             <mesh ref = {mesh}>
-                <sphereGeometry args = {[0.3, 32, 32]} />
-                <meshPhysicalMaterial color="#60DAF8" />
+                <sphereGeometry args = {[0.4, 32, 32]} /> 
+                <meshPhysicalMaterial color={props.color} />
             </mesh>
         </>
     )
