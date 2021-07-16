@@ -1,6 +1,6 @@
 import React from 'react'
-import Ellipse2d from "./components/2d/Ellipse2d"
-import CircleShape from "./components/2d/Circle-Shape"
+import Ellipse2d from "./2d-components/Ellipse2d"
+import CircleShape from "./2d-components/Circle-Shape"
 
 const ReactLogo2d = () => {
     return (

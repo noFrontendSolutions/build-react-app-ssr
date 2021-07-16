@@ -10,7 +10,6 @@ import EllipsePath from '../ellipse-path'
 
 const Ellipse2d = (props) => {
     const path = new EllipsePath(props.eccentricity[0], props.eccentricity[1], props.plane)
-    //const mesh = useRef()
     const mesh = useRef()
     useFrame((state, delta) => {
         mesh.current.rotation.z += 0.01

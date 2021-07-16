@@ -11,15 +11,18 @@ import EllipsePath from '../ellipse-path'
 
 const Ellipse3d = (props) => {
     const path = new EllipsePath(props.eccentricity[0], props.eccentricity[1], props.plane)
+    const xDynamic = props.rotationSpeed[0]
+    const yDynamic = props.rotationSpeed[1]
+    const zDynamic = props.rotationSpeed[2]
     const mesh = useRef()
+
     useFrame((state, delta) => {
-        mesh.current.rotation.x += 0.01
+        mesh.current.rotation.x += 0.01 
         mesh.current.rotation.y += 0.01
         mesh.current.rotation.z += 0.01
     })
     return (
         <>
-           
             <mesh ref={mesh} scale={props.scale} rotation-z={props.zRotation} position={[props.position[0], props.position[1], props.position[2]]}>
                 <tubeGeometry args={[path, 60, 0.08, 20, true]} />
                 <meshPhysicalMaterial color={props.color} />
