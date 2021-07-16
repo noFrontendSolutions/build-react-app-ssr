@@ -14,10 +14,8 @@ const Sphere = (props) => {
 
     return (
         <>
-            <ambientLight intensity={0.1} />
-            <directionalLight />
-            <mesh ref = {mesh}>
-                <sphereGeometry args = {[0.4, 32, 32]} /> 
+            <mesh ref={mesh} position={[props.position[0], props.position[1], props.position[2]]}>
+                <sphereGeometry args = {[props.scale / 4, 32, 32]} /> 
                 <meshPhysicalMaterial color={props.color} />
             </mesh>
         </>

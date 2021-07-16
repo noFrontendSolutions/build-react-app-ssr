@@ -17,6 +17,7 @@ const Ellipse2d = (props) => {
     })
     return (
         <>
+            <directionalLight />
             <mesh ref={mesh} rotation-z={props.zRotation}>
                 <tubeGeometry args={[path, 80, 0.1, 30, true]} />
                 <meshBasicMaterial color={props.color} />

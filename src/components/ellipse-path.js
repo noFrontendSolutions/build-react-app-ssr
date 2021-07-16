@@ -23,7 +23,6 @@ class EllipsePath extends THREE.Curve {
 
 export default EllipsePath
 
-//However, there is a slight issue with this approach, since this EllipsePath construcor gets called on every render. 
+//There is a slight issue with this approach, since this EllipsePath construcor gets called on every render. 
 //It's the way it would work using plain THREE.js. But this approach doesn't use the full power of @react-thee/fiber. 
 //I wonder if there is a way creating this ellipse path using only @react-three/fiber--a declaritive way to create the ellipse path. However, the documentation on this topic is a bit scarse.
-//Paul Henschel should know. 
