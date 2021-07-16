@@ -17,9 +17,9 @@ const Ellipse3d = (props) => {
     const mesh = useRef()
 
     useFrame((state, delta) => {
-        mesh.current.rotation.x += 0.01 
-        mesh.current.rotation.y += 0.01
-        mesh.current.rotation.z += 0.01
+        mesh.current.rotation.x += 0.01 * xDynamic
+        mesh.current.rotation.y += 0.01 * yDynamic
+        mesh.current.rotation.z += 0.01 * zDynamic
     })
     return (
         <>
