@@ -16,7 +16,7 @@ const App = () => {
                 <h1 className = "mt-20 text-5xl font-bold text-center text-gray-100">Welcome to React</h1>
                 <div className = "flex justify-center items-center mt-20">
                     <button onClick={() => setRender(render = "3d")} className= "fancy-btn">
-                        <div className = "fancy-btn-shadow">
+                        <div id = "react-blue-border" className = "fancy-btn-shadow">
                         </div>
                         <div className="fancy-btn-text">3D
                         </div>
@@ -33,7 +33,7 @@ const App = () => {
                     <ReactLogo3d position={[0, 1, 0]} color={"#60DAF8"} scale={2.5} rotationSpeed = {[1, 1, 1]} />
                     <ReactLogo3d position={[-6, -8, -18]} color={"#C8362E"} scale={2} rotationSpeed={[1, 1, 0]} />
                     <ReactLogo3d position={[6, -4, -10]} color={"#C8362E"} scale={2} rotationSpeed={[1, 0, 1]}/>
-                    <ReactLogo3d position={[0, -16, -24]} color={"#60DAF8"} scale={3} rotationSpeed={[0, 1, 1]} />
+                    <ReactLogo3d position={[0, -14, -24]} color={"#60DAF8"} scale={2} rotationSpeed={[0, 1, 1]} />
                 </Canvas>
             </div>
             <div className= "pt-10 flex flex-col items-center">

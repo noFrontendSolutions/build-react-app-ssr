@@ -7,7 +7,7 @@
 }
 
 .fancy-btn-shadow {
-    @apply absolute inset-x-0 h-full -bottom-2 bg-gray-100 border border-red-300 bg-red-300 rounded-lg
+    @apply absolute inset-x-0 h-full -bottom-2 border rounded-lg
 }
 
 .fancy-btn-text {
