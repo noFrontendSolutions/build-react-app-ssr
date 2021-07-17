@@ -33,7 +33,7 @@ const App = () => {
                     <ReactLogo3d position={[0, 1, 0]} color={"#60DAF8"} scale={2.5} rotationSpeed = {[1, 1, 1]} />
                     <ReactLogo3d position={[-6, -8, -18]} color={"#C8362E"} scale={2} rotationSpeed={[1, 1, 0]} />
                     <ReactLogo3d position={[6, -4, -10]} color={"#C8362E"} scale={2} rotationSpeed={[1, 0, 1]}/>
-                    <ReactLogo3d position={[0, -16, -24]} color={"#E49759"} scale={3} rotationSpeed={[0, 1, 1]} />
+                    <ReactLogo3d position={[0, -16, -24]} color={"#60DAF8"} scale={3} rotationSpeed={[0, 1, 1]} />
                 </Canvas>
             </div>
             <div className= "pt-10 flex flex-col items-center">
