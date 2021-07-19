@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/*If you want to start a new project, remove the custom classes below. But keep the Tailwind imports above, even if you don't intend to use TailwindCSS. Otherwise you've to deal with webpack to fix the compilation error.*/
+
 .fancy-btn {
     @apply relative font-black text-3xl text-gray-700
 }
