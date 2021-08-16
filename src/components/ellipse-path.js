@@ -1,8 +1,10 @@
 import * as THREE from 'three'
+import { Vector3 } from 'three'
 
 //I originally intended to use THREE.EllipseCurve to create the path instance for the tubeGeometry of the ellipse, but I had some issues with it. Luckily I found a different approach on stackoverflow. This is a generalisation of what I found to create the EllipsePath instance:
 
-class EllipsePath extends THREE.Curve {
+class EllipsePath extends THREE.Curve{
+    
     constructor(xRadius, yRadius, plane) {
         super()
         this.xRadius = xRadius

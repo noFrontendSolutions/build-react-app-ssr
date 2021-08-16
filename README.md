@@ -38,7 +38,6 @@ If you don't want to have to deal with **webpack** configurations, don't mess wi
 
 * Your JS entry file has to be named **index.js**, and your html template has to be named **index.html**. They both have to be stored in the root direcory of the **src** folder. Create as many new files and folders inside the **src** folder as you like. Go as deeply nested as you need to.
 * Keep the **styles** folder with the **tailwind-style.css** file, even if you don't intend to use TailwindCSS. You can create as many additional custom-style css files and folders as you like. But don't forget to link them into the **index.js** file. That's all the linking you'll have to do in your project.
-* If you intend to use Typescript, keep the **global.d.ts** file, too, or otherwise you might run into a type issue when linking images into your project (if using TS strict-mode that is). 
 * Delete everything else in the **src** folder and start your own React-Three-Fiber project...Enyoy!
 
 
