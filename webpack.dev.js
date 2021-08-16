@@ -11,8 +11,8 @@ module.exports = merge(common, {
     },
     devtool: "source-map",
     optimization: {             
-        runtimeChunk: 'single'  //reloads browser on save
-    },                          //the webpack --hot flag is not working properly on my system (I'm using chrome on windows 10)
+        runtimeChunk: 'single'  //rerenders chunks of js
+    },                          //the webpack --hot flag didn't work consistently on my system
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
