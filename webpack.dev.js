@@ -24,8 +24,8 @@ module.exports = merge(common, {
             {
                 test: /\.css$/,
                 include: path.resolve(__dirname, "src"),
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
-            },
+                use: ['style-loader', 'css-loader', 'postcss-loader'], //the order matters of loader in array matters!!! (postcss-loader is needed for tailwind) 
+            },                                                              
         ],
     },
 })
