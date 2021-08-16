@@ -15,3 +15,6 @@ module.exports = {
   },
   plugins: [],
 }
+
+//standard file required by tailwind. See excellent tailwind documentation if you want to extend colors, fonts, etc...
+//mode: "jit": activates the new just-in-time compiler. Without jit the build css file will not be minimized.
