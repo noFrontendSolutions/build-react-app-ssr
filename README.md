@@ -1,6 +1,6 @@
 # create-react-app-3d
 ---
-is a webpack-bundled, frontend development environment that serves as a starter kit to help you create React applications including 3d animation and much more.
+is a webpack-bundled, frontend development environment that serves as a starter kit to help you create React applications including 3d animation and much more. It's ment to be used instead of the standard _create-react-app_ environment. 
 
 2D                         |3D
 :-------------------------:|:-------------------------:
@@ -9,16 +9,22 @@ is a webpack-bundled, frontend development environment that serves as a starter 
 
 ## Features:
 ---
-* create 3d and 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
-* compatible with Typescript and/or Javascript (jsx and tsx files are both supported)
-* enjoy the perks of TailwindCSS in combination with custom CSS
-* let webpack take care of the dreaded file-linking-dependency hussle
-* receive minified and hashed JS and CSS files for production
-* enjoy ultra-fast recompilation during development mode (featuring the new Tailwind JIT compiler)
+* default compilation of all JS, JSX, TS, and TSX files  
+* use my example animations to learn how to create 3d or 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
+* support for TailwindCSS by default, but can also be used in combination with custom CSS
+* produces minified and hashed JS and CSS files for deployment
+* fast recompilation during development mode (featuring the new Tailwind JIT compiler)
 
 ## Installation:
 ---
-Get a clone of this github repository and switch into the create-react-app-3d folder and type in,
+
+First get a clone of this github repository. 
+
+```bash
+git clone https://github.com/noFrontendSolutions/create-react-app-3d.git
+```
+
+Switch into the create-react-app-3d folder and type in,
 ```bash
 npm install
 ```
@@ -30,7 +36,7 @@ To build your project use,
 ```bash
 npm run build
 ```
-You need to have **node** and **git** installed on your local machine.
+Obviously you need to have **node** and **git** installed on your local machine.
 
 ## Before You Start A New Project:
 ---
