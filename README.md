@@ -10,7 +10,7 @@ is a webpack-bundled, frontend development environment that serves as a starter 
 ## Features:
 ---
 * default compilation of all JS, JSX, TS, and TSX files  
-* use my example animations to learn how to create 3d or 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
+* feel free to play around with my example animations if you are interested learning how to create 3d or 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
 * support for TailwindCSS by default, but can also be used in combination with custom CSS
 * produces minified and hashed JS and CSS files for deployment
 * fast recompilation during development mode (featuring the new Tailwind JIT compiler)
