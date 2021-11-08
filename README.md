@@ -9,11 +9,11 @@ is a webpack-bundled, frontend development environment that serves as a starter 
 
 ## Features:
 ---
-* default compilation of all JS, JSX, TS, and TSX files  
-* feel free to play around with my example animations if you are interested learning how to create 3d or 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
+* default compilation/bundling of all JS, JSX, TS, and TSX files  
+* a 3d animation example to play around with, if you are interested in learning how to create 3d or 2d animations in your React app (using **THREE.js** and **react-three-fiber**)
 * support for TailwindCSS by default, but can also be used in combination with custom CSS
-* produces minified and hashed JS and CSS files for deployment
-* fast recompilation during development mode (featuring the new Tailwind JIT compiler)
+* produces minified and hashed JS and CSS files, plus a vendor folder, all linked together for deployment
+* fast recompilation times during development mode (featuring the new Tailwind JIT compiler)
 
 ## Installation:
 ---
