@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 module.exports = merge(common, {
     mode: "production",
     output: {
-        filename: "[name].[contenthash].js",
+        filename: "[name].[contenthash].js", //[name] common from entry points (vendors/vendor.js or index.tsx)
         path: path.resolve(__dirname, "dist"),
     },
     plugins: [

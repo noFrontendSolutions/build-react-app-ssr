@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = merge(common, {
     mode: "development",
     output: {
-        filename: "[name].bundle.js",
+        filename: "[name].bundle.js", //[name] common from entry points (vendors/vendor.js or index.tsx)
         path: path.resolve(__dirname, "dist"),
     },
     devtool: "source-map",
