@@ -18,7 +18,7 @@ module.exports = {
                 loader: "ts-loader",
             },
             {
-                test: /\.html$/,
+                test: /\.html$/, //html-loader is required for file-loader and handles every encountered "src"-attribute.
                 loader: "html-loader"
             },
             {
