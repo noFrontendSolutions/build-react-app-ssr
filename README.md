@@ -1,6 +1,6 @@
 # create-react-app-3d
 ---
-is a webpack-bundled, frontend development environment that serves as a starter kit to help you create React applications including 3d animation and much more. It's ment to be used instead of the standard _create-react-app_ environment. 
+is a webpack-bundled, frontend development environment that serves as a starter kit to help you create React applications including 3d animation and much more. It's meant to be used instead of the standard _create-react-app_ environment. 
 
 2D                         |3D
 :-------------------------:|:-------------------------:
