@@ -34,7 +34,7 @@ npm run dev
 ```
 To build your project use,
 ```bash
-npm run build
+npm run build-app
 ```
 Obviously you need to have **node** and **git** installed on your local machine.
 
