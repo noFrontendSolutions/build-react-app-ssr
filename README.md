@@ -7,6 +7,11 @@ is a webpack-bundled, frontend development environment that serves as a starter 
 ![](https://www.dropbox.com/s/qctbmba0cuukcbo/2d-landing-page.png?raw=1)  | ![](https://www.dropbox.com/s/46tsevv3xkg4dh9/3d-landing-page.png?raw=1)
 
 
+### Click on the following link to view the animations:
+[https://my-2d-3d-animation.herokuapp.com/](https://my-2d-3d-animation.herokuapp.com/)
+
+<br>
+
 ## Features:
 ---
 * default compilation/bundling of all JS, JSX, TS, and TSX files  
