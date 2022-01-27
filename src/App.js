@@ -43,9 +43,11 @@ const App = () => {
                 Edit src/App.js and save to reload
                 </h2>
                 <a id="react-blue" href="https://github.com/pmndrs/react-three-fiber" target="_blank" className="mt-4 text-2xl font-md">
-                Learn @react-three/fiber
+                Learn @react-three-fiber
                 </a>
+                <button id = "button-2d" onClick ={() => setRender("2d")} className = "m-2 mt-16 p-2 h-20 w-48 text-2xl font-bold bg-gray-300 text-gray-800 rounded-lg border-gray-300   ">2d</button> 
             </div>
+           
         </div>
     )
 }

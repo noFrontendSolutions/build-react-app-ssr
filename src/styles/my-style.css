@@ -8,9 +8,20 @@
 
 #react-blue {
   color: #60DAF8;
+  border-color: #60DAF8;
 }
 
 #react-blue-border {
-  color-color: #60DAF8;
+  color: #60DAF8;
   background-color: #60DAF8;
+}
+
+#button-2d {
+  border-color: #1F232A;
+  border-width: 0 2px 2px 2px;
+}
+
+#button-2d:hover {
+  border-color: #60DAF8;
+  border-width: 3px;
 }
