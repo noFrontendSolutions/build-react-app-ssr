@@ -10,12 +10,12 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
+                loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel and webpack.
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
-                loader: "ts-loader",
+                loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using Webpack. 
             },
             {
                 test: /\.html$/, //html-loader is required for file-loader and handles every encountered "src"-attribute.
@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
-                loader: 'file-loader',
+                loader: 'file-loader',  //The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
                 options: {
                     name: './images/[name].[contenthash].[ext]',
                 }
