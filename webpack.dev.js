@@ -22,8 +22,8 @@ module.exports = merge(common, {
                 test: /\.css$/,
                 include: path.resolve(__dirname, "src"),
                 use: ['style-loader', 'css-loader', 'postcss-loader'], //the order of loader in array matters!!! (postcss-loader is needed for tailwind (for details see postcss.config.js)) 
-            },        //Style-loader inject the CSS into the DOM.  
-                      // The css-loader interprets @import and url() like import/require() and will resolve them.                                                 
+            },        // Style-loader inject the CSS into the DOM.  
+                      // The css-loader interprets @import and url() like import/require() and will resolve them. PLUSS you are able to use ES modules syntax.                                                 
         ],
     },
 })
