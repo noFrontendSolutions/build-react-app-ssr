@@ -10,6 +10,9 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, "dist"),
     },
     devtool: "source-map",
+    optimization: {             
+        runtimeChunk: 'single'  //re-renders app if you save
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"), //The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.
