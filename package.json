@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
     "dev": "webpack serve --config webpack.dev.js --open",
     "build-app": "webpack --config webpack.prod.js"
   },
