@@ -5,17 +5,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js --open",
-    "build-app": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@react-three/fiber": "^7.0.26",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-fiber": "^0.2.101",
-    "three": "^0.137.5"
+    "react-query": "^3.34.14",
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -24,7 +23,6 @@
     "@babel/preset-typescript": "^7.16.7",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "@types/three": "^0.137.0",
     "@types/webpack": "^5.28.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
