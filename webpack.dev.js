@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = merge(common, {
     mode: "development",
     output: {
-        filename: "[name].bundle.js", //[name] comes from entry points (vendors/vendor.js or index.tsx)
+        filename: "[name].js", //[name] comes from entry points (vendors/vendor.js or index.tsx)
         path: path.resolve(__dirname, "dist"),
     },
     devtool: "source-map",
@@ -15,7 +15,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "./src/index.html"), //The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.
+            template: path.resolve(__dirname, "./template/index.html"), //The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.
             scriptLoading: "defer",
         }),
     ],

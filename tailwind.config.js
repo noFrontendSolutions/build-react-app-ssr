@@ -3,7 +3,8 @@ module.exports = {
           './src/**/*.js',
           './src/**/*.ts',
           './src/**/*.jsx',
-          './src/**/*.tsx'
+          './src/**/*.tsx',
+          './template/index.html'
   ],
   theme: {
     extend: {},

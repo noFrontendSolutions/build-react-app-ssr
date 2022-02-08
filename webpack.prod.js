@@ -9,14 +9,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 module.exports = merge(common, {
     mode: "production",
     output: {
-        filename: "[name].[contenthash].js", //[name] common from entry points (vendors/vendor.js or index.tsx)
+        filename: "[name].[contenthash].js", //[name] comes from entry points (vendors/vendor.js or index.tsx)
         path: path.resolve(__dirname, "dist"),
     },
     plugins: [
-        //HtmlWebpackPlugin will generate an HTML5 file that includes all webpack bundles in the body using script tags. 
+        //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags. 
         new HtmlWebpackPlugin({
             filename: 'index.[hash].html',
-            template: path.resolve(__dirname, "./src/index.html"),
+            template: path.resolve(__dirname, "./template/index.html"),
             scriptLoading: "defer", 
         }),
         //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.

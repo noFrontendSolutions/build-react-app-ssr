@@ -3,7 +3,7 @@ const path = require("path")
 module.exports = {
     entry: { 
         index: path.resolve(__dirname, "./src/index.tsx"),
-        vendor: path.resolve(__dirname, "./vendors/vendor.js")
+        //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
     },
     module: {
         rules: [
@@ -26,7 +26,7 @@ module.exports = {
                 loader: 'file-loader',  //The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
                 options: {
                     name: '[name].[hash].[ext]',
-                    outputPath: "images"
+                    outputPath: "static-assets"
                 }
             }
         ],
