@@ -3,6 +3,7 @@ import ReactLogo2d from "./components/ReactLogo2d"
 import ReactLogo3d from "./components/ReactLogo3d"
 import { Canvas } from "@react-three/fiber"
 
+
 //Feel free to play around with the <ReactLogo3d /> elements below. Explore the components folder if you are interested in how they are created.  
 
 const App = () => {

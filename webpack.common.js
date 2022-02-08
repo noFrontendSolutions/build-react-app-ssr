@@ -25,7 +25,8 @@ module.exports = {
                 test: /\.(jpe?g|png|gif|svg)$/,
                 loader: 'file-loader',  //The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
                 options: {
-                    name: './images/[name].[contenthash].[ext]',
+                    name: '[name].[hash].[ext]',
+                    outputPath: "images"
                 }
             }
         ],
