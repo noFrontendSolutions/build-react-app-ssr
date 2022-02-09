@@ -16,7 +16,6 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                exclude: /node_modules/,
                 loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using Webpack. 
             }
         ],
