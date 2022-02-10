@@ -1,4 +1,4 @@
-export const MoviesContent = () => {
+export const MoviesCard = () => {
   return (
     <div className="text-lg font-bold h-full flex justify-center items-center">
       <h1>

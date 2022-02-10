@@ -8,7 +8,8 @@ const initialConnectionAirbnb = async (client) => {
   const db = client.db(dbName);
   const collection = db.collection(dbCollection);
   const results = await collection
-    .find({ "address.suburb": "Manhattan" })
+    //passes back the first ten results of adresses that are located in Manhatten, with "picture_url" and "summary" not empty strings 
+    .find({ "address.suburb": "Manhattan", "images.picture_url": {$ne: ""}, "summary": {$ne: ""}})
     .limit(10)
     .toArray();
   return results;

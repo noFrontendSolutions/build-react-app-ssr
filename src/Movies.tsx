@@ -1,9 +1,9 @@
 import Layout from "./Layout";
-import { MoviesContent } from "./components/Movies-Content";
+import { MoviesCard } from "./components/MoviesCard";
 export const Movies = () => {
   return (
     <Layout>
-      <MoviesContent/>
+      <MoviesCard/>
     </Layout>
   );
 };

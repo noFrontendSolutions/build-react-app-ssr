@@ -4,7 +4,9 @@ const Layout:React.FC = ({children}) => {
   return (
   <>
     <Header/>
-    {children}    
+    <div className="p-8 flex flex-col items-center">
+    {children}
+    </div>    
   </>
 )}
 
