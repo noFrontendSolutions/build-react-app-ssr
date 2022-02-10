@@ -9,14 +9,14 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel and webpack.
+                loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core. 
             },
             {
                 test: /\.(ts|tsx)$/,
-                loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using the babel-core. 
+                loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using the Babel compiler core. 
             },
             {
-                test: /\.html$/, //html-loader is required for file-loader and handles every encountered "src"-attribute.
+                test: /\.html$/, //html-loader is required for file-loader (necessary for static assets like pdf and svg files) and handles every encountered "src"-attribute.
                 loader: "html-loader"
             },
             {
