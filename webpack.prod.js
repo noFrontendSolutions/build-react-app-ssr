@@ -4,6 +4,8 @@ const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin"); // part of Webpack default (minimizes JS files). It's required because CssMinimizerPlugin overwrites the default webpack configuration; so it has to be put back in maually as an optimizer.
 
 module.exports = merge(common, {
   mode: "production",
@@ -28,8 +30,18 @@ module.exports = merge(common, {
       {
         test: /\.css$/,
         include: path.resolve(__dirname, "src"),
-        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... HOWEVER, there one small problem: the css-file is not bundled... That's were the terser-plugin comes into play.
+        use: [
+            MiniCssExtractPlugin.loader, 
+            "css-loader", 
+            "postcss-loader"
+        ], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... HOWEVER, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
       },
     ],
+  },
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin()
+    ], // now, after the CSS file got bundled, the usually minified index.js file (minified by webpack default via TerserPlugin) isn't minified anymore... That's were the TerserPlugin comes into play.  
   },
 });

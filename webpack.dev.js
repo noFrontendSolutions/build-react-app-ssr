@@ -24,7 +24,11 @@ module.exports = merge(common, {
             {
                 test: /\.css$/,
                 include: path.resolve(__dirname, "src"),
-                use: ['style-loader', 'css-loader', 'postcss-loader'], // The order of loaders in the array matters: postcss-loader runs first (postcss-loader is needed for tailwind (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS... for more details see postcss.config.js and Tailwind documentation); then css-loader transpiles the CSS into JS; then style-loader inject the JS (interpretable as CSS) via <style>-tags into the DOM. 
+                use: [
+                    'style-loader', 
+                    'css-loader', 
+                    'postcss-loader'
+                ], // The order of loaders in the array matters: postcss-loader runs first (postcss-loader is needed for tailwind (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS... for more details see postcss.config.js and Tailwind documentation); then css-loader transpiles the CSS into JS; then style-loader inject the JS (interpretable as CSS) via <style>-tags into the DOM. 
             },                                                         
         ],
     },
