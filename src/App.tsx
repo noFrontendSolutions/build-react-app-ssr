@@ -14,7 +14,6 @@ const App = () => {
   const [initialData, setInitialData] = useState(null)
 
   useEffect(()=> {
-    
       fetch("http://localhost:3000/airbnb")
       .then(res => res.json())
       .then(data => {
@@ -22,7 +21,6 @@ const App = () => {
       })
       //const initialLoad = JSON.parse(JSON.stringify(raw))
       //setInitialData([...raw]) 
-      
   }, [])
   //console.log(initialData)
   //setTimeout(() => console.log(initialData[0].address), 1000)

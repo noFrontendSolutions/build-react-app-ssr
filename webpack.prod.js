@@ -10,8 +10,8 @@ const TerserPlugin = require("terser-webpack-plugin"); // part of Webpack defaul
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "[name].[contenthash].js", //[name] comes from entry points (vendors/vendor.js or index.tsx)
-    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js", //[name] comes from the entry point(s) of your application. 
+    path: path.resolve(__dirname, "dist"), // Directory name and relative path of your frontend bundle.
   },
   plugins: [
     //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.

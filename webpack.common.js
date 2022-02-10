@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
     entry: { 
-        index: path.resolve(__dirname, "./src/index.tsx"),
+        index: path.resolve(__dirname, "./src/index.tsx"), // here you can choose the entry file of your frontend bundle 
         //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
     },
     module: {
