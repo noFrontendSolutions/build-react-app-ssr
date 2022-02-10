@@ -13,7 +13,7 @@ module.exports = {
             },
             {
                 test: /\.(ts|tsx)$/,
-                loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using Webpack. 
+                loader: "ts-loader",  //similar to "babel-loader" it transpiles TS files using the babel-core. 
             },
             {
                 test: /\.html$/, //html-loader is required for file-loader and handles every encountered "src"-attribute.
@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
-                loader: 'file-loader',  //The file-loader resolves import/require() on a file into a url and emits the file into the output directory.
+                loader: 'file-loader',  //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory. 
                 options: {
                     name: '[name].[hash].[ext]',
                     outputPath: "static-assets"
@@ -30,7 +30,7 @@ module.exports = {
         ],
     },
     resolve: {
-        modules: ["node_modules"], //list of module folders
+        modules: ["node_modules"], 
         extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension  
     },
 }
