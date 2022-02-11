@@ -2,11 +2,11 @@
 //import {AirbnbContext} from "../App"
 
 interface IProps {
-  name: string;
-  summary: string;
-  beds: number;
-  picture_url: string;
-  government_area: string;
+  name: string
+  summary: string
+  beds: number
+  picture_url: string
+  government_area: string
 }
 
 export const AirbnbCard = ({
@@ -30,5 +30,5 @@ export const AirbnbCard = ({
         </span>
       </div>
     </>
-  );
-};
+  )
+}

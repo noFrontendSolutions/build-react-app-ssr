@@ -1,35 +1,35 @@
-import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
-import { AirbnbCard } from "./components/AirbnbCard";
-import ErrorComponent from "./components/ErrorComponent";
-import LoadingSpinner from "./components/LoadingSpinner";
-import Layout from "./Layout";
+import { useQuery } from "react-query"
+import { Link } from "react-router-dom"
+import { AirbnbCard } from "./components/AirbnbCard"
+import ErrorComponent from "./components/ErrorComponent"
+import LoadingSpinner from "./components/LoadingSpinner"
+import Layout from "./Layout"
 
 interface IState {
-  _id: string;
-  name: string;
-  summary: string;
-  description: string;
-  access: string;
-  minimum_night: number;
-  maximum_nights: number;
-  neighborhood_overwiew: string;
-  beds: number;
-  images: { picture_url: string };
-  address: { government_area: string };
+  _id: string
+  name: string
+  summary: string
+  description: string
+  access: string
+  minimum_night: number
+  maximum_nights: number
+  neighborhood_overwiew: string
+  beds: number
+  images: { picture_url: string }
+  address: { government_area: string }
 }
 
 const fetchData = async (key: string, url: string): Promise<IState[]> => {
-  const response = await fetch(url);
-  return response.json();
-};
+  const response = await fetch(url)
+  return response.json()
+}
 
 const App = () => {
-  const key = "AirbnbData";
-  const url = "http://localhost:3000/airbnb";
+  const key = "AirbnbData"
+  const url = "http://localhost:3000/airbnb"
   const { isLoading, error, data } = useQuery<IState[], Error>([key, url], () =>
     fetchData(key, url)
-  );
+  )
 
   return (
     <Layout>
@@ -66,7 +66,7 @@ const App = () => {
           </Link>
         ))}
     </Layout>
-  );
-};
+  )
+}
 
-export { App, IState };
+export { App, IState }

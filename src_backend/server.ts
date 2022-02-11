@@ -9,7 +9,7 @@ import 'dotenv/config'
 
 
 const url: string  = process.env.MONGO_URI || ""
-const port: number| string = process.env.PORT || 3000;
+const port: number | string = process.env.PORT || 3000;
 
 const app = express()
 app.use(express.json())
@@ -17,9 +17,15 @@ app.use(cors())
 
 app.get("/airbnb", async (req: Request, res: Response) => {
     const client: mongoDB.MongoClient = new MongoClient(url);
+    try {
     const initialLoad = await mongoConnectAirbnb.initialConnectionAirbnb(client)
     await client.close()
     res.send(initialLoad)
+    }
+    catch (err) {
+    console.log(err)
+    }
+    
 })
 
 app.listen(port, () => {

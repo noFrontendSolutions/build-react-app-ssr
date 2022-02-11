@@ -6,5 +6,5 @@ export const MoviesCard = () => {
         MongoDB.
       </h1>
     </div>
-  );
-};
+  )
+}
