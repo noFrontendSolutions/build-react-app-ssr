@@ -12,11 +12,12 @@ module.exports = merge(common, {
   output: {
     filename: "[name].[contenthash].js", //[name] comes from the entry point(s) of your application. 
     path: path.resolve(__dirname, "dist"), // Directory name and relative path of your frontend bundle.
+    publicPath: "http://127.0.0.1:5500/dist/"
   },
   plugins: [
     //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
     new HtmlWebpackPlugin({
-      filename: "index.[hash].html",
+      filename: "index.[contenthash].html",
       template: path.resolve(__dirname, "./template/index.html"),
       scriptLoading: "defer",
     }),

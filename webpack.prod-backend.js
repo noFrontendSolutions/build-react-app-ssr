@@ -10,7 +10,7 @@ module.exports = {
         //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
     },
     output: {
-        filename: "[name].[contenhash].js", // [name] refers to "server" (from entry point) as the name for the output bundle.
+        filename: "[name].[contenthash].js", // [name] refers to "server" (from entry point) as the name for the output bundle.
         path: path.resolve(__dirname, "dist_backend") // Directory name and relative path of your backend bundle.
     },
     module: {
@@ -26,4 +26,8 @@ module.exports = {
         new CleanWebpackPlugin(),
       ],
     externals: [nodeExternals()], // nodeExternals is required if you intend to bundle code that includes Express functions. (without it you'll end up with warnings and a file that runs, but is enourmas in size.)
+    resolve: {
+        modules: ["node_modules"], 
+        extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension  
+    },
 }

@@ -15,4 +15,4 @@ const initialConnectionAirbnb = async (client) => {
   return results;
 };
 
-module.exports = { initialConnectionAirbnb };
+export = { initialConnectionAirbnb };
