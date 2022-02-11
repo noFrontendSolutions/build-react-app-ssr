@@ -1,11 +1,10 @@
-require("dotenv").config();
+import 'dotenv/config'
 import * as mongoDB from "mongodb";
 
 const initialConnectionAirbnb = async (client: mongoDB.MongoClient) => {
-  const dbName: string= process.env.DB_NAME;
-  const dbCollection: string = process.env.DB_COLLECTION;
+  const dbName: string = process.env.DB_NAME || "";
+  const dbCollection: string = process.env.DB_COLLECTION || "";
   await client.connect();
-  //console.log("Connected successfully to Mongo..");
   const db: mongoDB.Db = client.db(dbName);
   const collection: mongoDB.Collection = db.collection(dbCollection);
   const results = await collection

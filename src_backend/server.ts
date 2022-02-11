@@ -4,12 +4,11 @@ import cors from "cors"
 import {MongoClient} from "mongodb"
 import mongoConnectAirbnb from "./database/mongo-connect-airbnb" 
 import * as mongoDB from "mongodb";
-
-require('dotenv').config()
-
+import 'dotenv/config'
 
 
-const url: string = process.env.MONGO_URI
+
+const url: string  = process.env.MONGO_URI || ""
 const port: number| string = process.env.PORT || 3000;
 
 const app = express()
