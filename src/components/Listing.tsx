@@ -1,8 +1,10 @@
 import { useLocation } from "react-router-dom"
+import {IState} from "../App"
 
 const Listing = () => {
     const location = useLocation()
-    console.log(location.state)
+    const data = location.state as IState;
+    console.log(data)
     
   return (
     <div>Listing</div>
