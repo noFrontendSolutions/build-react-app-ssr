@@ -19,4 +19,4 @@ const initialConnectionAirbnb = async (client: mongoDB.MongoClient) => {
   return results
 }
 
-export = { initialConnectionAirbnb }
+export default initialConnectionAirbnb

@@ -8,7 +8,7 @@
     "dev": "webpack serve --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "build-backend": "webpack --config webpack.prod-backend.js",
-    "dev-backend": "nodemon --watch src_backend/**/* --ext ts,js,json --exec ts-node src_backend/server.ts"
+    "dev-backend": "nodemon --watch src_backend/**/* --ext ts,js,json --exec ts-node --project tsconfig-backend-dev.json src_backend/server.ts"
   },
   "keywords": [],
   "author": "",
