@@ -7,13 +7,13 @@ import * as mongoDB from "mongodb"
 import "dotenv/config"
 import initialConnectionAirbnb from "./database/mongo-connect-airbnb"
 import path from "path"
+import fs from "fs"
 
 const url: string = process.env.MONGO_URI || ""
 const port: number | string = process.env.PORT || 3000
 
 const app = express()
 app.use(express.json())
-app.use(express.static(__dirname))
 app.use(cors())
 
 app.get("/airbnb", async (req: Request, res: Response) => {
@@ -28,8 +28,14 @@ app.get("/airbnb", async (req: Request, res: Response) => {
 })
 
 app.get("/", async (req: Request, res: Response) => {
-  res.sendFile(path.resolve(__dirname, "./index.html"))
+  const htmlFile = fs
+    .readdirSync(__dirname)
+    .filter((fn) => fn.endsWith(".html"))
+  console.log(htmlFile)
+  res.sendFile(path.resolve(__dirname, htmlFile[0]))
 })
+
+app.use(express.static(__dirname))
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)

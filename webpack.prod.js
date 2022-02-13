@@ -10,13 +10,13 @@ const TerserPlugin = require("terser-webpack-plugin") // part of Webpack default
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "[name].js", //[name] comes from the entry point(s) of your application.
+    filename: "[name].[fullhash].js", //[name] comes from the entry point(s) of your application.
     path: path.resolve(__dirname, "dist"), // Directory name and relative path of your frontend bundle.
   },
   plugins: [
     //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
     new HtmlWebpackPlugin({
-      filename: "index.html",
+      filename: "index.[fullhash].html",
       template: path.resolve(__dirname, "./template/index.html"),
       scriptLoading: "defer",
     }),

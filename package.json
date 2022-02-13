@@ -5,9 +5,9 @@
   "main": "index.js",
   "module": "CommonJS",
   "scripts": {
-    "dev": "webpack serve --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "build-backend": "webpack --config webpack.prod-backend.js",
+    "dev": "webpack serve --config webpack.dev.js --open",
     "dev-backend": "nodemon --watch src_backend/**/* --ext ts,js,json --exec ts-node --project tsconfig-backend-dev.json src_backend/server.ts",
     "start": "start http://localhost:3000 & node dist/server.js"
   },
