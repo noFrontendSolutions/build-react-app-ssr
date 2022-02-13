@@ -6,12 +6,14 @@ import { MongoClient } from "mongodb"
 import * as mongoDB from "mongodb"
 import "dotenv/config"
 import initialConnectionAirbnb from "./database/mongo-connect-airbnb"
+import path from "path"
 
 const url: string = process.env.MONGO_URI || ""
 const port: number | string = process.env.PORT || 3000
 
 const app = express()
 app.use(express.json())
+app.use(express.static(__dirname))
 app.use(cors())
 
 app.get("/airbnb", async (req: Request, res: Response) => {
@@ -23,6 +25,10 @@ app.get("/airbnb", async (req: Request, res: Response) => {
   } catch (err) {
     console.log(err)
   }
+})
+
+app.get("/", async (req: Request, res: Response) => {
+  res.sendFile(path.resolve(__dirname, "./index.html"))
 })
 
 app.listen(port, () => {
