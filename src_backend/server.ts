@@ -9,6 +9,10 @@ import initialConnectionAirbnb from "./database/mongo-connect-airbnb"
 import path from "path"
 import fs from "fs"
 
+const htmlFile = fs
+  .readdirSync(__dirname)
+  .filter((fn) => fn.endsWith(".html"))[0]
+
 const url: string = process.env.MONGO_URI || ""
 const port: number | string = process.env.PORT || 3000
 
@@ -28,11 +32,7 @@ app.get("/airbnb", async (req: Request, res: Response) => {
 })
 
 app.get("/", async (req: Request, res: Response) => {
-  const htmlFile = fs
-    .readdirSync(__dirname)
-    .filter((fn) => fn.endsWith(".html"))
-  console.log(htmlFile)
-  res.sendFile(path.resolve(__dirname, htmlFile[0]))
+  res.sendFile(path.resolve(__dirname, htmlFile))
 })
 
 app.use(express.static(__dirname))

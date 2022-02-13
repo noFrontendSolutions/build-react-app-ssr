@@ -6,12 +6,12 @@ module.exports = {
   mode: "production",
   target: "node",
   entry: {
-    server: path.resolve(__dirname, "./src_backend/server.ts"), // Here you can choose the entry file of your backend application.
+    server: path.resolve(__dirname, "../src_backend/server.ts"), // Here you can choose the entry file of your backend application.
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
   output: {
     filename: "[name].js", // [name] refers to "server" (from entry point) as the name for the output bundle.
-    path: path.resolve(__dirname, "dist"), // Directory name and relative path of your backend bundle.
+    path: path.resolve(__dirname, "../dist"), // Directory name and relative path of your backend bundle.
   },
   module: {
     rules: [

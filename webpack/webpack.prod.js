@@ -11,13 +11,13 @@ module.exports = merge(common, {
   mode: "production",
   output: {
     filename: "[name].[fullhash].js", //[name] comes from the entry point(s) of your application.
-    path: path.resolve(__dirname, "dist"), // Directory name and relative path of your frontend bundle.
+    path: path.resolve(__dirname, "../dist"), // Directory name and relative path of your frontend bundle.
   },
   plugins: [
     //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
     new HtmlWebpackPlugin({
       filename: "index.[fullhash].html",
-      template: path.resolve(__dirname, "./template/index.html"),
+      template: path.resolve(__dirname, "../template/index.html"),
       scriptLoading: "defer",
     }),
     //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
@@ -31,7 +31,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, "../src"),
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
       },
     ],

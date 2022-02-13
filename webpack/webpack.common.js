@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, "./src/index.tsx"), // here you can choose the entry file of your frontend bundlecls
+    index: path.resolve(__dirname, "../src/index.tsx"), // here you can choose the entry file of your frontend bundlecls
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
   module: {
@@ -24,7 +24,7 @@ module.exports = {
         loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
         options: {
           name: "[name].[hash].[ext]",
-          outputPath: "static-assets",
+          outputPath: "../static-assets",
         },
       },
     ],
