@@ -1,12 +1,11 @@
-import { useLocation } from "react-router-dom"
-import { IState } from "../App"
+import { useAirbnbData } from "../index"
 
 const Listing = () => {
-  const location = useLocation()
-  const data = location.state as IState
+  const { data, isLoading, isError } = useAirbnbData()
+
   console.log(data)
 
   return <div>Listing</div>
 }
 
-export default Listing
+export { Listing }

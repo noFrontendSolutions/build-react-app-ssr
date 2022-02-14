@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
 } from "react-query"
 import { MongoClient } from "mongodb"
-//import React from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
 //import mongoConnectAirbnb from "./database/mongo-connect-airbnb"
 import "dotenv/config"
@@ -82,7 +82,7 @@ app.get("/", async (req, res) => {
   )
   await client.close()
   const indexFile = path.resolve(__dirname, htmlFileName)
-  fs.readFile(indexFile, "utf8", (err, data) => {
+  fs.readFileSync(indexFile, "utf8", (err, data) => {
     if (err) {
       console.error("Something went wrong:", err)
       return res.status(500).send("Oops, better luck next time!")
