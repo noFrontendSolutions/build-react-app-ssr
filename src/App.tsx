@@ -1,10 +1,8 @@
-import { useQuery } from "react-query"
-import { Link } from "react-router-dom"
-import { useAirbnbData } from "."
-import { AirbnbCard } from "./components/AirbnbCard"
-import ErrorComponent from "./components/ErrorComponent"
-import LoadingSpinner from "./components/LoadingSpinner"
+import Home from "./components/Home"
 import Layout from "./Layout"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Movies } from "./Movies"
+import { Listing } from "./components/Listing"
 
 interface IState {
   _id: string
@@ -21,30 +19,16 @@ interface IState {
 }
 
 const App = () => {
-  const { data, isLoading, error } = useAirbnbData()
   return (
-    <Layout>
-      {isLoading && <LoadingSpinner />}
-      {error && (
-        <ErrorComponent message={error.message} name={error.name} type={500} />
-      )}
-      {data &&
-        data.map((elm: IState) => (
-          <Link
-            to={`/airbnb/${elm._id}`}
-            key={elm._id}
-            className="listing-frame"
-          >
-            <AirbnbCard
-              name={elm.name}
-              summary={elm.summary}
-              beds={elm.beds}
-              picture_url={elm.images.picture_url}
-              government_area={elm.address.government_area}
-            />
-          </Link>
-        ))}
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/airbnb/:id" element={<Listing />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   )
 }
 
