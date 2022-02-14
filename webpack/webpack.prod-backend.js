@@ -6,7 +6,7 @@ module.exports = {
   mode: "production",
   target: "node",
   entry: {
-    server: path.resolve(__dirname, "../src_backend/server.ts"), // Here you can choose the entry file of your backend application.
+    server: path.resolve(__dirname, "../src_backend/ssr.jsx"), // Here you can choose the entry file of your backend application.
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
   output: {
@@ -16,8 +16,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: "ts-loader",
+        test: /\.js$|jsx/,
+        loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
       },
     ],
   },
@@ -30,6 +34,6 @@ module.exports = {
   externals: [nodeExternals()], // nodeExternals is required if you intend to bundle code that includes Express functions. (without it you'll end up with warnings and a file that runs, but is enourmas in size.)
   resolve: {
     modules: ["node_modules"],
-    extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts"], //list of extension allowed for import without mentioning file extension
   },
 }
