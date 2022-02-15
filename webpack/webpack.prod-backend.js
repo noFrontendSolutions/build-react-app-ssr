@@ -6,7 +6,7 @@ module.exports = {
   mode: "production",
   target: "node",
   entry: {
-    server: path.resolve(__dirname, "../src_backend/ssr.jsx"), // Here you can choose the entry file of your backend application.
+    server: path.resolve(__dirname, "../src_backend/server.ts"), // Here you can choose the entry file of your backend application.
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
   output: {

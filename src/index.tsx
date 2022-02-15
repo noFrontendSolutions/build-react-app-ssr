@@ -6,6 +6,7 @@ import {
   Hydrate,
   useQuery,
 } from "react-query"
+import "./styles/tailwind-style"
 
 //if you create a new css file, always link it into this file, just like you see below.
 
@@ -40,10 +41,8 @@ declare global {
   }
 }
 
-let dehydratedState
-if (typeof window !== "undefined" || typeof document !== "undefined") {
-  dehydratedState = window.__INITIAL_STATE__
-}
+const dehydratedState = window.__INITIAL_STATE__
+
 const queryClient = new QueryClient()
 
 ReactDOM.hydrate(
