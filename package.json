@@ -6,9 +6,9 @@
   "module": "CommonJS",
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
-    "build-backend": "webpack --config webpack/webpack.prod-backend.js",
+    "build-server": "webpack --config webpack/webpack.prod-server.js",
     "dev": "webpack serve --config webpack/webpack.dev.js --open",
-    "dev-backend": "nodemon --watch src_backend/**/* --ext ts,js,json --exec ts-node --project tsconfig-backend-dev.json src_backend/server.ts",
+    "dev-server": "webpack --config webpack/webpack.dev-server.js --watch ",
     "start": "start http://localhost:3000 & node dist/server.js"
   },
   "keywords": [],
@@ -39,6 +39,7 @@
     "mini-css-extract-plugin": "^2.5.3",
     "mongodb": "^4.3.1",
     "nodemon": "^2.0.15",
+    "nodemon-webpack-plugin": "^4.7.1",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
@@ -50,6 +51,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.22",
     "ts-loader": "^9.2.6",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",
     "webpack": "^5.68.0",

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .listing-frame {
-    @apply text-gray-700 h-full w-full lg:w-2/3 xl:w-1/2 flex mt-8 mb-8 rounded-lg border-2 border-gray-300 hover:border-blue-400 overflow-auto relative
+  @apply text-gray-700 h-full w-full lg:w-2/3 xl:w-1/2 flex mt-8 mb-8 rounded-lg border-2 border-gray-300 hover:border-blue-400 overflow-auto relative;
 }

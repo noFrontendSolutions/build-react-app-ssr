@@ -1,6 +1,12 @@
 {
     "plugins": ["@babel/plugin-transform-runtime"],
-    "presets": ["@babel/preset-react", "@babel/preset-env", "@babel/preset-typescript"]
+    "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"]
 }
 //@babel/preset-env is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). 
 //@babel/preset-react and @babel/preset-typescript are recommended if you use Typescript / React
+
+//@babel/plugin-transform-runtime: without this plugin I can't use the async keyword on top of the express "get/post" functions.
+//Below is the explanation from stackoverflow:
+// Async functions are abstraction on top of generators.
+//Async functions and generators are now supported in all major browsers and in Node10 and upwards.
+//If you are using a transpiler (such as babel) for backwards compatibility, you would need an extra "layer" that transforms generators. This implies transforming ES6 into ES5 at runtime since their syntax isn't backwards compatible. 

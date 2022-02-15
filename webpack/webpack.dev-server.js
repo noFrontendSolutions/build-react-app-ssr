@@ -1,6 +1,8 @@
 const path = require("path")
 const nodeExternals = require("webpack-node-externals")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+const NodemonPlugin = require("nodemon-webpack-plugin")
 
 module.exports = {
   mode: "production",
@@ -25,15 +27,17 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    //CleanWebpackPlugin will remove all files inside webpack's output.path directory (except the excluded ones), as well as all unused webpack assets after every successful rebuild.
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/*", "!index.*", "!style.*"],
-    }),
-  ],
+  plugins: [new NodemonPlugin()],
   externals: [nodeExternals()], // nodeExternals is required if you intend to bundle code that includes Express functions. (without it you'll end up with warnings and a file that runs, but is enourmas in size.)
   resolve: {
     modules: ["node_modules"],
-    extensions: [".js", ".jsx", ".tsx", ".ts"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../tsconfig-server.json"),
+        extensions: ["ts", "tsx", "jsx", "js", "json"],
+        baseUrl: "./",
+      }),
+    ],
   },
 }

@@ -1,4 +1,5 @@
 const path = require("path")
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
 module.exports = {
   entry: {
@@ -8,12 +9,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$|jsx/,
-        loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
+        test: /\.(js|jsx)/,
+        loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core. (The presets are configured in .babelrc)
       },
       {
         test: /\.(ts|tsx)$/,
-        loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
+        loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core. (The presets are configured in .babelrc)
       },
       {
         test: /\.html$/, //html-loader is required for file-loader (necessary for static assets like pdf and svg files) and handles every encountered "src"-attribute.
@@ -31,6 +32,6 @@ module.exports = {
   },
   resolve: {
     modules: ["node_modules"],
-    extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts", ".css", "json"], //list of extension allowed for import without mentioning file extension
   },
 }
