@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$|jsx/,
+        test: /\.(js|jsx)$/,
         loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
       },
       {

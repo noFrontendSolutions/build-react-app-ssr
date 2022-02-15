@@ -1,6 +1,5 @@
 const path = require("path")
 const nodeExternals = require("webpack-node-externals")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 
@@ -18,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$|jsx/,
+        test: /\.(js|jsx)$/,
         loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
       },
       {
