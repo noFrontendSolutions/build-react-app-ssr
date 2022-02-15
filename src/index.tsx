@@ -6,7 +6,7 @@ import {
   Hydrate,
   useQuery,
 } from "react-query"
-import "./styles/tailwind-style"
+import "./styles/tailwind-styles"
 
 //if you create a new css file, always link it into this file, just like you see below.
 
