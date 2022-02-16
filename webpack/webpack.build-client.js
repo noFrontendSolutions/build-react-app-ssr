@@ -1,5 +1,5 @@
 const path = require("path")
-const common = require("./webpack.common")
+const common = require("./webpack.common-client")
 const { merge } = require("webpack-merge")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")

@@ -4,8 +4,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
-//const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
 const clientConfig = {
   mode: "production",
@@ -92,9 +92,15 @@ const serverConfig = {
       },
     ],
   },
-
   resolve: {
     extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../tsconfig-server.json"),
+        extensions: ["ts", "tsx", "jsx", "js", "json"],
+        baseUrl: "./",
+      }),
+    ],
   },
 }
 
