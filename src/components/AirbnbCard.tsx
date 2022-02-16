@@ -1,6 +1,3 @@
-//import { useContext } from "react";
-//import {AirbnbContext} from "../App"
-
 interface IProps {
   name: string
   summary: string
@@ -16,8 +13,6 @@ export const AirbnbCard = ({
   picture_url,
   government_area,
 }: IProps) => {
-  //const data = useContext(AirbnbContext)
-  //console.log(data)
   return (
     <>
       <img src={picture_url} className="h-56 w-56 object-cover " />

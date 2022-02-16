@@ -1,5 +1,6 @@
+import { useQuery } from "react-query"
 import { Link } from "react-router-dom"
-import { useAirbnbData } from "../index"
+//import { useAirbnbData } from "../App"
 import { AirbnbCard } from "../components/AirbnbCard"
 import ErrorComponent from "../components/ErrorComponent"
 import LoadingSpinner from "../components/LoadingSpinner"
@@ -46,4 +47,15 @@ export const Home = () => {
   )
 }
 
-export default Home
+const key = "AirbnbData"
+const url = "http://localhost:3000/airbnb"
+
+const fetchData = async (key: string, url: string): Promise<IState[]> => {
+  const response = await fetch(url)
+  return response.json()
+}
+
+const useAirbnbData = () =>
+  useQuery<IState[], Error>([key, url], () => fetchData(key, url))
+
+export { useAirbnbData }

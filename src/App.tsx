@@ -1,8 +1,9 @@
-import Home from "./components/Home"
+import { Home } from "./components/Home"
 import Layout from "./Layout"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { Movies } from "./Movies"
 import { Listing } from "./components/Listing"
+import { QueryClient, QueryClientProvider, useQuery } from "react-query"
 
 interface IState {
   _id: string
@@ -17,10 +18,12 @@ interface IState {
   images: { picture_url: string }
   address: { government_area: string }
 }
+const queryClient = new QueryClient()
 
-const App = () => {
+const App = ({ state }: { state: IState[] }) => {
+  queryClient.setQueryData("Airbnb", state)
   return (
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,7 +31,7 @@ const App = () => {
           <Route path="/airbnb/:id" element={<Listing />} />
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 

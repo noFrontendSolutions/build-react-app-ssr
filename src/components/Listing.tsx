@@ -1,4 +1,4 @@
-import { useAirbnbData } from "../index"
+import { useAirbnbData } from "./Home"
 
 const Listing = () => {
   const { data, isLoading, isError } = useAirbnbData()

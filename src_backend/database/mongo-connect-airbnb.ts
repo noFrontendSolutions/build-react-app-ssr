@@ -1,16 +1,30 @@
 import "dotenv/config"
 import * as mongoDB from "mongodb"
 
-const initialConnectionAirbnb = async (client: mongoDB.MongoClient) => {
+type NYborough =
+  | "Manhattan"
+  | "Brooklyn"
+  | "Staten Island"
+  | "The Bronx"
+  | "Queens"
+
+export const connectToAirbnb = async (client: mongoDB.MongoClient) => {
   const dbName: string = process.env.DB_NAME || ""
   const dbCollection: string = process.env.DB_COLLECTION || ""
   await client.connect()
   const db: mongoDB.Db = client.db(dbName)
-  const collection: mongoDB.Collection = db.collection(dbCollection)
+  const airbnbCollection: mongoDB.Collection = db.collection(dbCollection)
+  return airbnbCollection
+}
+
+export const findResults = async (
+  location: NYborough,
+  collection: mongoDB.Collection
+) => {
+  //passes back the first ten results of adresses that are located in "NYborough", with "picture_url" and "summary" not empty strings
   const results = await collection
-    //passes back the first ten results of adresses that are located in Manhatten, with "picture_url" and "summary" not empty strings
     .find({
-      "address.suburb": "Manhattan",
+      "address.suburb": location,
       "images.picture_url": { $ne: "" },
       summary: { $ne: "" },
     })
@@ -19,4 +33,4 @@ const initialConnectionAirbnb = async (client: mongoDB.MongoClient) => {
   return results
 }
 
-export default initialConnectionAirbnb
+export default connectToAirbnb
