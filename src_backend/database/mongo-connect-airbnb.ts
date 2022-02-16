@@ -33,4 +33,13 @@ export const findResults = async (
   return results
 }
 
+export const getInitialLoadFromAirbnb = async (
+  client: mongoDB.MongoClient,
+  location: NYborough
+) => {
+  const airbnbCollection = await connectToAirbnb(client)
+  const results = await findResults(location, airbnbCollection)
+  return results
+}
+
 export default connectToAirbnb

@@ -21,7 +21,6 @@ interface IState {
 const queryClient = new QueryClient()
 
 const App = ({ state }: { state: IState[] }) => {
-  queryClient.setQueryData("Airbnb", state)
   return (
     <QueryClientProvider client={queryClient}>
       <Layout>

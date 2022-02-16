@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
 import { App, IState } from "../App"
 
-export const ClientRouter = ({ state }: { state: IState[] }) => {
+export const ClientRouter = ({ state }: { state: any }) => {
   return (
     <BrowserRouter>
       <App state={state} />

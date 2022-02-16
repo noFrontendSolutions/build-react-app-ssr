@@ -8,6 +8,6 @@ export const fetchIntitialData = async (url: string) => {
     await client.close()
     return initialLoad
   } catch (err) {
-    return err
+    console.log(err)
   }
 }
