@@ -1,8 +1,7 @@
 import "dotenv/config"
 import * as mongoDB from "mongodb"
-import { WithId } from "mongodb"
 
-type NYborough =
+export type NYborough =
   | "Manhattan"
   | "Brooklyn"
   | "Staten Island"

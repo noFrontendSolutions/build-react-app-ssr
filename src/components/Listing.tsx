@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
+import { AirbnbDocument } from "src-backend/database/mongo-connect-airbnb"
 
 const Listing = () => {
   const location = useLocation()

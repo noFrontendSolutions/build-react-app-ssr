@@ -1,6 +1,6 @@
 import { App } from "../App"
 import { StaticRouter } from "react-router-dom/server"
-import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
+import { AirbnbDocument } from "src-backend/database/mongo-connect-airbnb"
 
 const ServerRouter = ({
   url,

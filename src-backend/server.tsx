@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import express from "express"
 import cors from "cors"
-import { MongoClient, WithId } from "mongodb"
+import { MongoClient } from "mongodb"
 import "dotenv/config"
 import path from "path"
 import fs from "fs"
@@ -10,7 +10,8 @@ import ReactDOMServer from "react-dom/server"
 import ServerRouter from "../src/routers/ServerRouter"
 import {
   AirbnbDocument,
-  findResults as findNYResults,
+  findResults,
+  NYborough,
 } from "./database/mongo-connect-airbnb"
 import { connectToAirbnb } from "./database/mongo-connect-airbnb"
 import { getInitialLoadFromAirbnb } from "./database/mongo-connect-airbnb"
@@ -33,7 +34,7 @@ const main = async () => {
     "utf8"
   )
 
-  const state = (await getInitialLoadFromAirbnb(
+  const initialState = (await getInitialLoadFromAirbnb(
     mongoClient,
     "Manhattan"
   )) as unknown as AirbnbDocument[]
@@ -42,23 +43,26 @@ const main = async () => {
   app.use(express.json())
   app.use(cors())
 
-  app.get("/airbnb/manhattan", async (req: Request, res: Response) => {
+  app.get("/airbnb/:borough", async (req: Request, res: Response) => {
     const airbnbCollection = await connectToAirbnb(mongoClient)
-    const initialLoad = await findNYResults("Manhattan", airbnbCollection)
-    res.send(initialLoad)
+    const borough = firstLettersToUpperCase(req.params.borough) as NYborough
+    try {
+      const results = await findResults(borough, airbnbCollection)
+      res.send(results)
+    } catch (err) {
+      res.send({ error: err })
+    }
   })
 
   app.get("/", async (req: Request, res: Response) => {
     const url: string = req.url
-
-    //console.log(state)
     const jsx = ReactDOMServer.renderToString(
-      <ServerRouter url={url} state={state} />
+      <ServerRouter url={url} state={initialState} />
     )
     const hydratedHtml = indexHtml.replace(
       '<div id="root"></div>',
       `<div id="root">${jsx}</div>
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>`
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>`
     )
 
     res.send(hydratedHtml)
@@ -70,12 +74,14 @@ const main = async () => {
     console.log(`Server listening on port ${port}`)
   })
 }
+
 main()
 
-const replaceStaticHtml = (url: string, state: AirbnbDocument[]) => {
-  ReactDOMServer.renderToStaticMarkup(<ServerRouter url={url} state={state} />)
-}
-
-const readHtml = (file: string) => {
-  return fs.readFileSync(path.resolve(__dirname, file))
+const firstLettersToUpperCase = (str: string) => {
+  return str
+    .split("-")
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    .join(" ")
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { BrowserRouter } from "react-router-dom"
-import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
+import { AirbnbDocument } from "src-backend/database/mongo-connect-airbnb"
 import { App } from "../App"
 
 export const ClientRouter = ({ state }: { state: AirbnbDocument[] }) => {

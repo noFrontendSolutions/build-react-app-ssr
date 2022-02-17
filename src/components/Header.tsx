@@ -9,11 +9,11 @@ type NYborough =
 export const Header = () => {
   return (
     <div className="h-16 pl-8 pr-8 bg-slate-100 flex justify-between items-center">
-      <Link to="/">Manhatten</Link>
-      <Link to="/brooklyn">Brooklyn</Link>
-      <Link to="/staten-island">Staten Island</Link>
-      <Link to="/the-bronx">The Bronx</Link>
-      <Link to="/queens">Queens</Link>
+      <Link to="/airbnb/manhattan">Manhatten</Link>
+      <Link to="/airbnb/brooklyn">Brooklyn</Link>
+      <Link to="/airbnb/staten-island">Staten Island</Link>
+      <Link to="/airbnb/the-bronx">The Bronx</Link>
+      <Link to="/airbnb/queens">Queens</Link>
     </div>
   )
 }

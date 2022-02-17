@@ -5,7 +5,7 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 module.exports = {
   target: "node",
   entry: {
-    server: path.resolve(__dirname, "../src_backend/server.tsx"), // Here you can choose the entry file of your backend application.
+    server: path.resolve(__dirname, "../src-backend/server.tsx"), // Here you can choose the entry file of your backend application.
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
   output: {

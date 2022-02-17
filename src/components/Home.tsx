@@ -1,28 +1,16 @@
 import { useQuery } from "react-query"
-import { Link } from "react-router-dom"
-import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
+import { Link, useLocation } from "react-router-dom"
+import { AirbnbDocument } from "src-backend/database/mongo-connect-airbnb"
 import { AirbnbCard } from "../components/AirbnbCard"
 import ErrorComponent from "../components/ErrorComponent"
 import LoadingSpinner from "../components/LoadingSpinner"
 
-interface IState {
-  _id: string
-  name: string
-  summary: string
-  description: string
-  access: string
-  minimum_night: number
-  maximum_nights: number
-  neighborhood_overwiew: string
-  beds: number
-  images: { picture_url: string }
-  address: { government_area: string }
-}
-
 export const Home = ({ state }: { state: AirbnbDocument[] }) => {
+  const location = useLocation()
+  const url = location.pathname
   const { data, isLoading, error } = useQuery<AirbnbDocument[], Error>(
-    "todos",
-    () => fetchData("Airbnb", "./airbnb/manhattan"),
+    url,
+    () => fetchData(url, url),
     {
       initialData: state,
     }
@@ -35,9 +23,9 @@ export const Home = ({ state }: { state: AirbnbDocument[] }) => {
         <ErrorComponent message={error.message} name={error.name} type={500} />
       )}
       {data &&
-        data.map((elm: IState) => (
+        data.map((elm: AirbnbDocument) => (
           <Link
-            to={`/airbnb/${elm._id}`}
+            to={`/airbnb/listings/${elm._id}`}
             key={elm._id}
             className="listing-frame"
             state={elm}
