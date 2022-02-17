@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom"
-import { IState } from "./App"
+import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
 import { ClientRouter } from "./routers/ClientRouter"
 import "./styles/tailwind-styles"
 //if you create a new css file, always link it into this file, just like you see above.
 
 declare global {
   interface Window {
-    __INITIAL_STATE__: IState[]
+    __INITIAL_STATE__: AirbnbDocument[]
   }
 }
 

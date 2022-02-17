@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import { Link } from "react-router-dom"
-//import { useAirbnbData } from "../App"
+import { AirbnbDocument } from "src_backend/database/mongo-connect-airbnb"
 import { AirbnbCard } from "../components/AirbnbCard"
 import ErrorComponent from "../components/ErrorComponent"
 import LoadingSpinner from "../components/LoadingSpinner"
@@ -19,8 +19,15 @@ interface IState {
   address: { government_area: string }
 }
 
-export const Home = () => {
-  const { data, isLoading, error } = useAirbnbData()
+export const Home = ({ state }: { state: AirbnbDocument[] }) => {
+  const { data, isLoading, error } = useQuery<AirbnbDocument[], Error>(
+    "todos",
+    () => fetchData("Airbnb", "./airbnb/manhattan"),
+    {
+      initialData: state,
+    }
+  )
+  //const { data, isLoading, error } = useAirbnbData()
   return (
     <>
       {isLoading && <LoadingSpinner />}
@@ -33,6 +40,7 @@ export const Home = () => {
             to={`/airbnb/${elm._id}`}
             key={elm._id}
             className="listing-frame"
+            state={elm}
           >
             <AirbnbCard
               name={elm.name}
@@ -47,15 +55,10 @@ export const Home = () => {
   )
 }
 
-const key = "AirbnbData"
-const url = "http://localhost:3000/airbnb"
-
-const fetchData = async (key: string, url: string): Promise<IState[]> => {
+const fetchData = async (
+  key: string,
+  url: string
+): Promise<AirbnbDocument[]> => {
   const response = await fetch(url)
   return response.json()
 }
-
-const useAirbnbData = () =>
-  useQuery<IState[], Error>([key, url], () => fetchData(key, url))
-
-export { useAirbnbData }

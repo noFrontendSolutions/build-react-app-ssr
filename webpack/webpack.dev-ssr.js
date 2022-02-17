@@ -1,9 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
-const TerserPlugin = require("terser-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
@@ -11,7 +8,6 @@ const NodemonPlugin = require("nodemon-webpack-plugin")
 const clientConfig = {
   mode: "development",
   target: "web",
-  devtool: "source-map",
   entry: {
     index: path.resolve(__dirname, "../src/index.tsx"),
   },

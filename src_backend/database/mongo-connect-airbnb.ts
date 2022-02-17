@@ -1,5 +1,6 @@
 import "dotenv/config"
 import * as mongoDB from "mongodb"
+import { WithId } from "mongodb"
 
 type NYborough =
   | "Manhattan"
@@ -8,7 +9,21 @@ type NYborough =
   | "The Bronx"
   | "Queens"
 
-export const connectToAirbnb = async (client: mongoDB.MongoClient) => {
+interface AirbnbDocument {
+  _id: string
+  name: string
+  summary: string
+  description: string
+  access: string
+  minimum_night: number
+  maximum_nights: number
+  neighborhood_overwiew: string
+  beds: number
+  images: { picture_url: string }
+  address: { government_area: string }
+}
+
+const connectToAirbnb = async (client: mongoDB.MongoClient) => {
   const dbName: string = process.env.DB_NAME || ""
   const dbCollection: string = process.env.DB_COLLECTION || ""
   await client.connect()
@@ -17,7 +32,7 @@ export const connectToAirbnb = async (client: mongoDB.MongoClient) => {
   return airbnbCollection
 }
 
-export const findResults = async (
+const findResults = async (
   location: NYborough,
   collection: mongoDB.Collection
 ) => {
@@ -33,7 +48,7 @@ export const findResults = async (
   return results
 }
 
-export const getInitialLoadFromAirbnb = async (
+const getInitialLoadFromAirbnb = async (
   client: mongoDB.MongoClient,
   location: NYborough
 ) => {
@@ -42,4 +57,9 @@ export const getInitialLoadFromAirbnb = async (
   return results
 }
 
-export default connectToAirbnb
+export {
+  connectToAirbnb,
+  AirbnbDocument,
+  findResults,
+  getInitialLoadFromAirbnb,
+}

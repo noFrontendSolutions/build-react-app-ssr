@@ -1,16 +1,18 @@
 import { Request, Response } from "express"
 import express from "express"
 import cors from "cors"
-import { MongoClient } from "mongodb"
+import { MongoClient, WithId } from "mongodb"
 import "dotenv/config"
 import path from "path"
 import fs from "fs"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import ServerRouter from "../src/routers/ServerRouter"
-import { IState } from "../src/App"
-import { findResults as findNYResults } from "./database/mongo-connect-airbnb"
-import connectToAirbnb from "./database/mongo-connect-airbnb"
+import {
+  AirbnbDocument,
+  findResults as findNYResults,
+} from "./database/mongo-connect-airbnb"
+import { connectToAirbnb } from "./database/mongo-connect-airbnb"
 import { getInitialLoadFromAirbnb } from "./database/mongo-connect-airbnb"
 
 const mongoUrl: string = process.env.MONGO_URI || ""
@@ -31,15 +33,18 @@ const main = async () => {
     "utf8"
   )
 
-  const state = await getInitialLoadFromAirbnb(mongoClient, "Manhattan")
+  const state = (await getInitialLoadFromAirbnb(
+    mongoClient,
+    "Manhattan"
+  )) as unknown as AirbnbDocument[]
 
   const app = express()
   app.use(express.json())
   app.use(cors())
 
-  app.get("/airbnb", async (req: Request, res: Response) => {
+  app.get("/airbnb/manhattan", async (req: Request, res: Response) => {
     const airbnbCollection = await connectToAirbnb(mongoClient)
-    const initialLoad = await findNYResults("Queens", airbnbCollection)
+    const initialLoad = await findNYResults("Manhattan", airbnbCollection)
     res.send(initialLoad)
   })
 
@@ -53,8 +58,7 @@ const main = async () => {
     const hydratedHtml = indexHtml.replace(
       '<div id="root"></div>',
       `<div id="root">${jsx}</div>
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)} 
-  )}</script>`
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>`
     )
 
     res.send(hydratedHtml)
@@ -68,7 +72,7 @@ const main = async () => {
 }
 main()
 
-const replaceStaticHtml = (url: string, state: IState[]) => {
+const replaceStaticHtml = (url: string, state: AirbnbDocument[]) => {
   ReactDOMServer.renderToStaticMarkup(<ServerRouter url={url} state={state} />)
 }
 
