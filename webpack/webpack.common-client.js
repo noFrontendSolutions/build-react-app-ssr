@@ -5,6 +5,7 @@ module.exports = {
     index: path.resolve(__dirname, "../src/index.tsx"), // here you can choose the entry file of your frontend bundlecls
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
