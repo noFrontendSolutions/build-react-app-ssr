@@ -1,5 +1,5 @@
 # Fullstack React Development Environment
+
 ---
 
-This is going to be a reusable full-stack React App template with a default express server (SSR) and a database connection to MongoDB. It will include short examples in how to use React-Router and React Query.
-
+This is going to be a reusable fullstack React App development enviroment with a default express server and support for SSR by compiling both frontend and backend together. It will include a relativly simple examples that demonstrates how to use the environment effectively.
