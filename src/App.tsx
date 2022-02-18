@@ -12,8 +12,15 @@ const App = ({ state }: { state: AirbnbDocument[] }) => {
       <Hydrate state={state}>
         <Layout>
           <Routes>
-            <Route path="/airbnb/:borough" element={<Home state={state} />} />
             <Route path="/airbnb/listings/:id" element={<Listing />} />
+            <Route path="/airbnb/manhattan" element={<Home state={state} />} />
+            <Route path="/airbnb/queens" element={<Home state={state} />} />
+            <Route
+              path="/airbnb/staten-island"
+              element={<Home state={state} />}
+            />
+            <Route path="/airbnb/the-bronx" element={<Home state={state} />} />
+            <Route path="/airbnb/brooklyn" element={<Home state={state} />} />
             <Route path="/" element={<Navigate to="/airbnb/manhattan" />} />
           </Routes>
         </Layout>

@@ -42,6 +42,7 @@ const main = async () => {
   const app = express()
   app.use(express.json())
   app.use(cors())
+  app.use(express.static("dist"))
 
   app.get("/airbnb/:borough", async (req: Request, res: Response) => {
     const airbnbCollection = await connectToAirbnb(mongoClient)
@@ -67,8 +68,6 @@ const main = async () => {
 
     res.send(hydratedHtml)
   })
-
-  app.use(express.static(__dirname))
 
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`)

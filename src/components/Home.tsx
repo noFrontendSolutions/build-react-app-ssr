@@ -8,12 +8,9 @@ import LoadingSpinner from "../components/LoadingSpinner"
 export const Home = ({ state }: { state: AirbnbDocument[] }) => {
   const location = useLocation()
   const url = location.pathname
-  const { data, isLoading, error } = useQuery<AirbnbDocument[], Error>(
+  const { data, isLoading, error, status } = useQuery<AirbnbDocument[], Error>(
     url,
-    () => fetchData(url, url),
-    {
-      initialData: state,
-    }
+    () => fetchData(url, url)
   )
   //const { data, isLoading, error } = useAirbnbData()
   return (
@@ -23,6 +20,7 @@ export const Home = ({ state }: { state: AirbnbDocument[] }) => {
         <ErrorComponent message={error.message} name={error.name} type={500} />
       )}
       {data &&
+        status === "success" &&
         data.map((elm: AirbnbDocument) => (
           <Link
             to={`/airbnb/listings/${elm._id}`}
