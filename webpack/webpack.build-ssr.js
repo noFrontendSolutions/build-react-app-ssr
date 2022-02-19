@@ -55,7 +55,6 @@ const clientConfig = {
       },
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, "../src"),
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
       },
     ],
@@ -64,7 +63,7 @@ const clientConfig = {
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()], // now, after the CSS file got bundled, the usually minified index.js file (minified by webpack default via TerserPlugin) isn't minified anymore... That's were the TerserPlugin comes into play.
   },
   resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts", ".css", "json"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
   },
 }
 

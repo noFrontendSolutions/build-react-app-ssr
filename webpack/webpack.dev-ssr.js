@@ -51,13 +51,12 @@ const clientConfig = {
       },
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, "../src"),
         use: ["style-loader", "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts", ".css", "json"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
   },
 }
 
@@ -65,6 +64,7 @@ const serverConfig = {
   mode: "development",
   externals: [nodeExternals()],
   target: "node",
+  devtool: "source-map",
   entry: {
     server: path.resolve(__dirname, "../src-backend/server.tsx"), // Here you can choose the entry file of your backend application.
     //vendor: { import: path.resolve(__dirname, "./vendors/vendor.js"), filename: './vendors/vendor.js' }
@@ -92,7 +92,7 @@ const serverConfig = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
+    extensions: [".js", ".jsx", ".tsx", ".ts", "css"], //list of extension allowed for import without mentioning file extension
     plugins: [
       new TsconfigPathsPlugin({
         configFile: path.resolve(__dirname, "../tsconfig-server.json"),
