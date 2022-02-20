@@ -25,7 +25,7 @@ const commonServerConfig = (entryDetails, outputDetails) => {
       extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../tsconfig-server.json"),
+          configFile: path.resolve(__dirname, "../../tsconfig-server.json"),
           extensions: ["ts", "tsx", "jsx", "js"],
           baseUrl: "./",
         }),
@@ -35,6 +35,6 @@ const commonServerConfig = (entryDetails, outputDetails) => {
 }
 
 module.exports = commonServerConfig(
-  require("./server.config").entry,
-  require("./server.config").output
+  require("../server.config").entry,
+  require("../server.config").output
 )

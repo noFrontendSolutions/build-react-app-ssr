@@ -5,12 +5,12 @@
   "main": "index.js",
   "module": "CommonJS",
   "scripts": {
-    "build-client": "webpack --config webpack/webpack.build-client.js",
-    "build-server": "webpack --config webpack/webpack.build-server.js",
-    "build-ssr": "webpack --config webpack/webpack.build-ssr.js",
-    "dev-client": "webpack serve --config webpack/webpack.dev-client.js --open",
-    "dev-server": "webpack --config webpack/webpack.dev-server.js --watch ",
-    "dev-ssr": "start http://localhost:3000 & webpack --config webpack/webpack.dev-ssr.js --watch",
+    "build-client": "webpack --config webpack/client/webpack.build-client.js",
+    "build-server": "webpack --config webpack/server/webpack.build-server.js",
+    "build-ssr": "webpack --config webpack/ssr/webpack.build-ssr.js",
+    "dev-client": "webpack serve --config webpack/client/webpack.dev-client.js --open",
+    "dev-server": "webpack --config webpack/server/webpack.dev-server.js --watch ",
+    "dev-ssr": "start http://localhost:3000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
     "start": "start http://localhost:3000 & node dist/server.js"
   },
   "keywords": [],

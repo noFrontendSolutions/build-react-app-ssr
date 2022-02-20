@@ -20,7 +20,7 @@ const clientBuildConfig = (entryConfig) => {
           loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
           options: {
             name: "[name].[hash].[ext]",
-            outputPath: "../static-assets",
+            outputPath: "../../static-assets",
           },
         },
       ],
@@ -32,4 +32,4 @@ const clientBuildConfig = (entryConfig) => {
   }
 }
 
-module.exports = clientBuildConfig(require("./client.config").entry)
+module.exports = clientBuildConfig(require("../client.config").entry)

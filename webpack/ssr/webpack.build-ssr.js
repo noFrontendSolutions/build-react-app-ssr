@@ -1,19 +1,23 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
-const NodemonPlugin = require("nodemon-webpack-plugin")
 
-const clientConfigDev = (entryClient, outputClient, htmlWebpackPluginDev) => {
+const clientConfigBuild = (entryClient, outputClient, htmlWebpackPlugin) => {
   return {
-    mode: "development",
+    mode: "production",
     target: "web",
     entry: entryClient,
     output: outputClient,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
-      new HtmlWebpackPlugin(htmlWebpackPluginDev),
+      new HtmlWebpackPlugin(htmlWebpackPlugin),
+      //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
+      new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
@@ -38,14 +42,17 @@ const clientConfigDev = (entryClient, outputClient, htmlWebpackPluginDev) => {
           loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
           options: {
             name: "[name].[fullhash].[ext]",
-            outputPath: "../static-assets",
+            outputPath: "../../static-assets",
           },
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
+          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
         },
       ],
+    },
+    optimization: {
+      minimizer: [new CssMinimizerPlugin(), new TerserPlugin()], // now, after the CSS file got bundled, the usually minified index.js file (minified by webpack default via TerserPlugin) isn't minified anymore... That's were the TerserPlugin comes into play.
     },
     resolve: {
       extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
@@ -53,25 +60,18 @@ const clientConfigDev = (entryClient, outputClient, htmlWebpackPluginDev) => {
   }
 }
 
-const serverConfigDev = (entryServer, outputServer) => {
+const serverConfigBuild = (entryServer, outputServer) => {
   return {
-    mode: "development",
+    mode: "production",
     externals: [nodeExternals()],
     target: "node",
-    devtool: "source-map",
     entry: entryServer,
     output: outputServer,
-    plugins: [
-      new NodemonPlugin(),
-      new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!index.*", "!styles.*"],
-      }),
-    ],
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          loader: "babel-loader", //This loader allows transpiling JavaScript (and JSX) files using Babel compiler core.
+          loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
         },
         {
           test: /\.(ts|tsx)$/,
@@ -80,10 +80,10 @@ const serverConfigDev = (entryServer, outputServer) => {
       ],
     },
     resolve: {
-      extensions: [".js", ".jsx", ".tsx", ".ts", "css"], //list of extension allowed for import without mentioning file extension
+      extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../tsconfig-server.json"),
+          configFile: path.resolve(__dirname, "../../tsconfig-server.json"),
           extensions: ["ts", "tsx", "jsx", "js", "json"],
           baseUrl: "./",
         }),
@@ -93,13 +93,13 @@ const serverConfigDev = (entryServer, outputServer) => {
 }
 
 module.exports = [
-  clientConfigDev(
-    require("./ssr-dev.config.js").entryClient,
-    require("./ssr-dev.config.js").outputClient,
-    require("./ssr-dev.config.js").htmlWebpackPluginDev
+  clientConfigBuild(
+    require("../ssr-build.config.js").entryClient,
+    require("../ssr-build.config.js").outputClient,
+    require("../ssr-build.config.js").htmlWebpackPlugin
   ),
-  serverConfigDev(
-    require("./ssr-dev.config.js").entryServer,
-    require("./ssr-dev.config.js").outputServer
+  serverConfigBuild(
+    require("../ssr-build.config.js").entryServer,
+    require("../ssr-build.config.js").outputserver
   ),
 ]

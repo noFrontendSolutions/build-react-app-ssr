@@ -1,10 +1,10 @@
-const common = require("./webpack.common-client")
 const { merge } = require("webpack-merge")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin") // part of Webpack default (minimizes JS files). It's required because CssMinimizerPlugin overwrites the default webpack configuration; so it has to be put back in maually as an optimizer.
+const common = require("./webpack.common-client")
 
 const buildClientCommonConfig = (output, htmlPluginConfg, miniCssConfig) => {
   return merge(common, {
@@ -35,7 +35,7 @@ const buildClientCommonConfig = (output, htmlPluginConfg, miniCssConfig) => {
 }
 
 module.exports = buildClientCommonConfig(
-  require("./client.config").outputBuild,
-  require("./client.config").htmlWebpackPluginBuild,
-  require("./client.config").miniCssPluginBuild
+  require("../client.config").outputBuild,
+  require("../client.config").htmlWebpackPluginBuild,
+  require("../client.config").miniCssPluginBuild
 )
