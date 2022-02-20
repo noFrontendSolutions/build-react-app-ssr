@@ -5,7 +5,11 @@ const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 
-const clientConfigDev = (entryClient, outputClient, htmlWebpackPluginDev) => {
+const clientConfigDev = (
+  entryClient,
+  outputClient,
+  htmlWebpackPluginConfig
+) => {
   return {
     mode: "development",
     target: "web",
@@ -13,7 +17,7 @@ const clientConfigDev = (entryClient, outputClient, htmlWebpackPluginDev) => {
     output: outputClient,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
-      new HtmlWebpackPlugin(htmlWebpackPluginDev),
+      new HtmlWebpackPlugin(htmlWebpackPluginConfig),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
@@ -96,7 +100,7 @@ module.exports = [
   clientConfigDev(
     require("./dev-params.js").entryClient,
     require("./dev-params.js").outputClient,
-    require("./dev-params.js").htmlWebpackPluginDev
+    require("./dev-params.js").htmlWebpackPluginDevConfig
   ),
   serverConfigDev(
     require("./dev-params.js").entryServer,

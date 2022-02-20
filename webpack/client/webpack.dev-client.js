@@ -2,14 +2,15 @@ const common = require("./webpack.common-client.js")
 const { merge } = require("webpack-merge")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
-const devClientConfig = (output, htmlWebpackPlugin) => {
+const devClientConfig = (output, htmlWebpackPluginConfig) => {
   return merge(common, {
     mode: "development",
     output: output,
     optimization: {
       runtimeChunk: "single", //re-renders app if you save
     },
-    plugins: [new HtmlWebpackPlugin(htmlWebpackPlugin)],
+    //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
+    plugins: [new HtmlWebpackPlugin(htmlWebpackPluginConfig)],
     module: {
       rules: [
         {
@@ -23,5 +24,5 @@ const devClientConfig = (output, htmlWebpackPlugin) => {
 
 module.exports = devClientConfig(
   require("./client-params").outputDev,
-  require("./client-params").htmlWebpackPluginDev
+  require("./client-params").htmlWebpackPluginDevConfig
 )

@@ -1,6 +1,6 @@
-const clientBuildConfig = (entryConfig) => {
+const clientBuildConfig = (entry) => {
   return {
-    entry: entryConfig,
+    entry: entry,
     module: {
       rules: [
         {

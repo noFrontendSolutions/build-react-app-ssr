@@ -11,13 +11,13 @@ const outputBuild = {
   path: path.resolve(__dirname, "../../dist"), // Directory name and relative path of your frontend bundle.
 }
 
-const htmlWebpackPluginBuild = {
+const htmlWebpackPluginBuildConfig = {
   filename: "index.[fullhash].html",
   template: path.resolve(__dirname, "../../template/index.html"),
   scriptLoading: "defer",
 }
 
-const miniCssPluginBuild = { filename: "styles.[fullhash].css" }
+const miniCssPluginBuildConfig = { filename: "styles.[fullhash].css" }
 
 //DEVELOPMENT ONLY
 const outputDev = {
@@ -25,7 +25,7 @@ const outputDev = {
   path: path.resolve(__dirname, "../../dist"),
 }
 
-const htmlWebpackPluginDev = {
+const htmlWebpackPluginDevConfig = {
   filename: "index.html",
   template: path.resolve(__dirname, "../../template/index.html"),
   scriptLoading: "defer",
@@ -35,9 +35,9 @@ module.exports = {
   entry,
   outputDev,
   outputBuild,
-  htmlWebpackPluginDev,
-  htmlWebpackPluginBuild,
-  miniCssPluginBuild,
+  htmlWebpackPluginDevConfig,
+  htmlWebpackPluginBuildConfig,
+  miniCssPluginBuildConfig,
 }
 
 //The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.

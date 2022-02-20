@@ -12,7 +12,7 @@ const outputClient = {
   path: path.resolve(__dirname, "../../dist"), // Directory name and relative path of your frontend bundle.
 }
 
-const htmlWebpackPluginDev = {
+const htmlWebpackPluginDevConfig = {
   filename: "index.html",
   template: path.resolve(__dirname, "../../template/index.html"),
   scriptLoading: "defer",
@@ -31,7 +31,7 @@ const outputServer = {
 module.exports = {
   entryClient,
   outputClient,
-  htmlWebpackPluginDev,
+  htmlWebpackPluginDevConfig,
   entryServer,
   outputServer,
 }

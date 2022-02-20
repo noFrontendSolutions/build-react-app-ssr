@@ -2,11 +2,11 @@ const path = require("path")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
-const commonServerConfig = (entryDetails, outputDetails) => {
+const commonServerConfig = (entry, output) => {
   return {
     target: "node",
-    entry: entryDetails,
-    output: outputDetails,
+    entry: entry,
+    output: output,
     module: {
       rules: [
         {
