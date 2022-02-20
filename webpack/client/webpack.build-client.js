@@ -39,7 +39,7 @@ const buildClientCommonConfig = (
 }
 
 module.exports = buildClientCommonConfig(
-  require("./client-params").outputBuild,
-  require("./client-params").htmlWebpackPluginBuildConfig,
-  require("./client-params").miniCssPluginBuildConfig
+  require("./params").outputBuild,
+  require("./params").htmlWebpackPluginBuildConfig,
+  require("./params").miniCssPluginBuildConfig
 )

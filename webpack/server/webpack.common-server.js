@@ -35,6 +35,6 @@ const commonServerConfig = (entry, output) => {
 }
 
 module.exports = commonServerConfig(
-  require("./server-params").entry,
-  require("./server-params").output
+  require("./params").entry,
+  require("./params").output
 )
