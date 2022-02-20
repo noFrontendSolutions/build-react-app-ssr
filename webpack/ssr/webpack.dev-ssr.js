@@ -5,16 +5,12 @@ const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 
-const clientConfigDev = (
-  entryClient,
-  outputClient,
-  htmlWebpackPluginConfig
-) => {
+const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
   return {
     mode: "development",
     target: "web",
-    entry: entryClient,
-    output: outputClient,
+    entry: entry,
+    output: output,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
       new HtmlWebpackPlugin(htmlWebpackPluginConfig),
@@ -57,14 +53,14 @@ const clientConfigDev = (
   }
 }
 
-const serverConfigDev = (entryServer, outputServer) => {
+const serverConfigDev = (entry, output) => {
   return {
     mode: "development",
     externals: [nodeExternals()],
     target: "node",
     devtool: "source-map",
-    entry: entryServer,
-    output: outputServer,
+    entry: entry,
+    output: output,
     plugins: [
       new NodemonPlugin(),
       new CleanWebpackPlugin({

@@ -3,7 +3,7 @@ const path = require("path")
 // BUILD ONLY FILE
 
 // CLIENT
-const clientEntry = {
+const entryClient = {
   index: path.resolve(__dirname, "../../src/index.tsx"),
 }
 
@@ -30,7 +30,7 @@ const outputServer = {
 }
 
 module.exports = {
-  clientEntry,
+  entryClient,
   outputClient,
   htmlWebpackPluginBuildConfig,
   entryServer,

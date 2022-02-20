@@ -7,16 +7,12 @@ const TerserPlugin = require("terser-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
-const clientConfigBuild = (
-  entryClient,
-  outputClient,
-  htmlWebpackPluginConfig
-) => {
+const clientConfigBuild = (entry, output, htmlWebpackPluginConfig) => {
   return {
     mode: "production",
     target: "web",
-    entry: entryClient,
-    output: outputClient,
+    entry: entry,
+    output: output,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
       new HtmlWebpackPlugin(htmlWebpackPluginConfig),
@@ -64,13 +60,13 @@ const clientConfigBuild = (
   }
 }
 
-const serverConfigBuild = (entryServer, outputServer) => {
+const serverConfigBuild = (entry, output) => {
   return {
     mode: "production",
     externals: [nodeExternals()],
     target: "node",
-    entry: entryServer,
-    output: outputServer,
+    entry: entry,
+    output: output,
     module: {
       rules: [
         {
