@@ -32,4 +32,4 @@ const clientBuildConfig = (entryConfig) => {
   }
 }
 
-module.exports = clientBuildConfig(require("../client.config").entry)
+module.exports = clientBuildConfig(require("./client-params").entry)

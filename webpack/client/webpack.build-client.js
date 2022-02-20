@@ -35,7 +35,7 @@ const buildClientCommonConfig = (output, htmlPluginConfg, miniCssConfig) => {
 }
 
 module.exports = buildClientCommonConfig(
-  require("../client.config").outputBuild,
-  require("../client.config").htmlWebpackPluginBuild,
-  require("../client.config").miniCssPluginBuild
+  require("./client-params").outputBuild,
+  require("./client-params").htmlWebpackPluginBuild,
+  require("./client-params").miniCssPluginBuild
 )

@@ -94,12 +94,12 @@ const serverConfigDev = (entryServer, outputServer) => {
 
 module.exports = [
   clientConfigDev(
-    require("../ssr-dev.config.js").entryClient,
-    require("../ssr-dev.config.js").outputClient,
-    require("../ssr-dev.config.js").htmlWebpackPluginDev
+    require("./dev-params.js").entryClient,
+    require("./dev-params.js").outputClient,
+    require("./dev-params.js").htmlWebpackPluginDev
   ),
   serverConfigDev(
-    require("../ssr-dev.config.js").entryServer,
-    require("../ssr-dev.config.js").outputServer
+    require("./dev-params.js").entryServer,
+    require("./dev-params.js").outputServer
   ),
 ]

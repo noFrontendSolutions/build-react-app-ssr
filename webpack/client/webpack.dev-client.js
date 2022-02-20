@@ -22,6 +22,6 @@ const devClientConfig = (output, htmlWebpackPlugin) => {
 }
 
 module.exports = devClientConfig(
-  require("../client.config").outputDev,
-  require("../client.config").htmlWebpackPluginDev
+  require("./client-params").outputDev,
+  require("./client-params").htmlWebpackPluginDev
 )
