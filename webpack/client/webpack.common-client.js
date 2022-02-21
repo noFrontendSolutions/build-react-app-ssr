@@ -1,5 +1,6 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const path = require("path")
+const { outputRootClient } = require("../output-paths")
 
 const clientBuildConfig = (entry) => {
   return {
@@ -23,7 +24,7 @@ const clientBuildConfig = (entry) => {
           loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
           options: {
             name: "[name].[hash].[ext]",
-            outputPath: "../../static-assets",
+            outputPath: `../${outputRootClient}/static-assets`,
           },
         },
       ],

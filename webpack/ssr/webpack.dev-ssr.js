@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
+const { outputRootSsrClient } = require("../output-paths")
 
 const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
   return {
@@ -38,7 +39,7 @@ const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
           loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
           options: {
             name: "[name].[fullhash].[ext]",
-            outputPath: "../../static-assets",
+            outputPath: `../${outputRootSsrClient}/static-assets`,
           },
         },
         {

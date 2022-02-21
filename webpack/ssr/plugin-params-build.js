@@ -8,6 +8,9 @@ const htmlWebpackPluginBuildConfig = {
   scriptLoading: "defer",
 }
 
+const miniCssPluginConfig = { filename: "styles.[fullhash].css" }
+
 module.exports = {
   htmlWebpackPluginBuildConfig,
+  miniCssPluginConfig,
 }

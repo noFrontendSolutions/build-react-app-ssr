@@ -8,6 +8,7 @@ const htmlWebpackPluginDevConfig = {
   scriptLoading: "defer",
 }
 
+// If using more than one entry, you can specify which output file will be restarted and what to watch (see npm documentation).
 const nodemonPluginConfig = {}
 
 module.exports = {
