@@ -1,6 +1,6 @@
 const path = require("path")
 
-// COMMEN (SHARED)
+// COMMON (SHARED)
 const entry = {
   index: path.resolve(__dirname, "../../src/index.tsx"),
 }

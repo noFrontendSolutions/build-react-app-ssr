@@ -53,7 +53,7 @@ const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
   }
 }
 
-const serverConfigDev = (entry, output) => {
+const serverConfigDev = (entry, output, nodemonPluginConfig) => {
   return {
     mode: "development",
     externals: [nodeExternals()],
@@ -62,7 +62,7 @@ const serverConfigDev = (entry, output) => {
     entry: entry,
     output: output,
     plugins: [
-      new NodemonPlugin(),
+      new NodemonPlugin(nodemonPluginConfig),
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!index.*", "!styles.*"],
       }),
@@ -100,6 +100,7 @@ module.exports = [
   ),
   serverConfigDev(
     require("./dev-params.js").entryServer,
-    require("./dev-params.js").outputServer
+    require("./dev-params.js").outputServer,
+    require("./dev-params.js").nodemonPluginConfig
   ),
 ]

@@ -28,10 +28,13 @@ const outputServer = {
   path: path.resolve(__dirname, "../../dist"), // Directory name and relative path of your backend bundle.
 }
 
+const nodemonPluginConfig = {}
+
 module.exports = {
   entryClient,
   outputClient,
   htmlWebpackPluginDevConfig,
   entryServer,
   outputServer,
+  nodemonPluginConfig,
 }

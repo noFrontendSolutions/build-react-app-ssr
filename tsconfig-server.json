@@ -73,4 +73,6 @@
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
+  "extends": "./tsconfig.json",
+   "exclude": ["src", "node_modules"]
 }

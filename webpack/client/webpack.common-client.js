@@ -1,3 +1,6 @@
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+const path = require("path")
+
 const clientBuildConfig = (entry) => {
   return {
     entry: entry,
@@ -28,6 +31,13 @@ const clientBuildConfig = (entry) => {
     resolve: {
       modules: ["node_modules"],
       extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
+      plugins: [
+        new TsconfigPathsPlugin({
+          configFile: path.resolve(__dirname, "../../tsconfig-client.json"),
+          extensions: ["ts", "tsx", "jsx", "js"],
+          baseUrl: "./",
+        }),
+      ],
     },
   }
 }
