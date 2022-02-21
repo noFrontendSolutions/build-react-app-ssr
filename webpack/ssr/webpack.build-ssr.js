@@ -94,12 +94,12 @@ const serverConfigBuild = (entry, output) => {
 
 module.exports = [
   clientConfigBuild(
-    require("./build-params.js").entryClient,
-    require("./build-params.js").outputClient,
-    require("./build-params.js").htmlWebpackPluginBuildConfig
+    require("../entry-paths").entrySsrClient,
+    require("../output-paths").outputSsrBuildClient,
+    require("./plugin-params-build").htmlWebpackPluginBuildConfig
   ),
   serverConfigBuild(
-    require("./build-params.js").entryServer,
-    require("./build-params.js").outputserver
+    require("../entry-paths").entrySsrServer,
+    require("../output-paths").outputSsrBuildserver
   ),
 ]

@@ -94,13 +94,13 @@ const serverConfigDev = (entry, output, nodemonPluginConfig) => {
 
 module.exports = [
   clientConfigDev(
-    require("./dev-params.js").entryClient,
-    require("./dev-params.js").outputClient,
-    require("./dev-params.js").htmlWebpackPluginDevConfig
+    require("../entry-paths").entrySsrClient,
+    require("../output-paths").outputSsrDevClient,
+    require("./plugin-params-dev.js").htmlWebpackPluginDevConfig
   ),
   serverConfigDev(
-    require("./dev-params.js").entryServer,
-    require("./dev-params.js").outputServer,
-    require("./dev-params.js").nodemonPluginConfig
+    require("../entry-paths").entrySsrServer,
+    require("../output-paths").outputSsrDevServer,
+    require("./plugin-params-dev").nodemonPluginConfig
   ),
 ]

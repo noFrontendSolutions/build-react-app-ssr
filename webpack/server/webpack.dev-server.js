@@ -4,5 +4,5 @@ const commonServerConfig = require("./webpack.common-server.js")
 
 module.exports = merge(commonServerConfig, {
   mode: "development",
-  plugins: [new NodemonPlugin(require("./params").nodemonPluginConfig)],
+  plugins: [new NodemonPlugin(require("./plugin-params").nodemonPluginConfig)],
 })
