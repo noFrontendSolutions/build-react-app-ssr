@@ -8,12 +8,7 @@ const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const outputRootSsrClient = require("../output-paths").outputRootSsrClient
 
-const clientConfigBuild = (
-  entry,
-  output,
-  htmlWebpackPluginConfig,
-  miniCssPluginConfig
-) => {
+const clientConfigBuild = (entry, output) => {
   return {
     mode: "production",
     target: "web",
@@ -21,9 +16,13 @@ const clientConfigBuild = (
     output: output,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
-      new HtmlWebpackPlugin(htmlWebpackPluginConfig),
+      new HtmlWebpackPlugin({
+        filename: "index.[fullhash].html",
+        template: path.resolve(__dirname, "../../template/index.html"),
+        scriptLoading: "defer",
+      }),
       //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
-      new MiniCssExtractPlugin(miniCssPluginConfig),
+      new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
@@ -101,9 +100,7 @@ const serverConfigBuild = (entry, output) => {
 module.exports = [
   clientConfigBuild(
     require("../entry-paths").entrySsrClient,
-    require("../output-paths").outputSsrBuildClient,
-    require("./plugin-params-build").htmlWebpackPluginBuildConfig,
-    require("./plugin-params-build").miniCssPluginConfig
+    require("../output-paths").outputSsrBuildClient
   ),
   serverConfigBuild(
     require("../entry-paths").entrySsrServer,

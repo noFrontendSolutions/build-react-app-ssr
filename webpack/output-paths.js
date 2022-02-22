@@ -1,5 +1,6 @@
 const path = require("path")
 
+//**********ROOT OUTPUT PATHS OF BACKEND AND FRONTEND***********
 const outputRootClient = "../dist"
 const outputRootServer = "../dist"
 

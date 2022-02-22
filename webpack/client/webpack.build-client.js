@@ -5,20 +5,21 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin") // part of Webpack default (minimizes JS files). It's required because CssMinimizerPlugin overwrites the default webpack configuration; so it has to be put back in maually as an optimizer.
 const common = require("./webpack.common-client")
+const path = require("path")
 
-const buildClientCommonConfig = (
-  output,
-  htmlwebpackPluginConfg,
-  miniCssConfig
-) => {
+const buildClientCommonConfig = (output) => {
   return merge(common, {
     mode: "production",
     output: output,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
-      new HtmlWebpackPlugin(htmlwebpackPluginConfg),
+      new HtmlWebpackPlugin({
+        filename: "index.[fullhash].html",
+        template: path.resolve(__dirname, "../../template/index.html"),
+        scriptLoading: "defer",
+      }),
       //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
-      new MiniCssExtractPlugin(miniCssConfig),
+      new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
@@ -39,7 +40,5 @@ const buildClientCommonConfig = (
 }
 
 module.exports = buildClientCommonConfig(
-  require("../output-paths").outputClientBuild,
-  require("./plugin-params").htmlWebpackPluginBuildConfig,
-  require("./plugin-params").miniCssPluginBuildConfig
+  require("../output-paths").outputClientBuild
 )

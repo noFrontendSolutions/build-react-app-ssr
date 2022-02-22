@@ -6,7 +6,7 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 const { outputRootSsrClient } = require("../output-paths")
 
-const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
+const clientConfigDev = (entry, output) => {
   return {
     mode: "development",
     target: "web",
@@ -14,7 +14,11 @@ const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
     output: output,
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
-      new HtmlWebpackPlugin(htmlWebpackPluginConfig),
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: path.resolve(__dirname, "../../template/index.html"),
+        scriptLoading: "defer",
+      }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
@@ -54,7 +58,7 @@ const clientConfigDev = (entry, output, htmlWebpackPluginConfig) => {
   }
 }
 
-const serverConfigDev = (entry, output, nodemonPluginConfig) => {
+const serverConfigDev = (entry, output) => {
   return {
     mode: "development",
     externals: [nodeExternals()],
@@ -63,7 +67,7 @@ const serverConfigDev = (entry, output, nodemonPluginConfig) => {
     entry: entry,
     output: output,
     plugins: [
-      new NodemonPlugin(nodemonPluginConfig),
+      new NodemonPlugin(),
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: ["**/*", "!index.*", "!styles.*"],
       }),
@@ -96,12 +100,10 @@ const serverConfigDev = (entry, output, nodemonPluginConfig) => {
 module.exports = [
   clientConfigDev(
     require("../entry-paths").entrySsrClient,
-    require("../output-paths").outputSsrDevClient,
-    require("./plugin-params-dev.js").htmlWebpackPluginDevConfig
+    require("../output-paths").outputSsrDevClient
   ),
   serverConfigDev(
     require("../entry-paths").entrySsrServer,
-    require("../output-paths").outputSsrDevServer,
-    require("./plugin-params-dev").nodemonPluginConfig
+    require("../output-paths").outputSsrDevServer
   ),
 ]

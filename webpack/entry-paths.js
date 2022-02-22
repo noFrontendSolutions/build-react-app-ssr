@@ -1,6 +1,6 @@
 const path = require("path")
 
-//**********ROOT PATHS OF BACKEND AND FRONTEND*****************
+//**********ROOT ENTRY PATHS OF BACKEND AND FRONTEND***********
 const entryRootClient = "../src"
 const entryRootServer = "../src-backend"
 
