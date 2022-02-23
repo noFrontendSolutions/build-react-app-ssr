@@ -47,7 +47,7 @@ const clientConfigBuild = (entry, output) => {
         },
         {
           test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // Once again, the order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
+          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"], // The order matters here: postcss-loader runs first (using the Tailwind jit-compiler to turn the Tailwind-classes into CSS); then css-loader transpiles the CSS into JS; then MiniCssExtractPlugin injects the JS (interpretable as CSS) into a seperate file... However, there one small problem: the css-file is not minified... That's were the CssMinimizerPlugin comes into play.
         },
       ],
     },
@@ -98,6 +98,6 @@ module.exports = [
   ),
   serverConfigBuild(
     require("../entry-paths").entrySsrServer,
-    require("../output-paths").outputSsrBuildserver
+    require("../output-paths").outputSsrBuildServer
   ),
 ]

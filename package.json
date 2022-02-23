@@ -10,8 +10,9 @@
     "build-ssr": "webpack --config webpack/ssr/webpack.build-ssr.js",
     "dev-client": "webpack serve --config webpack/client/webpack.dev-client.js --open",
     "dev-server": "webpack --config webpack/server/webpack.dev-server.js --watch ",
-    "dev-ssr": "start http://localhost:3000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
-    "start": "start http://localhost:3000 & node dist/server.js"
+    "dev-ssr": "node ssr-related/clean-up.js & start http://localhost:3000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
+    "start-std": "start http://localhost:3000 & node dist/server/server.js",
+    "start-ssr": "start http://localhost:3000 & node dist/ssr/server/server.js"
   },
   "keywords": [],
   "author": "",

@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
-const { outputRootSsrClient } = require("../output-paths")
+//const { outputRootSsrClient } = require("../output-paths")
 
 const clientConfigDev = (entry, output) => {
   return {
