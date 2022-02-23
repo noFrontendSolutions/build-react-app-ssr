@@ -25,7 +25,6 @@ const clientBuildConfig = (entry) => {
       ],
     },
     resolve: {
-      modules: ["node_modules"],
       extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
       plugins: [
         new TsconfigPathsPlugin({

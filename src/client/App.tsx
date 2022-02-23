@@ -1,5 +1,7 @@
+import "react-hot-loader"
 import { useState } from "react"
 import reactLogo from "../../static-assets/react-logo.png"
+import { hot } from "react-hot-loader/root"
 
 const App = ({ initialState = 0 }) => {
   const [count, setCount] = useState(initialState)
@@ -59,4 +61,4 @@ const App = ({ initialState = 0 }) => {
   )
 }
 
-export default App
+export default hot(App)
