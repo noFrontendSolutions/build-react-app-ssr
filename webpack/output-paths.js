@@ -1,11 +1,11 @@
 const path = require("path")
 
 //**********ROOT OUTPUT PATHS OF BACKEND AND FRONTEND***********
-const outputRootClient = "../dist"
-const outputRootServer = "../dist"
+const outputRootClient = "../dist/client"
+const outputRootServer = "../dist/server"
 
-const outputRootSsrClient = "../dist"
-const outputRootSsrServer = "../dist"
+const outputRootSsrClient = "../dist/ssr/client"
+const outputRootSsrServer = "../dist/ssr/server"
 
 //**************************************************************
 //*****************WEBPACK CLIENT PATHS*************************
@@ -23,6 +23,7 @@ const outputClientDev = {
 const outputClientBuild = {
   filename: "[name].[fullhash].js",
   path: path.resolve(__dirname, outputRootClient),
+  assetModuleFilename: "images/[hash][ext][query]",
 }
 
 //**************************************************************
@@ -57,6 +58,7 @@ const outputSsrDevServer = {
 const outputSsrBuildClient = {
   filename: "[name].[fullhash].js",
   path: path.resolve(__dirname, outputRootSsrClient),
+  assetModuleFilename: "images/[hash][ext][query]",
 }
 
 const outputSsrBuildServer = {

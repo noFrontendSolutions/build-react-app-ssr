@@ -1,6 +1,5 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const path = require("path")
-const { outputRootClient } = require("../output-paths")
 
 const clientBuildConfig = (entry) => {
   return {
@@ -20,12 +19,8 @@ const clientBuildConfig = (entry) => {
           loader: "html-loader",
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/,
-          loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
-          options: {
-            name: "[name].[hash].[ext]",
-            outputPath: `../${outputRootClient}/static-assets`,
-          },
+          test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          type: "asset",
         },
       ],
     },
@@ -34,9 +29,8 @@ const clientBuildConfig = (entry) => {
       extensions: [".js", ".jsx", ".tsx", ".ts", ".css"], //list of extension allowed for import without mentioning file extension
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../../tsconfig-client.json"),
-          extensions: ["ts", "tsx", "jsx", "js"],
-          baseUrl: "./",
+          configFile: path.resolve(__dirname, "../../src/client/tsconfig.json"),
+          extensions: [".js", ".jsx", ".tsx", ".ts"],
         }),
       ],
     },

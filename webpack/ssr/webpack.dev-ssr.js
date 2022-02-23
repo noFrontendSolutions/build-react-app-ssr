@@ -39,12 +39,8 @@ const clientConfigDev = (entry, output) => {
           loader: "html-loader",
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/,
-          loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
-          options: {
-            name: "[name].[fullhash].[ext]",
-            outputPath: `../${outputRootSsrClient}/static-assets`,
-          },
+          test: /\.(jpe?g|png|gif|svg)$/, // // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          type: "asset",
         },
         {
           test: /\.css$/,
@@ -63,13 +59,12 @@ const serverConfigDev = (entry, output) => {
     mode: "development",
     externals: [nodeExternals()],
     target: "node",
-    devtool: "source-map",
     entry: entry,
     output: output,
     plugins: [
       new NodemonPlugin(),
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!index.*", "!styles.*"],
+        cleanOnceBeforeBuildPatterns: ["**/*", "!client", "!server"],
       }),
     ],
     module: {
@@ -86,13 +81,12 @@ const serverConfigDev = (entry, output) => {
     },
     resolve: {
       extensions: [".js", ".jsx", ".tsx", ".ts", "css"], //list of extension allowed for import without mentioning file extension
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../../tsconfig-server.json"),
-          extensions: ["ts", "tsx", "jsx", "js", "json"],
-          baseUrl: "./",
-        }),
-      ],
+      // plugins: [
+      //   new TsconfigPathsPlugin({
+      //     configFile: path.resolve(__dirname, "../../src/ssr/tsconfig.json"),
+      //     baseUrl: "./",
+      //   }),
+      // ],
     },
   }
 }

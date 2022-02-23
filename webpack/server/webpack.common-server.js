@@ -22,14 +22,13 @@ const commonServerConfig = (entry, output) => {
     externals: [nodeExternals()], // nodeExternals is required if you intend to bundle code that includes Express functions. (without it you'll end up with warnings and a file that runs, but is enourmas in size.)
     resolve: {
       modules: ["node_modules"],
-      extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../../tsconfig-server.json"),
-          extensions: ["ts", "tsx", "jsx", "js"],
-          baseUrl: "./",
-        }),
-      ],
+      extensions: [".js", ".jsx", ".tsx", ".ts"], //list of extension allowed for import without mentioning file extension
+      // plugins: [
+      //   new TsconfigPathsPlugin({
+      //     configFile: path.resolve(__dirname, "../../tsconfig.json"),
+      //     baseUrl: "./",
+      //   }),
+      // ],
     },
   }
 }

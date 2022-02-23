@@ -1,11 +1,11 @@
 const path = require("path")
 
 //**********ROOT ENTRY PATHS OF BACKEND AND FRONTEND***********
-const entryRootClient = "../src"
-const entryRootServer = "../src-backend"
+const entryRootClient = "../src/client"
+const entryRootServer = "../src/server"
 
-const entryRootSsrClient = "../src"
-const entryRootSsrServer = "../src-backend"
+const entryRootSsrClient = "../src/ssr/client"
+const entryRootSsrServer = "../src/ssr/server"
 
 //*************************************************************
 //***********************WEBPACK ENTRY PATHS*******************
@@ -18,7 +18,7 @@ const entryClient = {
 
 //************ENTRY SERVER**************************************
 const entryServer = {
-  server: path.resolve(__dirname, `${entryRootServer}/server.tsx`),
+  server: path.resolve(__dirname, `${entryRootServer}/server.ts`),
 }
 
 //************ENTRY SSR*****************************************

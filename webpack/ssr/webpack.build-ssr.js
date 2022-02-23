@@ -6,7 +6,6 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
-const outputRootSsrClient = require("../output-paths").outputRootSsrClient
 
 const clientConfigBuild = (entry, output) => {
   return {
@@ -25,7 +24,7 @@ const clientConfigBuild = (entry, output) => {
       new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
+        cleanOnceBeforeBuildPatterns: ["**/*", "!server", "!client"],
       }),
     ],
     module: {
@@ -43,12 +42,8 @@ const clientConfigBuild = (entry, output) => {
           loader: "html-loader",
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/,
-          loader: "file-loader", //The file-loader resolves import/require() on a file into a url and emits the file into the outputPath directory.
-          options: {
-            name: "[name].[fullhash].[ext]",
-            outputPath: `../${outputRootSsrClient}/static-assets`,
-          },
+          test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          type: "asset",
         },
         {
           test: /\.css$/,
@@ -86,13 +81,12 @@ const serverConfigBuild = (entry, output) => {
     },
     resolve: {
       extensions: [".js", ".jsx", ".tsx", ".ts", "json", "css"], //list of extension allowed for import without mentioning file extension
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, "../../tsconfig-server.json"),
-          extensions: ["ts", "tsx", "jsx", "js", "json"],
-          baseUrl: "./",
-        }),
-      ],
+      // plugins: [
+      //   new TsconfigPathsPlugin({
+      //     configFile: path.resolve(__dirname, "../../src/ssr/tsconfig.json"),
+      //     baseUrl: "./",
+      //   }),
+      // ],
     },
   }
 }

@@ -1,13 +1,23 @@
 module.exports = {
-  content: ['./src/**/*.html',
-          './src/**/*.js',
-          './src/**/*.ts',
-          './src/**/*.jsx',
-          './src/**/*.tsx',
-          './template/index.html'
+  content: [
+    "./src/**/*.html",
+    "./src/**/*.js",
+    "./src/**/*.ts",
+    "./src/**/*.jsx",
+    "./src/**/*.tsx",
+    "./template/index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        transparent: "transparent",
+        reactGray: "#1F232A",
+        reactBlue: "#60DAF8",
+      },
+      animation: {
+        "spin-slow": "spin 8s linear infinite",
+      },
+    },
   },
   plugins: [],
 }

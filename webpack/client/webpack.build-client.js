@@ -22,7 +22,7 @@ const buildClientCommonConfig = (output) => {
       new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
+        cleanOnceBeforeBuildPatterns: ["**/*", "!server", "!ssr"],
       }),
     ],
     module: {
