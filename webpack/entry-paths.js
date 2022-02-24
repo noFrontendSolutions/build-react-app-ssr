@@ -1,11 +1,11 @@
 const path = require("path")
 
 //**********ROOT ENTRY PATHS OF BACKEND AND FRONTEND***********
-const entryRootClient = "../src/client"
-const entryRootServer = "../src/server"
+const entryRootClient = "src/client"
+const entryRootServer = "src/server"
 
-const entryRootSsrClient = "../src/ssr/client"
-const entryRootSsrServer = "../src/ssr/server"
+const entryRootSsrClient = "src/ssr/client"
+const entryRootSsrServer = "src/ssr/server"
 
 //*************************************************************
 //***********************WEBPACK ENTRY PATHS*******************
@@ -13,21 +13,21 @@ const entryRootSsrServer = "../src/ssr/server"
 
 //***************ENTRY CLIENT**********************************
 const entryClient = {
-  index: path.resolve(__dirname, `${entryRootClient}/index.tsx`),
+  index: path.resolve(__dirname, `../${entryRootClient}/index.tsx`),
 }
 
 //************ENTRY SERVER**************************************
 const entryServer = {
-  server: path.resolve(__dirname, `${entryRootServer}/server.ts`),
+  server: path.resolve(__dirname, `../${entryRootServer}/server.ts`),
 }
 
 //************ENTRY SSR*****************************************
 const entrySsrClient = {
-  index: path.resolve(__dirname, `${entryRootSsrClient}/index.tsx`),
+  index: path.resolve(__dirname, `../${entryRootSsrClient}/index.tsx`),
 }
 
 const entrySsrServer = {
-  server: path.resolve(__dirname, `${entryRootSsrServer}/server.tsx`),
+  server: path.resolve(__dirname, `../${entryRootSsrServer}/server.tsx`),
 }
 
 module.exports = {

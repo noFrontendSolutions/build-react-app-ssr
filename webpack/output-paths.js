@@ -1,11 +1,11 @@
 const path = require("path")
 
 //**********ROOT OUTPUT PATHS OF BACKEND AND FRONTEND***********
-const outputRootClient = "../dist/client"
-const outputRootServer = "../dist/server"
+const outputRootClient = "dist/client"
+const outputRootServer = "dist/server"
 
-const outputRootSsrClient = "../dist/ssr/client"
-const outputRootSsrServer = "../dist/ssr/server"
+const outputRootSsrClient = "dist/ssr/client"
+const outputRootSsrServer = "dist/ssr/server"
 
 //**************************************************************
 //*****************WEBPACK CLIENT PATHS*************************
@@ -15,14 +15,14 @@ const outputRootSsrServer = "../dist/ssr/server"
 
 const outputClientDev = {
   filename: "[name].js", //[name] comes from entry points
-  path: path.resolve(__dirname, outputRootClient),
+  path: path.resolve(__dirname, `../${outputRootClient}`),
 }
 
 //******************BUILD CLIENT********************************
 
 const outputClientBuild = {
   filename: "[name].[fullhash].js",
-  path: path.resolve(__dirname, outputRootClient),
+  path: path.resolve(__dirname, `../${outputRootClient}`),
   assetModuleFilename: "images/[hash][ext][query]",
 }
 
@@ -34,7 +34,7 @@ const outputClientBuild = {
 
 const outputServer = {
   filename: "[name].js",
-  path: path.resolve(__dirname, outputRootServer),
+  path: path.resolve(__dirname, `../${outputRootServer}`),
 }
 
 //**************************************************************
@@ -45,25 +45,25 @@ const outputServer = {
 
 const outputSsrDevClient = {
   filename: "[name].js",
-  path: path.resolve(__dirname, outputRootSsrClient),
+  path: path.resolve(__dirname, `../${outputRootSsrClient}`),
 }
 
 const outputSsrDevServer = {
   filename: "[name].js",
-  path: path.resolve(__dirname, outputRootSsrServer),
+  path: path.resolve(__dirname, `../${outputRootSsrServer}`),
 }
 
 //****************SSR BUILD**************************************
 
 const outputSsrBuildClient = {
   filename: "[name].[fullhash].js",
-  path: path.resolve(__dirname, outputRootSsrClient),
+  path: path.resolve(__dirname, `../${outputRootSsrClient}`),
   assetModuleFilename: "images/[hash][ext][query]",
 }
 
 const outputSsrBuildServer = {
   filename: "[name].js",
-  path: path.resolve(__dirname, outputRootSsrServer),
+  path: path.resolve(__dirname, `../${outputRootSsrServer}`),
 }
 
 module.exports = {

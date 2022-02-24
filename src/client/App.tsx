@@ -85,7 +85,7 @@ const Button = ({ type, content, count, setCount }: ButtonProps) => {
       <div className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg z-0"></div>
       <button
         onClick={() => setCount(type === "increment" ? count + 1 : count - 1)}
-        className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue"
+        className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue hover:text-white"
       >
         {content}
       </button>

@@ -1,7 +1,7 @@
 import "react-hot-loader"
+import { hot } from "react-hot-loader/root"
 import { useState } from "react"
 import reactLogo from "../../../static-assets/react-logo.png"
-import { hot } from "react-hot-loader/root"
 
 interface ButtonProps {
   type: "increment" | "decrement"
@@ -38,7 +38,7 @@ const App = ({ initialState = 0 }) => {
           and hit refresh to rerender.
         </p>
       )}
-      <div className="absolute flex items-center justify-between bottom-36 text-base w-1/4">
+      <div className=" w-1/4 absolute flex items-center justify-between bottom-36 text-base">
         <Button
           type="decrement"
           content="-"
@@ -47,7 +47,7 @@ const App = ({ initialState = 0 }) => {
         />
         <div className="flex flex-col items-start pt-6">
           <p>
-            Current Count: <span className="ml-4 text-reactBlue">{count}</span>
+            Current State: <span className="ml-4 text-reactBlue">{count}</span>
           </p>
           <p>
             Initial State:
@@ -85,7 +85,7 @@ const Button = ({ type, content, count, setCount }: ButtonProps) => {
       <div className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg z-0"></div>
       <button
         onClick={() => setCount(type === "increment" ? count + 1 : count - 1)}
-        className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue"
+        className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue hover:text-white"
       >
         {content}
       </button>
@@ -93,5 +93,5 @@ const Button = ({ type, content, count, setCount }: ButtonProps) => {
   )
 }
 
-//Notice the "hot" export of the App component. The "hot"-function id provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
+//Notice the "hot" export of the App component. The "hot"-function is provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
 export default hot(App)
