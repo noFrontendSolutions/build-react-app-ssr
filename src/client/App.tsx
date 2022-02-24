@@ -3,6 +3,13 @@ import { useState } from "react"
 import reactLogo from "../../static-assets/react-logo.png"
 import { hot } from "react-hot-loader/root"
 
+interface ButtonProps {
+  type: "increment" | "decrement"
+  content: string
+  count: number
+  setCount: (count: number) => void
+}
+
 const App = ({ initialState = 0 }) => {
   const [count, setCount] = useState(initialState)
 
@@ -10,27 +17,34 @@ const App = ({ initialState = 0 }) => {
     <div className="relative p-8 h-screen flex flex-col items-center  text-gray-100 bg-reactGray text-2xl">
       <img src={reactLogo} className="h-96 w-96 animate-spin-slow" />
       <span className="inline-flex mt-16 text-4xl">
-        <h1>Welcome to React -</h1>
-        <p className="ml-2 text-reactBlue">SSR</p>
+        <h1>Welcome to React</h1>
+        {initialState !== 0 && <p className="ml-2 text-reactBlue"> - SSR</p>}
       </span>
-      <p className="mt-10">
-        Edit <span className="text-reactBlue">src/client/App.tsx</span> and save
-        to rerender.
-      </p>
-
-      <p className="mt-4">
-        Or try out SSR-development mode
-        <span className="text-reactBlue"> (npm run dev-ssr) </span>first.
-      </p>
-      <div className="absolute flex items-center bottom-20 text-sm">
-        <div className="relative mx-8 mt-2 h-14 w-14 bg-reactBlue rounded-b-lg">
-          <button
-            onClick={() => setCount(count - 1)}
-            className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg text-3xl font-bold z-10 text-reactBlue"
-          >
-            -
-          </button>
-        </div>
+      {initialState === 0 && (
+        <>
+          <p className="mt-10">
+            Edit <span className="text-reactBlue">src/client/App.tsx</span> and
+            save to rerender. <br />
+          </p>
+          <p className="mt-4">AND maintain the current state...</p>
+        </>
+      )}
+      {initialState !== 0 && (
+        <p className="mt-10">
+          Edit{" "}
+          <span className="text-reactBlue">
+            src/ssr/client/App.tsx or src/ssr/server/server.tsx
+          </span>{" "}
+          and hit refresh to rerender.
+        </p>
+      )}
+      <div className="absolute flex items-center justify-between bottom-36 text-base w-1/4">
+        <Button
+          type="decrement"
+          content="-"
+          count={count}
+          setCount={setCount}
+        />
         <div className="flex flex-col items-start pt-6">
           <p>
             Current Count: <span className="ml-4 text-reactBlue">{count}</span>
@@ -42,23 +56,42 @@ const App = ({ initialState = 0 }) => {
             </span>
           </p>
         </div>
-        <div className="relative mx-8 mt-2 h-14 w-14 bg-reactBlue rounded-b-lg">
-          <div className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg z-0 hover:botton-0"></div>
-          <button
-            onClick={() => setCount(count + 1)}
-            className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue"
-          >
-            +
-          </button>
-        </div>
+        <Button
+          type="increment"
+          content="+"
+          count={count}
+          setCount={setCount}
+        />
       </div>
-      <p className="absolute bottom-10 text-sm text-reactBlue">
-        {initialState !== 0
-          ? ""
-          : "Notice that your App has to be rendered on the server to receive an initial state."}
-      </p>
+      {initialState === 0 && (
+        <>
+          <p className="absolute bottom-14 text-sm text-reactBlue">
+            Notice that your App has to be rendered on the server to receive an
+            initial state.
+          </p>
+          <p className="absolute bottom-8 text-sm text-reactBlue">
+            Try out SSR-development mode
+            <span className="text-white"> (npm run dev-ssr). </span>
+          </p>
+        </>
+      )}
     </div>
   )
 }
 
+const Button = ({ type, content, count, setCount }: ButtonProps) => {
+  return (
+    <div className="relative mx-8 mt-2 h-14 w-14 bg-reactBlue rounded-b-lg">
+      <div className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg z-0"></div>
+      <button
+        onClick={() => setCount(type === "increment" ? count + 1 : count - 1)}
+        className="absolute inset-0 bottom-2 text-3xl font-bold z-10 text-reactBlue"
+      >
+        {content}
+      </button>
+    </div>
+  )
+}
+
+//Notice the "hot" export of the App component. The "hot"-function id provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
 export default hot(App)
