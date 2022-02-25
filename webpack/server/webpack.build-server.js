@@ -1,4 +1,3 @@
-//const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { merge } = require("webpack-merge")
 const commonServerConfig = require("./webpack.common-server.js")
 

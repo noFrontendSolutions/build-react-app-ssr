@@ -1,11 +1,9 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 const WebpackCopyBundle = require("webpack-copy-bundle")
-//const { outputRootSsrClient } = require("../output-paths")
 
 const clientConfigDev = (entry, output) => {
   return {
@@ -103,7 +101,7 @@ module.exports = [
     require("../output-paths").outputSsrDevClient
   ),
   serverConfigDev(
-    require("../entry-paths").entrySsrServer,
+    require("../entry-paths").entrySsrServerDev,
     require("../output-paths").outputSsrDevServer
   ),
 ]

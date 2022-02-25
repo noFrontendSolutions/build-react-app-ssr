@@ -1,7 +1,7 @@
 import "react-hot-loader"
+import { hot } from "react-hot-loader/root"
 import { useState } from "react"
 import reactLogo from "../../static-assets/react-logo.png"
-import { hot } from "react-hot-loader/root"
 
 interface ButtonProps {
   type: "increment" | "decrement"
@@ -14,7 +14,7 @@ const App = ({ initialState = 0 }) => {
   const [count, setCount] = useState(initialState)
 
   return (
-    <div className="relative p-8 h-screen flex flex-col items-center  text-gray-100 bg-reactGray text-2xl">
+    <div className="relative p-8 h-screen flex flex-col items-center text-gray-100 bg-reactGray text-2xl">
       <img src={reactLogo} className="h-96 w-96 animate-spin-slow" />
       <span className="inline-flex mt-16 text-4xl">
         <h1>Welcome to React</h1>
@@ -33,25 +33,27 @@ const App = ({ initialState = 0 }) => {
         <p className="mt-10">
           Edit{" "}
           <span className="text-reactBlue">
-            src/ssr/client/App.tsx or src/ssr/server/server.tsx
+            src/ssr/client/App.tsx<span className="text-gray-100"> or </span>
+            src/ssr/server/dev-server.tsx
           </span>{" "}
           and hit refresh to rerender.
         </p>
       )}
-      <div className="absolute flex items-center justify-between bottom-36 text-base w-1/4">
+      <div className="w-full sm:w-3/4 xl:w-1/2 2xl:w-1/3  absolute flex items-center justify-between bottom-36">
         <Button
           type="decrement"
           content="-"
           count={count}
           setCount={setCount}
         />
-        <div className="flex flex-col items-start pt-6">
+        <div className="flex flex-col items-start  pt-6">
           <p>
-            Current Count: <span className="ml-4 text-reactBlue">{count}</span>
+            Current State:{" "}
+            <span className="ml-4 w-20 text-reactBlue">{count}</span>
           </p>
           <p>
             Initial State:
-            <span className="ml-4 text-red-400">
+            <span className="ml-11 w-20 text-red-400">
               {initialState !== 0 ? initialState : "undefined"}
             </span>
           </p>
@@ -93,5 +95,5 @@ const Button = ({ type, content, count, setCount }: ButtonProps) => {
   )
 }
 
-//Notice the "hot" export of the App component. The "hot"-function id provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
+//Notice the "hot" export of the App component. The "hot"-function is provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
 export default hot(App)

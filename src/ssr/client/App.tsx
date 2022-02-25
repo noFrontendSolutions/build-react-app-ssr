@@ -34,25 +34,26 @@ const App = ({ initialState = 0 }) => {
           Edit{" "}
           <span className="text-reactBlue">
             src/ssr/client/App.tsx<span className="text-gray-100"> or </span>
-            src/ssr/server/server.tsx
+            src/ssr/server/dev-server.tsx
           </span>{" "}
           and hit refresh to rerender.
         </p>
       )}
-      <div className=" w-1/4 absolute flex items-center justify-between bottom-36 text-base">
+      <div className="w-full sm:w-3/4 xl:w-1/2 2xl:w-1/3  absolute flex items-center justify-between bottom-36">
         <Button
           type="decrement"
           content="-"
           count={count}
           setCount={setCount}
         />
-        <div className="flex flex-col items-start pt-6">
+        <div className="flex flex-col items-start  pt-6">
           <p>
-            Current State: <span className="ml-4 text-reactBlue">{count}</span>
+            Current State:{" "}
+            <span className="ml-4 w-20 text-reactBlue">{count}</span>
           </p>
           <p>
             Initial State:
-            <span className="ml-4 text-red-400">
+            <span className="ml-11 w-20 text-red-400">
               {initialState !== 0 ? initialState : "undefined"}
             </span>
           </p>

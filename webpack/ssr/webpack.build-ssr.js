@@ -101,7 +101,7 @@ module.exports = [
     require("../output-paths").outputSsrBuildClient
   ),
   serverConfigBuild(
-    require("../entry-paths").entrySsrServer,
+    require("../entry-paths").entrySsrServerBuild,
     require("../output-paths").outputSsrBuildServer
   ),
 ]

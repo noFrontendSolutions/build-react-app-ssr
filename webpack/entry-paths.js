@@ -1,6 +1,6 @@
 const path = require("path")
 
-//**********ROOT ENTRY PATHS OF BACKEND AND FRONTEND***********
+//**********ROOT ENTRY PATHS OF BACKEND AND FRONTEND AND SSR APP***********
 const entryRootClient = "src/client"
 const entryRootServer = "src/server"
 
@@ -21,18 +21,25 @@ const entryServer = {
   server: path.resolve(__dirname, `../${entryRootServer}/server.ts`),
 }
 
-//************ENTRY SSR*****************************************
+//************ENTRY SSR CLIENT*****************************************
+
 const entrySsrClient = {
   index: path.resolve(__dirname, `../${entryRootSsrClient}/index.tsx`),
 }
 
-const entrySsrServer = {
+//************ENTRY SSR SERVER*****************************************
+const entrySsrServerDev = {
+  server: path.resolve(__dirname, `../${entryRootSsrServer}/dev-server.tsx`),
+}
+
+const entrySsrServerBuild = {
   server: path.resolve(__dirname, `../${entryRootSsrServer}/server.tsx`),
 }
 
 module.exports = {
-  entrySsrClient,
-  entrySsrServer,
   entryClient,
   entryServer,
+  entrySsrClient,
+  entrySsrServerBuild,
+  entrySsrServerDev,
 }

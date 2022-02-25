@@ -7,8 +7,10 @@ const outputRootServer = "dist/server"
 const outputRootSsrClient = "dist/ssr/client"
 const outputRootSsrServer = "dist/ssr/server"
 
-const tempSsrClient = "temp/ssr/client"
-const tempSsrServer = "temp/ssr/server"
+//*****TEMPORARY ROOT OUTPUT PATHS FOR SSR-APP IN DEVELOPMENT***
+const tempFolderSsrClient = "temp/ssr/client"
+const tempFolderSsrServer = "temp/ssr/server"
+
 //**************************************************************
 //*****************WEBPACK CLIENT PATHS*************************
 //**************************************************************
@@ -47,12 +49,12 @@ const outputServer = {
 
 const outputSsrDevClient = {
   filename: "[name].js",
-  path: path.resolve(__dirname, `../${tempSsrClient}`),
+  path: path.resolve(__dirname, `../${tempFolderSsrClient}`),
 }
 
 const outputSsrDevServer = {
   filename: "[name].js",
-  path: path.resolve(__dirname, `../${tempSsrServer}`),
+  path: path.resolve(__dirname, `../${tempFolderSsrServer}`),
 }
 
 //****************SSR BUILD**************************************
@@ -81,6 +83,6 @@ module.exports = {
   outputRootSsrClient,
   outputRootSsrServer,
   outputRootServer,
-  tempSsrClient,
-  tempSsrServer,
+  tempFolderSsrClient,
+  tempFolderSsrServer,
 }
