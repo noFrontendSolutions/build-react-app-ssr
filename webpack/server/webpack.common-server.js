@@ -12,10 +12,12 @@ const commonServerConfig = (entry, output) => {
         {
           test: /\.(js|jsx)$/,
           loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core.
+          exclude: /node_modules/,
         },
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
+          exclude: /node_modules/,
         },
       ],
     },

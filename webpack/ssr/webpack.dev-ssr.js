@@ -1,7 +1,7 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+//const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 const WebpackCopyBundle = require("webpack-copy-bundle")
 
@@ -29,14 +29,12 @@ const clientConfigDev = (entry, output) => {
         {
           test: /\.(js|jsx)/,
           loader: "babel-loader", //This package allows transpiling JavaScript (and JSX) files using Babel compiler core. (The presets are configured in .babelrc)
+          exclude: /node_modules/,
         },
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core. (The presets are configured in .babelrc)
-        },
-        {
-          test: /\.html$/, //html-loader is required for file-loader (necessary for static assets like pdf and svg files) and handles every encountered "src"-attribute.
-          loader: "html-loader",
+          exclude: /node_modules/,
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/, // // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
@@ -68,14 +66,12 @@ const serverConfigDev = (entry, output) => {
         {
           test: /\.(js|jsx)$/,
           loader: "babel-loader", //This loader allows transpiling JavaScript (and JSX) files using Babel compiler core.
+          exclude: /node_modules/,
         },
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
-        },
-        {
-          test: /\.html$/, //html-loader is required for file-loader (necessary for static assets like pdf and svg files) and handles every encountered "src"-attribute.
-          loader: "html-loader",
+          exclude: /node_modules/,
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
