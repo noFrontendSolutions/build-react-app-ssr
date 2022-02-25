@@ -8,7 +8,7 @@ const outputRootSsrClient =
 // This solution may look like a hack, but since it is not possible to run another node script once nodemon is in watch-mode, this here is the most elegant solution I can think off to bridge the problem.
 
 if (fs.existsSync(path.resolve(__dirname, `../${outputRootSsrClient}`))) {
-  fs.rmSync(path.resolve(__dirname, outputRootSsrClient), {
+  fs.rmSync(path.resolve(__dirname, `../${outputRootSsrClient}`), {
     recursive: true,
   })
   fs.mkdirSync(path.resolve(__dirname, `../${outputRootSsrClient}`), {

@@ -4,3 +4,5 @@ export const outputRootClient: string
 export const outputRootSsrClient: string
 export const outputRootSsrServer: string
 export const outputRootServer: string
+export const tempSsrClient: string
+export const tempSsrServer: string

@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
+const WebpackCopyBundle = require("webpack-copy-bundle")
 //const { outputRootSsrClient } = require("../output-paths")
 
 const clientConfigDev = (entry, output) => {
@@ -12,6 +13,7 @@ const clientConfigDev = (entry, output) => {
     target: "web",
     entry: entry,
     output: output,
+    devtool: "inline-source-map",
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
       new HtmlWebpackPlugin({
@@ -19,9 +21,9 @@ const clientConfigDev = (entry, output) => {
         template: path.resolve(__dirname, "../../template/index.html"),
         scriptLoading: "defer",
       }),
-      //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
-      new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!server.*"],
+      // The copy plugin below is absolutely crucial. It copies the index.js bundle into the server folder. It is required on the client as well as on the server. Without it the initial state can be loaded only once. On refresh you would get a "not-matching div" error in the console and no initial state in your application.
+      new WebpackCopyBundle({
+        index: "../server",
       }),
     ],
     module: {
@@ -61,12 +63,8 @@ const serverConfigDev = (entry, output) => {
     target: "node",
     entry: entry,
     output: output,
-    plugins: [
-      new NodemonPlugin(),
-      new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!client", "!server"],
-      }),
-    ],
+    devtool: "inline-source-map",
+    plugins: [new NodemonPlugin()],
     module: {
       rules: [
         {
@@ -76,6 +74,14 @@ const serverConfigDev = (entry, output) => {
         {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
+        },
+        {
+          test: /\.html$/, //html-loader is required for file-loader (necessary for static assets like pdf and svg files) and handles every encountered "src"-attribute.
+          loader: "html-loader",
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          type: "asset",
         },
       ],
     },

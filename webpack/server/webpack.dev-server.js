@@ -4,5 +4,6 @@ const commonServerConfig = require("./webpack.common-server.js")
 
 module.exports = merge(commonServerConfig, {
   mode: "development",
+  devtool: "inline-source-map",
   plugins: [new NodemonPlugin()],
 })

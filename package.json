@@ -10,7 +10,7 @@
     "build-ssr": "webpack --config webpack/ssr/webpack.build-ssr.js",
     "dev-client": "webpack serve --config webpack/client/webpack.dev-client.js --open",
     "dev-server": "webpack --config webpack/server/webpack.dev-server.js --watch ",
-    "dev-ssr": "node ssr-related/clean-up.js & start http://localhost:3000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
+    "dev-ssr": "start http://localhost:3000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
     "start-std": "start http://localhost:3000 & node dist/server/server.js",
     "start-ssr": "start http://localhost:3000 & node dist/ssr/server/server.js"
   },
@@ -63,6 +63,7 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2",
+    "webpack-copy-bundle": "^0.4.0",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"

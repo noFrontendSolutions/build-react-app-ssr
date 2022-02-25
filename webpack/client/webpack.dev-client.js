@@ -7,13 +7,10 @@ const devClientConfig = (output) => {
   return merge(common, {
     mode: "development",
     output: output,
+    devtool: "inline-source-map",
     devServer: {
       hot: true,
     },
-    // optimization: {
-    //   runtimeChunk: "single", //re-renders app if you save
-    // },
-
     //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
     plugins: [
       new HtmlWebpackPlugin({

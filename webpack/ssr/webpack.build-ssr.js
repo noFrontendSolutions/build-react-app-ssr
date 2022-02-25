@@ -77,6 +77,10 @@ const serverConfigBuild = (entry, output) => {
           test: /\.(ts|tsx)$/,
           loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core.
         },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          type: "asset",
+        },
       ],
     },
     resolve: {

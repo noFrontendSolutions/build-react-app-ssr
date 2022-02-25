@@ -14,7 +14,7 @@ const App = ({ initialState = 0 }) => {
   const [count, setCount] = useState(initialState)
 
   return (
-    <div className="relative p-8 h-screen flex flex-col items-center  text-gray-100 bg-reactGray text-2xl">
+    <div className="relative p-8 h-screen flex flex-col items-center text-gray-100 bg-reactGray text-2xl">
       <img src={reactLogo} className="h-96 w-96 animate-spin-slow" />
       <span className="inline-flex mt-16 text-4xl">
         <h1>Welcome to React</h1>
@@ -33,7 +33,8 @@ const App = ({ initialState = 0 }) => {
         <p className="mt-10">
           Edit{" "}
           <span className="text-reactBlue">
-            src/ssr/client/App.tsx or src/ssr/server/server.tsx
+            src/ssr/client/App.tsx<span className="text-gray-100"> or </span>
+            src/ssr/server/server.tsx
           </span>{" "}
           and hit refresh to rerender.
         </p>
