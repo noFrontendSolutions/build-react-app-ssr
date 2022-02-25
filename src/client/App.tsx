@@ -40,7 +40,7 @@ const App = ({ initialState = 0 }) => {
         </p>
       )}
       <div className="w-full sm:w-3/4 xl:w-1/2 2xl:w-1/3  absolute flex items-center justify-between bottom-36">
-        <Button
+        <FancyButton
           type="decrement"
           content="-"
           count={count}
@@ -58,7 +58,7 @@ const App = ({ initialState = 0 }) => {
             </span>
           </p>
         </div>
-        <Button
+        <FancyButton
           type="increment"
           content="+"
           count={count}
@@ -81,7 +81,7 @@ const App = ({ initialState = 0 }) => {
   )
 }
 
-const Button = ({ type, content, count, setCount }: ButtonProps) => {
+const FancyButton = ({ type, content, count, setCount }: ButtonProps) => {
   return (
     <div className="relative mx-8 mt-2 h-14 w-14 bg-reactBlue rounded-b-lg">
       <div className="absolute inset-0 bottom-1 bg-reactGray rounded-b-lg z-0"></div>

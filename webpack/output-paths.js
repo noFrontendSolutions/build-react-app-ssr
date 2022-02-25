@@ -27,7 +27,7 @@ const outputClientDev = {
 const outputClientBuild = {
   filename: "[name].[fullhash].js",
   path: path.resolve(__dirname, `../${outputRootClient}`),
-  //assetModuleFilename: "images/[hash][ext][query]",
+  assetModuleFilename: "images/[name].[hash][ext]",
 }
 
 //**************************************************************
@@ -62,13 +62,13 @@ const outputSsrDevServer = {
 const outputSsrBuildClient = {
   filename: "[name].[fullhash].js",
   path: path.resolve(__dirname, `../${outputRootSsrClient}`),
-  //assetModuleFilename: "images/[hash][ext][query]",
+  assetModuleFilename: "images/[name].[hash][ext]",
 }
 
 const outputSsrBuildServer = {
   filename: "[name].js",
   path: path.resolve(__dirname, `../${outputRootSsrServer}`),
-  //assetModuleFilename: "../client/images/[hash][ext][query]",
+  assetModuleFilename: "images/[name].[hash][ext]",
 }
 
 module.exports = {
