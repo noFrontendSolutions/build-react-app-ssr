@@ -1,8 +1,9 @@
 {
-  "name": "dev-environment",
+  "name": "create-react-app-ssr",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Development environment to create a fullstack react app featuring SSR.",
+  "main": "",
+  "bin": "",
   "module": "CommonJS",
   "scripts": {
     "build-client": "webpack --config webpack/client/webpack.build-client.js",
@@ -14,9 +15,16 @@
     "start-std": "start http://localhost:3000 & node dist/server/server.js",
     "start-ssr": "start http://localhost:3000 & node dist/ssr/server/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "fullstack",
+    "ssr",
+    "typescript",
+    "tailwindcss",
+    "webpack"
+  ],
+  "author": "Benjamin Welzel",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.17.2",
     "@babel/plugin-transform-runtime": "^7.17.0",
@@ -37,14 +45,9 @@
     "css-loader": "^6.6.0",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "dotenv": "^16.0.0",
-    "file-loader": "^6.2.0",
-    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
-    "mongodb": "^4.3.1",
-    "nodemon": "^2.0.15",
     "nodemon-webpack-plugin": "^4.7.1",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
@@ -52,7 +55,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
-    "react-query": "^3.34.14",
     "react-router-dom": "^6.2.1",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.22",
@@ -60,12 +62,19 @@
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5",
-    "url-loader": "^4.1.1",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2",
     "webpack-copy-bundle": "^0.4.0",
     "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noFrontendSolutions/create-react-app-ssr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noFrontendSolutions/create-react-app-ssr/issues"
+  },
+  "homepage": "https://github.com/noFrontendSolutions/create-react-app-ssr/#readme"
 }

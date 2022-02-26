@@ -6,5 +6,3 @@ export const outputRootClient: string
 export const outputRootSsrClient: string
 export const outputRootSsrServer: string
 export const outputRootServer: string
-export const tempFolderSsrClient: string
-export const tempFolderSsrServer: string

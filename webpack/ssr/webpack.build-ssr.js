@@ -23,9 +23,7 @@ const clientConfigBuild = (entry, output) => {
       //MiniCssExtractPlugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
       new MiniCssExtractPlugin({ filename: "styles.[fullhash].css" }),
       //CleanWebpackPlugin will remove all files inside webpack's output.path directory, as well as all unused webpack assets after every successful rebuild.
-      new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ["**/*", "!server", "!client"],
-      }),
+      new CleanWebpackPlugin(),
     ],
     module: {
       rules: [
@@ -65,6 +63,7 @@ const serverConfigBuild = (entry, output) => {
     target: "node",
     entry: entry,
     output: output,
+    plugins: [new CleanWebpackPlugin()],
     module: {
       rules: [
         {
@@ -101,7 +100,7 @@ module.exports = [
     require("../output-paths").outputSsrBuildClient
   ),
   serverConfigBuild(
-    require("../entry-paths").entrySsrServerBuild,
+    require("../entry-paths").entrySsrServer,
     require("../output-paths").outputSsrBuildServer
   ),
 ]

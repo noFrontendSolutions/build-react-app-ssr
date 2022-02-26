@@ -4,6 +4,7 @@ const nodeExternals = require("webpack-node-externals")
 //const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const NodemonPlugin = require("nodemon-webpack-plugin")
 const WebpackCopyBundle = require("webpack-copy-bundle")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 const clientConfigDev = (entry, output) => {
   return {
@@ -23,6 +24,7 @@ const clientConfigDev = (entry, output) => {
       new WebpackCopyBundle({
         index: "../server",
       }),
+      new CleanWebpackPlugin(),
     ],
     module: {
       rules: [
@@ -60,7 +62,12 @@ const serverConfigDev = (entry, output) => {
     entry: entry,
     output: output,
     devtool: "inline-source-map",
-    plugins: [new NodemonPlugin()],
+    plugins: [
+      new NodemonPlugin(),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ["**/*", "!index.js"], // It's crucial not to erase "index.js" in the server-folder because it's been copied from "target: web" after compilation finished and is required by the dev-server.
+      }),
+    ],
     module: {
       rules: [
         {
@@ -97,7 +104,7 @@ module.exports = [
     require("../output-paths").outputSsrDevClient
   ),
   serverConfigDev(
-    require("../entry-paths").entrySsrServerDev,
+    require("../entry-paths").entrySsrServer,
     require("../output-paths").outputSsrDevServer
   ),
 ]

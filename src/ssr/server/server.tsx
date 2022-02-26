@@ -1,43 +1,76 @@
 import express from "express"
 import fs from "fs"
 import path from "path"
-import { outputRootSsrClient } from "../../../webpack/output-paths.js"
+import {
+  outputRootSsrClient,
+  outputRootSsrServer,
+} from "../../../webpack/output-paths.js"
 import ReactDOMServer from "react-dom/server"
 import ServerRouter from "../client/routers/ServerRouter"
 
 const port = process.env.PORT || 3000
 
-const app = express()
+const main = async () => {
+  let indexHtml: string
+  if (process.env.NODE_ENV === "development") {
+    await sleepTillBuildIsFinished(outputRootSsrClient)
+    indexHtml = fs.readFileSync(
+      path.resolve(__dirname, `../../../${outputRootSsrClient}/index.html`),
+      "utf8"
+    )
+  } else {
+    indexHtml = getIndexHtmlFile()
+  }
 
-app.use(express.json())
+  const app = express()
 
-app.use(
-  express.static(path.resolve(__dirname, `../../../${outputRootSsrClient}`))
-)
+  app.use(express.json())
 
-app.get("/", async (req, res) => {
-  const indexHtml = getIndexHtmlFile()
+  if (process.env.NODE_ENV === "development") {
+    app.use(
+      express.static(path.resolve(__dirname, `../../../${outputRootSsrServer}`))
+    )
+  } else {
+    app.use(
+      express.static(path.resolve(__dirname, `../../../${outputRootSsrClient}`))
+    )
+  }
 
-  const url: string = req.url
-  const initialState = createRandomIntegerNotZero(20)
-  const jsx = ReactDOMServer.renderToString(
-    <ServerRouter url={url} initialState={initialState} />
-  )
-  const hydratedHtml = indexHtml.replace(
-    '<div id="root"></div>',
-    `<div id="root">${jsx}</div>
+  app.get("/", async (req, res) => {
+    const url: string = req.url
+    const initialState = createRandomIntegerNotZero(20)
+    const jsx = ReactDOMServer.renderToString(
+      <ServerRouter url={url} initialState={initialState} />
+    )
+    const hydratedHtml = indexHtml.replace(
+      '<div id="root"></div>',
+      `<div id="root">${jsx}</div>
   <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>`
-  )
-  res.send(hydratedHtml)
-})
+    )
+    res.send(hydratedHtml)
+  })
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}...`)
-})
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}...`)
+  })
+}
+
+main()
 
 //
-//
-//
+//***********************************************************
+//***************HELPER FUNCTIONS BELOW**********************
+//***********************************************************
+
+// sleepTillBuildIsFiniched is a little helper funtion that denys webpack to start the dev-server before client-bundling is finished. Keep it and plug in the path to your temporary folder if you've changed the default ("./temp/ssr/client").
+async function sleepTillBuildIsFinished(folder: string) {
+  while (
+    !fs.existsSync(path.resolve(__dirname, `../../../${folder}/index.html`))
+  ) {
+    await sleep(500)
+  }
+}
+
 // Since the index-html file is hashed (inside dist/client), I have to find it first before I'm able to serve it. I'm sure there is a more elegant solution to this problem. However...
 function getIndexHtmlFile() {
   const htmlFileNames: string[] = fs
@@ -64,4 +97,10 @@ function createRandomIntegerNotZero(max: number) {
     }
   }
   return randomNumber
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
 }

@@ -27,12 +27,7 @@ const entrySsrClient = {
   index: path.resolve(__dirname, `../${entryRootSsrClient}/index.tsx`),
 }
 
-//************ENTRY SSR SERVER*****************************************
-const entrySsrServerDev = {
-  server: path.resolve(__dirname, `../${entryRootSsrServer}/dev-server.tsx`),
-}
-
-const entrySsrServerBuild = {
+const entrySsrServer = {
   server: path.resolve(__dirname, `../${entryRootSsrServer}/server.tsx`),
 }
 
@@ -40,6 +35,5 @@ module.exports = {
   entryClient,
   entryServer,
   entrySsrClient,
-  entrySsrServerBuild,
-  entrySsrServerDev,
+  entrySsrServer,
 }
