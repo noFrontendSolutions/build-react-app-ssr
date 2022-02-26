@@ -13,11 +13,11 @@ const clientBuildConfig = (entry) => {
         },
         {
           test: /\.(ts|tsx)$/,
-          loader: "ts-loader", //similar to "babel-loader" it transpiles TS files using the Babel compiler core. (The presets are configured in .babelrc)
+          loader: "ts-loader", //Similar to "babel-loader" it transpiles TS files using the Babel compiler core. (The presets are configured in .babelrc)
           exclude: /node_modules/,
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/, // this replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
+          test: /\.(jpe?g|png|gif|svg)$/, //This build-in loader replaces file-loader, raw-loader & and url-loader (new Webpack 5.0 feature to import images and such)
           type: "asset",
         },
       ],

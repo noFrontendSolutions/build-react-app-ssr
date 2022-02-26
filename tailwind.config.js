@@ -1,12 +1,5 @@
 module.exports = {
-  content: [
-    "./src/**/*.html",
-    "./src/**/*.js",
-    "./src/**/*.ts",
-    "./src/**/*.jsx",
-    "./src/**/*.tsx",
-    "./template/index.html",
-  ],
+  content: ["./src/**/*.{html,js,ts,jsx,tsx}", "./template/index.html"],
   theme: {
     extend: {
       colors: {
@@ -23,4 +16,3 @@ module.exports = {
 }
 
 //this file is required by tailwind. See excellent tailwind documentation if you want to extend colors, fonts, etc...
-//mode: "jit": activates the new just-in-time compiler. Without jit the build css file will not be minimized.

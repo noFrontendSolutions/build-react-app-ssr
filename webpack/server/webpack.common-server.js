@@ -1,6 +1,6 @@
 const path = require("path")
 const nodeExternals = require("webpack-node-externals")
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+//const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 
 const commonServerConfig = (entry, output) => {
   return {
