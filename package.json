@@ -1,5 +1,5 @@
 {
-  "name": "create-react-app-ssr",
+  "name": "generate-react-app-ssr",
   "version": "1.0.0",
   "description": "Development environment to create a fullstack React app featuring SSR.",
   "main": "./src/client/index.tsx",
@@ -17,6 +17,7 @@
   },
   "keywords": [
     "react",
+    "create-react-app",
     "fullstack",
     "ssr",
     "typescript",
@@ -71,10 +72,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noFrontendSolutions/create-react-app-ssr.git"
+    "url": "https://github.com/noFrontendSolutions/generate-react-app-ssr.git"
   },
   "bugs": {
-    "url": "https://github.com/noFrontendSolutions/create-react-app-ssr/issues"
+    "url": "https://github.com/noFrontendSolutions/generate-react-app-ssr/issues"
   },
-  "homepage": "https://github.com/noFrontendSolutions/create-react-app-ssr/#readme"
+  "homepage": "https://github.com/noFrontendSolutions/generate-react-app-ssr/#readme"
 }
