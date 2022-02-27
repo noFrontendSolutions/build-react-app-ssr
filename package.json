@@ -1,6 +1,6 @@
 {
-  "name": "generate-react-app-ssr",
-  "version": "1.0.0",
+  "name": "build-react-app-ssr",
+  "version": "1.0.1",
   "description": "Development environment to create a fullstack React app featuring SSR.",
   "main": "./src/client/index.tsx",
   "bin": "bin/install.js",
@@ -72,10 +72,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noFrontendSolutions/generate-react-app-ssr.git"
+    "url": "https://github.com/noFrontendSolutions/build-react-app-ssr.git"
   },
   "bugs": {
-    "url": "https://github.com/noFrontendSolutions/generate-react-app-ssr/issues"
+    "url": "https://github.com/noFrontendSolutions/build-react-app-ssr/issues"
   },
-  "homepage": "https://github.com/noFrontendSolutions/generate-react-app-ssr/#readme"
+  "homepage": "https://github.com/noFrontendSolutions/build-react-app-ssr/#readme"
 }
