@@ -1,7 +1,7 @@
 {
   "name": "create-react-app-ssr",
   "version": "1.0.0",
-  "description": "Development environment to create a fullstack react app featuring SSR.",
+  "description": "Development environment to create a fullstack React app featuring SSR.",
   "main": "",
   "bin": "",
   "module": "CommonJS",
@@ -71,7 +71,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/noFrontendSolutions/create-react-app-ssr.git"
+    "url": "https://github.com/noFrontendSolutions/create-react-app-ssr.git"
   },
   "bugs": {
     "url": "https://github.com/noFrontendSolutions/create-react-app-ssr/issues"

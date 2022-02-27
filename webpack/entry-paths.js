@@ -21,7 +21,7 @@ const entryServer = {
   server: path.resolve(__dirname, `../${entryRootServer}/server.ts`),
 }
 
-//************ENTRY SSR CLIENT*****************************************
+//************ENTRY SSR**********************************************
 
 const entrySsrClient = {
   index: path.resolve(__dirname, `../${entryRootSsrClient}/index.tsx`),

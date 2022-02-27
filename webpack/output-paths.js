@@ -7,10 +7,6 @@ const outputRootServer = "dist/server"
 const outputRootSsrClient = "dist/ssr/client"
 const outputRootSsrServer = "dist/ssr/server"
 
-//TEMPORARY ROOT OUTPUT PATHS FOR SSR-APP IN DEVELOPMENT-MODE***
-// const tempFolderSsrClient = "temp/ssr/client"
-// const tempFolderSsrServer = "temp/ssr/server"
-
 //**************************************************************
 //*****************WEBPACK CLIENT PATHS*************************
 //**************************************************************

@@ -36,7 +36,7 @@ const main = async () => {
     )
   }
 
-  app.get("/", async (req, res) => {
+  app.get("/", (req, res) => {
     const url: string = req.url
     const initialState = createRandomIntegerNotZero(20)
     const jsx = ReactDOMServer.renderToString(
@@ -62,7 +62,7 @@ main()
 //***************HELPER FUNCTIONS BELOW**********************
 //***********************************************************
 
-// sleepTillBuildIsFiniched is a little helper funtion that denys webpack to start the dev-server before client-bundling is finished. Keep it and plug in the path to your temporary folder if you've changed the default ("./temp/ssr/client").
+// sleepTillBuildIsFiniched is a little helper funtion that denys webpack to start the dev-server before client-bundling is finished. Keep it and plug in the path to your temporary folder if you've changed the default ("./dist/ssr/client").
 async function sleepTillBuildIsFinished(folder: string) {
   while (
     !fs.existsSync(path.resolve(__dirname, `../../../${folder}/index.html`))
@@ -71,7 +71,7 @@ async function sleepTillBuildIsFinished(folder: string) {
   }
 }
 
-// Since the index-html file is hashed (inside dist/client), I have to find it first before I'm able to serve it. I'm sure there is a more elegant solution to this problem. However...
+// Since the index-html file's name is radomly hashed (sittin inside dist/client), I have to find it first before I'm able to serve it.
 function getIndexHtmlFile() {
   const htmlFileNames: string[] = fs
     .readdirSync(path.resolve(__dirname, `../../../${outputRootSsrClient}`))
