@@ -8,7 +8,6 @@ const appDirName = process.argv[2] || "my-react-app-ssr"
 const folderList = ["src", "static-assets", "template", "webpack"]
 const fileList = [
   ".babelrc",
-  ".gitignore",
   "image-types.d.ts",
   "postcss.config.js",
   "tailwind.config.js",
