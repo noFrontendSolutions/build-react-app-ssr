@@ -62,7 +62,7 @@ main()
 //***************HELPER FUNCTIONS BELOW**********************
 //***********************************************************
 
-// sleepTillBuildIsFiniched is a little helper funtion that denys webpack to start the dev-server before client-bundling is finished. Keep it and plug in the path to your temporary folder if you've changed the default ("./dist/ssr/client").
+// sleepTillBuildIsFiniched is a little helper funtion that denys webpack to start the dev-server before client-bundling is finished. Keep it and plug in the path to your temporary folder if you've changed the default ("./dist/ssr/client"). Or let me know if you find a less hacky solution to the problem.
 async function sleepTillBuildIsFinished(folder: string) {
   while (
     !fs.existsSync(path.resolve(__dirname, `../../../${folder}/index.html`))

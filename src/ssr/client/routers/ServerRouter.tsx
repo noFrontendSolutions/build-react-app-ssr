@@ -1,5 +1,5 @@
 import { StaticRouter } from "react-router-dom/server"
-import App from "../App"
+import App from "../../../client/App"
 
 const ServerRouter = ({
   url,

@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom"
-import App from "../App"
+import App from "../../../client/App"
 
 const ClientRouter = ({ initialState }: { initialState: number }) => {
   return (

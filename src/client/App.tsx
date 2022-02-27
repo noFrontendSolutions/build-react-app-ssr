@@ -26,15 +26,15 @@ const App = ({ initialState = 0 }) => {
             Edit <span className="text-reactBlue">src/client/App.tsx</span> and
             save to rerender. <br />
           </p>
-          <p className="mt-4">AND maintain the current state...</p>
+          <p className="mt-4">AND maintain the current state.</p>
         </>
       )}
       {initialState !== 0 && (
         <p className="mt-10">
           Edit{" "}
           <span className="text-reactBlue">
-            src/ssr/client/App.tsx<span className="text-gray-100"> or </span>
-            src/ssr/server/dev-server.tsx
+            src/client/App.tsx<span className="text-gray-100"> or </span>
+            src/ssr/server/server.tsx
           </span>{" "}
           and hit refresh to rerender.
         </p>
