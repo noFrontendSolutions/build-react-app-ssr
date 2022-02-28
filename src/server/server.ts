@@ -2,13 +2,21 @@ import express from "express"
 import fs from "fs"
 import path from "path"
 import { outputRootClient } from "../../webpack/output-paths"
+import cors from "cors"
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3050
 
 const app = express()
-
+app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, `../../${outputRootClient}`)))
+
+//The route below simulates a fetch call to an API from the frontend.
+app.get("/heavy-load", async (req, res) => {
+  await sleep(500)
+  const randomNumber = createRandomIntegerNotZero(20)
+  res.json({ randomNumber: randomNumber })
+})
 
 app.get("/", (req, res) => {
   const indexHtml = getIndexHtmlFile()
@@ -35,4 +43,23 @@ function getIndexHtmlFile() {
     "utf8"
   )
   return indexHtml
+}
+
+function createRandomIntegerNotZero(max: number) {
+  let randomNumber = 0
+  while (randomNumber == 0) {
+    let tempNumber = Math.random()
+    if (tempNumber < 0.5) {
+      randomNumber = -Math.floor(tempNumber * max)
+    } else {
+      randomNumber = Math.floor(tempNumber * max)
+    }
+  }
+  return randomNumber
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
 }

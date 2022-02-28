@@ -1,6 +1,6 @@
 import "react-hot-loader"
 import { hot } from "react-hot-loader/root"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import reactLogo from "../../static-assets/react-logo.png"
 
 interface ButtonProps {
@@ -12,9 +12,29 @@ interface ButtonProps {
 
 const App = ({ initialState = 0 }) => {
   const [count, setCount] = useState(initialState)
+  const [initialFetchedState, setInitialFetchedState] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (initialState === 0) {
+      setIsLoading(true)
+      fetch("http://localhost:3050/heavy-load")
+        .then((res) => res.json())
+        .then((data) => {
+          setInitialFetchedState(data.randomNumber)
+          setCount(data.randomNumber)
+          setIsLoading(false)
+        })
+        .catch((err) => {
+          console.log(err)
+          setIsLoading(false)
+        })
+    }
+  }, [])
 
   return (
     <div className="relative p-8 h-screen flex flex-col items-center text-gray-100 bg-reactGray text-2xl">
+      {isLoading && <LoadingSpinner />}
       <img src={reactLogo} className="h-96 w-96 animate-spin-slow" />
       <span className="inline-flex mt-16 text-4xl">
         <h1>Welcome to React</h1>
@@ -54,7 +74,11 @@ const App = ({ initialState = 0 }) => {
           <p>
             Initial State:
             <span className="ml-11 w-20 text-red-400">
-              {initialState !== 0 ? initialState : "undefined"}
+              {initialState !== 0
+                ? initialState
+                : initialState === 0 && initialFetchedState !== 0
+                ? initialFetchedState
+                : "undefined"}
             </span>
           </p>
         </div>
@@ -65,18 +89,6 @@ const App = ({ initialState = 0 }) => {
           setCount={setCount}
         />
       </div>
-      {initialState === 0 && (
-        <>
-          <p className="absolute bottom-14 text-sm text-reactBlue">
-            Notice that your App has to be rendered on the server to receive an
-            initial state.
-          </p>
-          <p className="absolute bottom-8 text-sm text-reactBlue">
-            Try out SSR-development mode
-            <span className="text-white"> (npm run dev-ssr). </span>
-          </p>
-        </>
-      )}
     </div>
   )
 }
@@ -91,6 +103,14 @@ const FancyButton = ({ type, content, count, setCount }: ButtonProps) => {
       >
         {content}
       </button>
+    </div>
+  )
+}
+
+const LoadingSpinner = () => {
+  return (
+    <div className="fixed inset-0 flex justify-center items-center z-0 bg-opacity-0">
+      <div className="z-10 h-36 w-36 border-4 border-reactBlue border-t-transparent rounded-full animate-spin"></div>
     </div>
   )
 }
