@@ -2,7 +2,7 @@
 
 ---
 
-is a fullstack React development environment, featuring server-side rendering. It's easy configurable and extendable with a minimum of webpack knowledge. It's unopinionated and super leight-weight. It's there to help you build a prototype of your fullstack React app.
+is a fullstack React development environment, featuring server-side rendering. It is easy to configure and extendable with a minimum of webpack knowledge. It's unopinionated and super leight-weight. It's there to help you build a prototype of your fullstack React app.
 
 ## Features:
 
@@ -141,7 +141,7 @@ src
 |
 |——server
 |    |
-|    |——server.ts (entry standard server [no ssr])
+|    |——server.ts (server entry)
 |
 |——ssr
 |    |
@@ -179,4 +179,39 @@ const outputRootSsrClient = "dist/ssr/client"
 const outputRootSsrServer = "dist/ssr/server"
 
 
+```
+
+Output Files
+
+```
+dist
+|
+|——client
+|    |
+|    |——index.[hash].html
+|    |——index.[hash].js
+|    |——styles.[hash].css
+|    |
+|   images
+|
+|——server
+|    |
+|    |——server.js
+|
+|——ssr
+|    |
+|    |——client
+|    |     |
+|    |     |——index.[hash].html
+|    |     |——index.[hash].js
+|    |     |——styles.[hash].css
+|    |     |
+|    |     images
+|    |
+|    |——server
+|    |     |
+|    |     |——index.[hash].js
+|    |     |——server.js
+|    |     |
+|    |     images
 ```
