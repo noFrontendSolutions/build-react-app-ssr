@@ -1,6 +1,6 @@
 {
   "name": "build-react-app-ssr",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Development environment to create a fullstack React app featuring SSR.",
   "main": "./src/client/index.tsx",
   "bin": "bin/install.js",

@@ -2,7 +2,7 @@
 
 ---
 
-is a fullstack React development environment, featuring server-side rendering. It is easy to configure and extendable with a minimum of webpack knowledge. It's unopinionated and super leight-weight. It's there to help you build a prototype of your fullstack React app.
+is a fullstack React development environment, featuring server-side rendering. It supports the bare-knuckle minimum of features to create a prototype of a fullstack React app. It is easy to configure and extendable with a minimum of webpack knowledge.
 
 ## Features:
 
