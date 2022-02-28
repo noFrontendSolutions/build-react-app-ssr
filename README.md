@@ -4,12 +4,14 @@
 
 is a fullstack React development environment, featuring server-side rendering. It's easy configurable and extendable with a minimum of webpack knowledge. It's unopinionated and super leight-weight. It's there to help you build a prototype of your fullstack React app.
 
-## Features
+## Features:
 
-- includes a default template, which makes server-side data injections into your frontend app easy, without any webpack configuration.
+- creates HTML output (with seperate CSS and JS files) which could be read by web-crawlers and search engines
+- includes a default template that demonstrates how to properly inject initial data into your frontend app on the server
 - fast recompilation times during development-mode, featuring **HMR**
-- Typescript support by default, but not mandatory
-- both TailwindCSS and modern-day CSS support by default
+- **Typescript** support by default, but not mandatory
+- support for multiple **tsconfig**-files to fine-tune compiler options for frontend and backend seperately
+- both **TailwindCSS** and modern-day **CSS** support by default
 - produces minified and hashed, production-ready bundles with seperated JS, CSS and image files
 
 ## Installation
@@ -54,9 +56,10 @@ Starts the backend server in watch-mode (targeting **src/backend/server.ts** and
 npm run dev-ssr
 ```
 
-THIS might as well be the **highlight** of this whole project. Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/servert.tsx**) are compiled within the same compilation cycle, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save when edited.\
+This mode should only be used if you intend to build an application, which ought to inject intital data into the server-side-rendered app (on possibly multiple backend routes) before it gets send to the client, instead of fetching data from the frontend. \
+Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled within the same compilation cycle, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save once edited.\
 The command also opens the browser, running on **localhost:8000**. When clicking on refresh, the server (**src/ssr/server/server.tsx**) serves the edited frontend bundle, which includes the changes you've just made, plus the initial data you might have fed into it.\
-Notice that a simultaneous webpack-compilation of both frontend and backend is crucial, if you want to inject some sort of initial data into your frontend App. For more details read the **SSR-related** paragraph and look at the source code.
+Notice that a simultaneous webpack-compilation of both frontend and backend is crucial, if you want to server-side inject some sort of initial data into your frontend App. Take a look at the source code if you're interested in the details.
 
 ### Build Scripts:
 
@@ -68,7 +71,7 @@ npm run build-server
 npm run build-ssr
 ```
 
-These commands are the equivalent to the dev-scripts above. The individual "production-ready" bundles are outputed into the **dist** folder by default (**dist/client**, **dist/server**, **"dist/ssr"**). For details concerning the output-files and output-structure read the **Output** section.
+These commands are the equivalent to the dev-scripts above. The individual "production-ready" bundles are outputed into the **dist** folder by default (**dist/client**, **dist/server**, **"dist/ssr"**). For details concerning the output-files and output-structure of your project read the **Output** section.
 
 ### Start Scripts:
 
@@ -78,18 +81,20 @@ These commands are the equivalent to the dev-scripts above. The individual "prod
 npm run start-std
 ```
 
-After you've **build** your "standard" application (frontend and backend seperately compiled) this script starts your app on **localhost:8050**.
+After you've **build** your "standard" application (frontend and backend seperately compiled), this script starts your app on **localhost:8050**.
 
 ```
 npm run start-ssr
 ```
 
-This is the equivalent to the command above, if you've build an app that injects some sort initial data into it. It can be executed once you've executed **npm run build-ssr**. It runs on **localhost:8100**  
+This is the equivalent to the command above. Use it if you've build an app that injects some sort initial data into the app. It can be executed once you've ran **npm run build-ssr**. It runs on **localhost:8100**  
 <br>
 
 ## Entry Points and Roots
 
 ---
+
+If you intend to change the folder structure of your project, all you have to do is edit the following file: **webpack/entry-points.js**.
 
 ```JS
 //****ROOT ENTRY PATHS OF BACKEND AND FRONTEND OR SSR APP******
@@ -125,7 +130,7 @@ const entrySsrServer = {
 
 ```
 
-### Default Folder Structure (skeleton)
+### Default Folder Structure
 
 ```
 src
@@ -155,6 +160,8 @@ src
 |    |     |         .
 |    |     |——server.tsx (functioning also as dev-server)
 ```
+
+Note that, if you intend to use multiple **tsconfig** files for individually set compiler options, a nested folder structure like the one above would be mandatory. There has to be a main **tsconfig** in the root of your project from which the others inherit. With the help of the **tsconfig-paths-webpack-plugin** you can then point to the individual **tsconfig** files, whose settings would then be used during compilation.
 
 <br>
 
