@@ -2,12 +2,12 @@
 
 ---
 
-is a minimalistic fullstack React development environment supporting the must-have key features, which every modern-day web application should have to guarantee a satifying user experience. It is easy to configure and extend, with a minimum of webpack knowledge.
+is a minimalistic fullstack React development environment supporting the must-have key features, which every modern-day web application should have to guarantee a satisfying user experience. It is easy to configure and extend, with a minimum of webpack knowledge.
 
 ## Features:
 
-- **SSR**: creates server-side _renderable_ output. Comprehensive HTML output files (with seperate CSS and JS files) for web-crawlers and search engines to consume
-- ideal if you intend to build an app that outght to **inject initial data** into the app on the server, as opposed to fetching the initial data from the cliend-side.
+- **SSR**: make use of **react-dom/server** to **inject initial data** into the app before it gets send to the client, as opposed to fetching the initial data from the cliend-side.
+- create **comprehensive HTML output files** (with seperate CSS and JS files) for web-crawlers and search engines to consume
 - features **simultaneous compilation** of frontend and backend source code if required
 - fast recompilation times during development-mode, featuring **HMR** on the client-side
 - **Typescript** support by default, but not mandatory
@@ -15,6 +15,20 @@ is a minimalistic fullstack React development environment supporting the must-ha
 - both **TailwindCSS** and modern-day **CSS** support by default
 - produces **minified** and hashed, production-ready bundles with seperated JS, CSS and image files
 - includes a simple default example that demonstrates how to properly inject initial data into your app before it will be rendered on the browser
+
+|                       App using client-side fetching                        |                    App using server-side data Injection                     |
+| :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| ![](https://www.dropbox.com/s/jndddtsmyp9qugr/crassr-example-std.png?raw=1) | ![](https://www.dropbox.com/s/aidxinll957yx38/crassr-example-ssr.png?raw=1) |
+
+[App using client-side fetching](https://crassr-example-std.herokuapp.com)
+
+[App using server-side data injection](https://crassr-example-ssr.herokuapp.com)
+
+<br>
+
+---
+
+---
 
 ## Installation
 
@@ -58,7 +72,7 @@ Starts the backend server in watch-mode on **localhost:8081** (targeting **src/b
 npm run dev-ssr
 ```
 
-This mode should be used if your app ought to inject intital data into the app before it gets send to the client (as opposed to fetching the initial data from the client side).\
+Use this mode if your app relies on data injections from the server-side.\
 Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled simultaneously, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save once edited.\
 The command also opens the browser on **localhost:8082**. When clicking on refresh, the server (**src/ssr/server/server.tsx**) serves the edited frontend bundle, which includes the changes you've just made, plus the initial data that might have been fed into it.
 

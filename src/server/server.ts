@@ -3,7 +3,6 @@ import fs from "fs"
 import path from "path"
 import { outputRootClient } from "../../webpack/output-paths"
 import cors from "cors"
-
 const port = process.env.PORT || 8081
 
 const app = express()
@@ -13,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, `../../${outputRootClient}`)))
 
 //The route below simulates a fetch call to an API from the frontend.
 app.get("/heavy-load", async (req, res) => {
-  await sleep(500)
+  await sleep(1000)
   const randomNumber = createRandomIntegerNotZero(20)
   res.json({ randomNumber: randomNumber })
 })
