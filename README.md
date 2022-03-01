@@ -20,9 +20,9 @@ is a minimalistic fullstack React development environment supporting the must-ha
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![](https://www.dropbox.com/s/jndddtsmyp9qugr/crassr-example-std.png?raw=1) | ![](https://www.dropbox.com/s/aidxinll957yx38/crassr-example-ssr.png?raw=1) |
 
-[App using client-side fetching](https://crassr-example-std.herokuapp.com)
+[Limk to App using client-side fetching](https://crassr-example-std.herokuapp.com)
 
-[App using server-side data injection](https://crassr-example-ssr.herokuapp.com)
+[Link to App using server-side data injection](https://crassr-example-ssr.herokuapp.com)
 
 <br>
 
