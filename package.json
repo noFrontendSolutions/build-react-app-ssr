@@ -1,5 +1,5 @@
 {
-  "name": "build-react-app-ssr",
+  "name": "cra-ssr",
   "version": "1.0.3",
   "description": "Development environment to create a fullstack React app featuring SSR.",
   "main": "./src/client/index.tsx",
@@ -11,9 +11,9 @@
     "build-ssr": "webpack --config webpack/ssr/webpack.build-ssr.js",
     "dev-client": "webpack serve --config webpack/client/webpack.dev-client.js --open",
     "dev-server": "webpack --config webpack/server/webpack.dev-server.js --watch ",
-    "dev-ssr": "start http://localhost:8000 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
-    "start-std": "start http://localhost:8050 & node dist/server/server.js",
-    "start-ssr": "start http://localhost:8100 & node dist/ssr/server/server.js"
+    "dev-ssr": "start http://localhost:8082 & webpack --config webpack/ssr/webpack.dev-ssr.js --watch",
+    "start-std": "start http://localhost:8081 & node dist/server/server.js",
+    "start-ssr": "start http://localhost:8082 & node dist/ssr/server/server.js"
   },
   "keywords": [
     "react",

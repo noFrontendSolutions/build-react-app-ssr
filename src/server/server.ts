@@ -4,7 +4,7 @@ import path from "path"
 import { outputRootClient } from "../../webpack/output-paths"
 import cors from "cors"
 
-const port = process.env.PORT || 3050
+const port = process.env.PORT || 8081
 
 const app = express()
 app.use(cors())

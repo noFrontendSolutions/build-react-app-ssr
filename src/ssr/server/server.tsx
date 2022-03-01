@@ -8,7 +8,7 @@ import {
 import ReactDOMServer from "react-dom/server"
 import ServerRouter from "../client/routers/ServerRouter"
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 8082
 
 const main = async () => {
   let indexHtml: string

@@ -18,7 +18,7 @@ const App = ({ initialState = 0 }) => {
   useEffect(() => {
     if (initialState === 0) {
       setIsLoading(true)
-      fetch("http://localhost:3050/heavy-load")
+      fetch("http://localhost:8081/heavy-load")
         .then((res) => res.json())
         .then((data) => {
           setInitialFetchedState(data.randomNumber)
