@@ -1,4 +1,4 @@
-# CRA-SSR (Create-React-App-SSR)
+# CRASSR (Create-React-App-SSR)
 
 ---
 
@@ -21,13 +21,13 @@ is a minimalistic fullstack React development environment supporting the must-ha
 ---
 
 ```bash
-npx cra-ssr
+npx crassr-now
 ```
 
 Executes **bin/install.js**: the command creates a new folder (**my-react-app-ssr**) and copies all the necessary files into it and then installs the required dependencies. The command has one optional parameter, which determines the name of the root folder.
 
 ```bash
-npx cra-ssr my-app
+npx crassr-now my-app
 ```
 
 Would create a new project into the **my-app** folder.

@@ -1,7 +1,7 @@
 {
-  "name": "cra-ssr",
+  "name": "crassr-now",
   "version": "1.0.3",
-  "description": "Development environment to create a fullstack React app featuring SSR.",
+  "description": "Development environment to create a fullstack React app with modern-day must-have features.",
   "main": "./src/client/index.tsx",
   "bin": "bin/install.js",
   "module": "CommonJS",
