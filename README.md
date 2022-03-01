@@ -2,7 +2,7 @@
 
 ---
 
-is a minimalistic fullstack React development environment supporting the must-have key features, which every modern-day web application should have, to guarantee a satifying user experience. It is easy to configure and extend, with a minimum of webpack knowledge.
+is a minimalistic fullstack React development environment supporting the must-have key features, which every modern-day web application should have to guarantee a satifying user experience. It is easy to configure and extend, with a minimum of webpack knowledge.
 
 ## Features:
 
