@@ -212,8 +212,8 @@ dist
 |    |
 |    |——server
 |    |     |
-|    |     |——index.[hash].js
 |    |     |——server.js
+|    |     |——index.js (only in dev-ssr mode)
 |    |     |
 |    |     images
 ```
