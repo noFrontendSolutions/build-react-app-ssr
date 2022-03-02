@@ -16,11 +16,11 @@ is a minimalistic, webpack-made, full-stack React development environment provid
 - produces **minified** and hashed, production-ready bundles with seperated JS, CSS and image files
 - includes a simple default example that demonstrates how to properly inject initial data into your app before it will be rendered on the browser
 
-|                       App using client-side fetching                        |                    App using server-side data Injection                     |
+|                       App using client-side fetching                        |                    App using server-side data injection                     |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![](https://www.dropbox.com/s/jndddtsmyp9qugr/crassr-example-std.png?raw=1) | ![](https://www.dropbox.com/s/aidxinll957yx38/crassr-example-ssr.png?raw=1) |
 
-[Limk to App using client-side fetching](https://crassr-example-std.herokuapp.com)
+[Link to App using client-side fetching](https://crassr-example-std.herokuapp.com)
 
 [Link to App using server-side data injection](https://crassr-example-ssr.herokuapp.com)
 
@@ -72,9 +72,9 @@ Starts the backend server in watch-mode on **localhost:8081** (targeting **src/b
 npm run dev-ssr
 ```
 
-Use this mode if your app relies on data injections from the server-side.\
-Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled simultaneously, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save once edited.\
-The command also opens the browser on **localhost:8082**. When clicking on refresh, the server (**src/ssr/server/server.tsx**) serves the edited frontend bundle, which includes the changes you've just made, plus the initial data that might have been fed into it.
+This is the development mode for your whole application front-to-back all at once. It's particularly useful if your app relies on server-side data injections. Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled simultaneously, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save once edited.\
+The command opens the browser on **localhost:8082**. When clicking on refresh, the server (**src/ssr/server/server.tsx**) serves the edited frontend bundle, which includes the changes you've just made, plus the initial data that might have been fed into it.\
+Note that this command creates temporary output, which lands in the **dist/ssr** folder, from where it also runs, as opposed to running from memory, which would be the case if using the standard client-dev mode.
 
 ### Build Scripts:
 
