@@ -1,4 +1,3 @@
-import "react-hot-loader"
 import { hot } from "react-hot-loader/root"
 import { useState, useEffect } from "react"
 import reactLogo from "../../static-assets/react-logo.png"
@@ -116,4 +115,5 @@ const LoadingSpinner = () => {
 }
 
 //Notice the "hot" export of the App component. The "hot"-function is provided by the webpack "react-hot-loader plugin". It guarantees hot-module replacement in dev-mode throughout your app.
+
 export default hot(App)
