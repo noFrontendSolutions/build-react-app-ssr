@@ -259,7 +259,7 @@ In case your App uses server-side data injection, as in my example App, you also
 
 <br>
 
-I've deployed the two simple default example Apps (client-side fetching vs. server-side data injection) to **Heroku**. My two **package.json** files look like this:\
+I've deployed the two simple default example Apps (client-side fetching vs. server-side data injection) to **Heroku**. My two **package.json** files look like this:
 
 Client-side fetching example app:
 
