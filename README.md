@@ -253,7 +253,7 @@ For custom webpack configuration use one of the following folders: **webpack/cli
 
 ---
 
-Once you've build your app and it runs without errors, the outut folder **dist** is almost ready to get deployed. Notice that if your application runs inside the root folder of your **crassr**-app, it most likely will not yet run outside of it. It's because your backend code will probably rely on certain node modules. And since you probably won't need modules like **path**, **fs**, or **express** to get bundled by webpack, **webpack-node-externals** plugin prevents just that from happening.\
+Once you've build your app and it runs without errors, the outut folder **dist** is almost ready to get deployed. Notice that if your application runs inside the root folder of your **crassr**-app environment, it most likely will not yet run outside of it. It's because your backend code will probably rely on certain node modules. And since you probably won't need modules like **path**, **fs**, or **express** to get bundled by webpack, **webpack-node-externals** plugin prevents just that from happening.\
 So all you have to do is create a new **package.json** just outside the **dist** folder (i.e. the root directory of the folder you intend to deploy) and then **install** your **backend dependencies**.\
 In case your App uses server-side data injection, as in my example App, you also need at least **react** and **react-router-dom** installed, too.
 
