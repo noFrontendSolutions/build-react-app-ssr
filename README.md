@@ -165,6 +165,10 @@ src
 |
 |——client
 |    |
+|    |——styles
+|    |    |
+|    |  tailwind-styles.css
+|    |
 |    |——index.tsx (entry client)
 |    |——App.tsx (main)
 |
