@@ -20,7 +20,7 @@ const clientConfigDev = (entry, output) => {
         template: path.resolve(__dirname, "../../template/index.html"),
         scriptLoading: "defer",
       }),
-      // The copy plugin below is absolutely crucial. It copies the index.js bundle into the server folder. It is required on the client as well as on the server. Without it the initial state can be loaded only once. On refresh you would get a "not-matching div" error in the console and no initial state in your application.
+      // The copy plugin below is absolutely crucial. It copies the index.js bundle into the server folder. Without it you wouldn't get any styles showing up in the browser.
       new WebpackCopyBundle({
         index: "../server",
       }),
