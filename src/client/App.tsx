@@ -15,19 +15,19 @@ const App = ({ initialState = 0 }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (initialState === 0) {
-      setIsLoading(true)
-      fetch("http://localhost:8081/heavy-load")
-        .then((res) => res.json())
-        .then((data) => {
+    if (!initialState) {
+      ;(async () => {
+        try {
+          setIsLoading(true)
+          const data = await fetchInitialState()
           setInitialFetchedState(data.randomNumber)
           setCount(data.randomNumber)
           setIsLoading(false)
-        })
-        .catch((err) => {
-          console.log(err)
+        } catch (error) {
+          console.log(error)
           setIsLoading(false)
-        })
+        }
+      })()
     }
   }, [])
 
@@ -90,6 +90,12 @@ const App = ({ initialState = 0 }) => {
       </div>
     </div>
   )
+}
+
+const fetchInitialState = async () => {
+  const response = await fetch("http://localhost:8081/heavy-load")
+  const data: { randomNumber: number } = await response.json()
+  return data
 }
 
 const FancyButton = ({ type, content, count, setCount }: ButtonProps) => {
