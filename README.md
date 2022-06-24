@@ -258,7 +258,7 @@ In case your App uses SSR, you also need at least **react** and **react-router-d
 
 <br>
 
-I've deployed the default Example App two times (one using SSR one not) to **Heroku**. My two **package.json** files look like this:
+I've deployed the default Example App two times (one using SSR, one not) to **Heroku**. My two **package.json** files look like this:
 
 Standard Example App:
 
