@@ -2,28 +2,27 @@
 
 ---
 
-is a minimalistic, webpack-made, full-stack React development environment providing the must-have key features every modern-day web application should have. It is easy to configure and extend, with a minimum of webpack knowledge required.
+is a minimalistic, webpack-made, fullstack **React Development Environment**, which provides the must-have key features every modern-day web application should have. It is easy to configure and extend, with a minimum of webpack knowledge required.
 
 ## Features:
 
-- **SSR**: make use of **react-dom/server** to **inject initial data** into the app before it gets send to the client, as opposed to fetching the initial data from the cliend-side.
-- create **comprehensive HTML output files** (with seperate CSS and JS files) for web-crawlers and search engines to consume
-- features **simultaneous compilation** of frontend and backend source code if required
-- fast recompilation times during development-mode, featuring **HMR** on the client-side
+- build a fullstack **React** app that uses **Express.js** on the server-side
+- **SSR**: supports server-side rendering if desired 
+- features **HMR** (Hot-Module-Replacement) during client-side development
 - **Typescript** support by default, but not mandatory
 - support for **multiple tsconfig.json**-files to fine-tune compiler options for frontend and backend seperately
 - uses **Express.js** on the backend, but isn't bound to it
 - has build-in **TailwindCSS** and modern-day **CSS** support by default
 - produces **minified** and hashed, deployable bundles with seperated JS, CSS and image files
-- includes a simple default example that demonstrates how to inject initial data into your app before it will be rendered on the browser
+- a simple example App is included: 
 
-|                       App using client-side fetching                        |                    App using server-side data injection                     |
+|                       Example App                         |                    Example App using SSR                    |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![](https://www.dropbox.com/s/jndddtsmyp9qugr/crassr-example-std.png?raw=1) | ![](https://www.dropbox.com/s/aidxinll957yx38/crassr-example-ssr.png?raw=1) |
 
-[Link to App using client-side fetching](https://crassr-example-std.herokuapp.com)
+[Link to Example App](https://crassr-example-std.herokuapp.com)
 
-[Link to App using server-side data injection](https://crassr-example-ssr.herokuapp.com)
+[Link to Example App using SSR](https://crassr-example-ssr.herokuapp.com)
 
 ---
 
@@ -39,7 +38,7 @@ is a minimalistic, webpack-made, full-stack React development environment provid
 npx crassr-now
 ```
 
-Executes **bin/install.js**: the command creates a new folder (**my-react-app-ssr**) and copies all the necessary files into it and then installs the required dependencies. The command has one optional parameter, which determines the name of the root folder.
+Executes **bin/install.js**: the command creates a new folder (**my-react-app-ssr**) and copies all the necessary files into it and then installs the required dependencies. The command has one optional parameter that determines the name of the root folder.
 
 <br>
 
@@ -79,9 +78,9 @@ Starts the backend server in watch-mode on **localhost:8081** (targeting **src/b
 npm run dev-ssr
 ```
 
-This is the development mode for your whole application front-to-back all at once. It's particularly useful if your app relies on server-side data injections. Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled simultaneously, one with target **web**, one with target **node**. Both entry points are being watched and getting almost instantly recompiled on save once edited.\
-The command opens the browser on **localhost:8082**. When clicking on refresh, the server (**src/ssr/server/server.tsx**) serves the edited frontend bundle, which includes the changes you've just made, plus the initial data that might have been fed into it.\
-Note that this command creates temporary output, which lands in the **dist/ssr** folder, from where it also runs, as opposed to running from memory, which would be the case if using the standard client-dev mode.
+This mode should only be used if if you want to build an App that should feature SSR. <br>
+The command starts the development server on **localhost:8082**. Both frontend and backend (**src/ssr/client/index.tsx** and **src/ssr/server/server.tsx**) are compiled simultaneously. Both entry points are being watched and recompiled on save once edited.\
+Note that **HMR** is not available in this mode.
 
 <br>
 
@@ -107,7 +106,7 @@ These commands are the equivalent to the dev-scripts above. The individual, "pro
 npm run start-std
 ```
 
-After you've **build** your application (frontend and backend seperately compiled), this command starts your app on **localhost:8080**.
+After you've **build** your application (npm run build-client + npm run build-server), you can test if it is deployment-ready with this command. The command starts your app on **localhost:8080**. 
 
 <br>
 
@@ -115,7 +114,7 @@ After you've **build** your application (frontend and backend seperately compile
 npm run start-ssr
 ```
 
-This is the equivalent to the command above, if frontend and backend have been compiled simultaneously (**npm run build-ssr**). The command starts the app on **localhost:8082**  
+If you've **build** an application that features SSR (npm run build-ssr), you can test if it is deployment-ready with this command. The command starts your app on **localhost:8082**.  
 <br>
 
 ## Entry Points and Roots
@@ -253,15 +252,15 @@ For custom webpack configuration use one of the following folders: **webpack/cli
 
 ---
 
-Once you've build your app and it runs without errors, the outut folder **dist** is almost ready to get deployed. Notice that if your application runs inside the root folder of your **crassr**-app environment, it most likely will not yet run outside of it. It's because your backend code will probably rely on certain node modules. And since you probably won't need modules like **path**, **fs**, or **express** to get bundled by webpack, **webpack-node-externals** plugin prevents just that from happening.\
-So all you have to do is create a new **package.json** just outside the **dist** folder (i.e. the root directory of the folder you intend to deploy) and then **install** your **backend dependencies**.\
-In case your App uses server-side data injection, as in my example App, you also need at least **react** and **react-router-dom** installed, too.
+Once you've build your app and it runs without errors, it is almost ready to get deployed. Notice that if your application works inside the root folder of your **crassr**-app environment, it most likely will not yet run outside of it, because it's probably missing some dependencies that haven't been installed yet. 
+All you have to do is create a new directory with a name of your chosing and copy the **dist** folder into it. Then create a **package.json** file in the root directory and then **install** all your **backend dependencies**.\
+In case your App uses SSR, you also need at least **react** and **react-router-dom** installed, too.
 
 <br>
 
-I've deployed the two simple default example Apps (client-side fetching vs. server-side data injection) to **Heroku**. My two **package.json** files look like this:
+I've deployed the default Example App two times (one using SSR one not) to **Heroku**. My two **package.json** files look like this:
 
-Client-side fetching example app:
+Standard Example App:
 
 ```JS
 
@@ -283,7 +282,7 @@ Client-side fetching example app:
 
 <br>
 
-Server-side data injection example app:
+SSR Example App:
 
 ```JS
 
