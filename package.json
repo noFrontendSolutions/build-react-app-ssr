@@ -1,6 +1,6 @@
 {
   "name": "crassr-now",
-  "version": "1.0.",
+  "version": "1.0.10",
   "description": "Development environment to create a fullstack React app with modern-day must-have features.",
   "main": "./src/client/index.tsx",
   "bin": "bin/install.js",
