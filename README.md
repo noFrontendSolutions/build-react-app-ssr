@@ -103,7 +103,7 @@ These commands are the equivalent to the dev-scripts above. The individual, "pro
 ---
 
 ```bash
-npm run start-std
+npm run start-build-std
 ```
 
 After you've **build** your application (npm run build-client + npm run build-server), you can test if it is deployment-ready with this command. The command starts your app on **localhost:8080**. 
@@ -111,7 +111,7 @@ After you've **build** your application (npm run build-client + npm run build-se
 <br>
 
 ```
-npm run start-ssr
+npm run start-build-ssr
 ```
 
 If you've **build** an application that features SSR (npm run build-ssr), you can test if it is deployment-ready with this command. The command starts your app on **localhost:8082**.  
