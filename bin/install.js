@@ -16,7 +16,7 @@ const fileList = [
 fs.mkdirSync(`${process.cwd()}/${appDirName}`)
 
 fs.copyFileSync(
-  path.resolve(__dirname, "./blank-configs/package.user.json"),
+  path.resolve(__dirname, "./blank-configs/package.json"),
   `${process.cwd()}/${appDirName}/package.json`
 )
 
@@ -32,6 +32,12 @@ execSync("npm install", {
   cwd: `${process.cwd()}/${appDirName}`,
   stdio: [0, 1, 2],
 })
+
+fs.unlinkSync(`${process.cwd()}/${appDirName}/package.json`)
+fs.copyFileSync(
+  path.resolve(__dirname, "./blank-configs/package.user.json"),
+  `${process.cwd()}/${appDirName}/package.json`
+)
 
 //*********************************************************************
 //*********************************************************************
