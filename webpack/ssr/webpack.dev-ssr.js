@@ -13,6 +13,9 @@ const clientConfigDev = (entry, output) => {
     entry: entry,
     output: output,
     devtool: "inline-source-map",
+    devServer: {
+      historyApiFallback: true, //use this when working with react-router-dom to not get a "cannot get"-error on refresh
+    },
     plugins: [
       //HtmlWebpackPlugin will generate an HTML5 file that injects all webpack bundles in the body using script tags.
       new HtmlWebpackPlugin({
