@@ -2,7 +2,7 @@
 
 ---
 
-is a minimalistic, webpack-made, fullstack **React Development Environment**, which provides the must-have key features every modern-day web application should have. It is easy to configure and extend, with a minimum of webpack knowledge required.
+is a minimalistic, webpack-made, fullstack **React Development Environment**, which can be use instead of **Create React App** or **Vite**. It is easy to configure and extend, with a minimum of webpack knowledge required.
 
 ## Features:
 
@@ -10,7 +10,6 @@ is a minimalistic, webpack-made, fullstack **React Development Environment**, wh
 - **SSR**: supports server-side rendering if desired 
 - features **HMR** (Hot-Module-Replacement) during client-side development
 - **Typescript** support by default, but not mandatory
-- support for **multiple tsconfig.json**-files to fine-tune compiler options for frontend and backend seperately
 - uses **Express.js** on the backend, but isn't bound to it
 - has build-in **TailwindCSS** and modern-day **CSS** support by default
 - produces **minified** and hashed, deployable bundles with seperated JS, CSS and image files
