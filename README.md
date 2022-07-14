@@ -2,7 +2,7 @@
 
 ---
 
-is a minimalistic, webpack-made, fullstack **React Development Environment**, which can be used instead of **Create React App** or **Vite**. It is easy to configure and extend, with a minimum of webpack knowledge required.
+is a minimalistic, webpack-made **React Development Environment**, which can be used instead of **Create React App** or **Vite**. It supports **SSR** and is easy to configure and extend, with a minimum of webpack knowledge required.
 
 ## Features:
 
