@@ -187,7 +187,7 @@ src
 |    |     |——server.tsx (functioning also as dev-server)
 ```
 
-Note that, if you intend to use multiple **tsconfig** files for individually set compiler options, a nested folder structure like the one above would be mandatory. There has to be a main **tsconfig** in the root of your project from which the others inherit. With the help of the **tsconfig-paths-webpack-plugin** you can then point to the individual **tsconfig** files, whose settings would then be used during compilation.
+Note that, if you intend to use multiple **tsconfig** files for differently-set compiler options for client and server (Node vs. Web), a nested folder structure like the one above would be mandatory. There has to be a main **tsconfig** in the root of your project from which the other tsconfig files inherit. With the help of the **tsconfig-paths-webpack-plugin** you can then point to the individual **tsconfig** files, whose settings would then be used during compilation.
 
 <br>
 
