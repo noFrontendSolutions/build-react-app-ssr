@@ -13,15 +13,15 @@ is a minimalistic, webpack-made, fullstack **React Development Environment**, wh
 - uses **Express.js** on the backend, but isn't bound to it
 - has build-in **TailwindCSS** and modern-day **CSS** support by default
 - produces **minified** and hashed, deployable bundles with seperated JS, CSS and image files
-- a simple example App is included: 
+- a simple example App to scaffold your project is included: 
 
-|                       Example App                         |                    Example App using SSR                    |
+|                       Scaffolding Example App                         |                    Scaffolding Example App using SSR                    |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
 | ![](https://www.dropbox.com/s/jndddtsmyp9qugr/crassr-example-std.png?raw=1) | ![](https://www.dropbox.com/s/aidxinll957yx38/crassr-example-ssr.png?raw=1) |
 
-[Link to Example App](https://crassr-example-std.herokuapp.com)
+<!-- [Link to Example App](https://crassr-example-std.herokuapp.com)
 
-[Link to Example App using SSR](https://crassr-example-ssr.herokuapp.com)
+[Link to Example App using SSR](https://crassr-example-ssr.herokuapp.com) -->
 
 ---
 
